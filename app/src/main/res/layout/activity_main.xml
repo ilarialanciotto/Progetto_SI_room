@@ -1,0 +1,57 @@
+<androidx.drawerlayout.widget.DrawerLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="363dp"
+                android:layout_height="59dp"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="667dp"
+                android:layout_marginEnd="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:subtitleTextColor="#7E3BCC"
+                app:titleTextColor="#7E3BCB"
+                android:background="#9E7DDB"
+        />
+
+        <WebView
+                android:layout_width="371dp"
+                android:layout_height="660dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/webVW" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:layout_gravity="start"
+            android:background="@drawable/wave_calendar"
+            app:headerLayout="@layout/navigation_home_header"
+            app:itemTextAppearance="@style/TextAppearance.AppCompat.Menu"
+            app:menu="@menu/navigation_menu"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

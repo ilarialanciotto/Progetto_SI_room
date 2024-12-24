@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonStyle"
+           parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">#D895FF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+</resources>
