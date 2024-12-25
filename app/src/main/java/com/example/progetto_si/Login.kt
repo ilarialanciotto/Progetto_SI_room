@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 
 class Login : AppCompatActivity() {
@@ -23,8 +26,7 @@ class Login : AppCompatActivity() {
         val editTextUsername: EditText = findViewById(R.id.et_username)
         editTextPassword = findViewById(R.id.et_Password)
         val buttonSend: Button = findViewById(R.id.btn_invia)
-        val dbHelper = MyDatabaseHelper(this)
-        val db = dbHelper.readableDatabase
+        var registrazioniViewModel = RegistrazioniViewModel(application)
 
         editTextPassword.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {
@@ -46,24 +48,24 @@ class Login : AppCompatActivity() {
         buttonSend.setOnClickListener {
             val username = editTextUsername.text.toString()
             val password = editTextPassword.text.toString()
-
-            val isSuccess = dbHelper.checkCredenziali(username, password)
-            if (isSuccess) {
-                Toast.makeText(this, "Account valido", Toast.LENGTH_SHORT).show()
-                dbHelper.close()
-                val intent = Intent(this, LogActivity::class.java)
-                intent.putExtra("EXTRA_USERNAME", username)
-                intent.putExtra("EXTRA_PASSWORD", password)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Username o password errati", Toast.LENGTH_SHORT).show()
+            lifecycleScope.launch {
+                registrazioniViewModel.checkCredenziali(username,password) { isSuccess ->
+                    if (isSuccess) {
+                        Toast.makeText(this@Login, "Account valido", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Login, LoginAmministratore::class.java)
+                        intent.putExtra("EXTRA_USERNAME", username)
+                        intent.putExtra("EXTRA_PASSWORD", password)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@Login, "Username o password errati", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }
 
     private fun togglePasswordVisibility() {
         if (isPasswordVisible) {
-
             editTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             editTextPassword.setCompoundDrawablesWithIntrinsicBounds(
                 null,
@@ -80,7 +82,6 @@ class Login : AppCompatActivity() {
                 null
             )
         }
-
         editTextPassword.setSelection(editTextPassword.text.length)
         isPasswordVisible = !isPasswordVisible
     }

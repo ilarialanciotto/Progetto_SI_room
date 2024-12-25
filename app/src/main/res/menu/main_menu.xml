@@ -7,6 +7,6 @@
 
     <item
             android:id="@+id/menu_register"
-            android:title="Register"/>
+            android:title="@string/register"/>
 
 </menu>

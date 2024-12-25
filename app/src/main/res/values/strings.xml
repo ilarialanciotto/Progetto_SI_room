@@ -35,6 +35,9 @@
     <string name="salva_nota">salva nota</string>
     <string name="cancella">Cancella</string>
     <string name="annulla">Annulla</string>
+    <string name="messaggi_sviluppatore">Messaggi Sviluppatore</string>
+    <string name="acquisti">Acquisti</string>
+    <string name="register">Register</string>
 
 
 </resources>

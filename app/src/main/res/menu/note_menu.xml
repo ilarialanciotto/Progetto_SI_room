@@ -1,8 +1,13 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/delete_note"
-            android:title="@string/cancella" />
+            android:title="@string/cancella"
+            android:icon="@android:drawable/ic_menu_delete"
+            app:showAsAction="always"
+
+    />
     <item
             android:id="@+id/cancel_note"
-            android:title="@string/annulla" />
+            android:title="@string/annulla" android:icon="@drawable/cancel"
+            app:showAsAction="always"/>
 </menu>

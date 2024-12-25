@@ -2,37 +2,43 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp" android:backgroundTint="#D081E2">
+        android:padding="16dp">
 
+    <!-- Input per la nota -->
     <TextView
-            android:id="@+id/txt"
+            android:text="NOTA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/txt" android:textAlignment="center"
+            android:textSize="26dp"/>
+    <EditText
+            android:id="@+id/nota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Testo della nota"
+            android:background="@drawable/edittext_border"
+            android:padding="10dp"
+            android:gravity="top"
+            android:lines="3"
+            android:maxLines="5"
+            android:scrollbars="vertical" android:textColor="#101010"/>
+
+    <!-- Pulsante Salva -->
+    <Button
+            android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/aggiungi_una_nota"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"/>
+            android:text="SALVA"
+            android:layout_gravity="center"
+            android:textColor="#1B1B1B" android:textColorLink="#673AB7"/>
+
+    <!-- Elenco delle note -->
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical" android:id="@+id/LL">
-            <EditText
-                    android:id="@+id/nota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/inserisci_la_tua_nota"
-                    android:padding="10dp"
-                    android:inputType="textMultiLine"/>
-        </LinearLayout>
+                      android:orientation="vertical" android:id="@+id/LL"/>
     </ScrollView>
-    <Button
-            android:text="salva"
-            android:layout_width="150dp"
-            android:layout_height="50dp" android:id="@+id/btn" android:backgroundTint="#7444E4"
-            android:textColor="#050505"/>
-
 
 </LinearLayout>

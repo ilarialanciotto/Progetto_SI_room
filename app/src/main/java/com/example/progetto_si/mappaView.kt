@@ -10,22 +10,28 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.google.android.material.navigation.NavigationView
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
 class mappaView : AppCompatActivity(), LocationListener {
+
+    private val SedeLocations = listOf(
+        Pair("sede 1", GeoPoint(39.361994, 16.223653)),
+        Pair("sede 2", GeoPoint(38.3473, 16.017791)),
+        Pair("sede 3", GeoPoint(39.359625, 17.135454))
+    )
+
     private lateinit var locationManager: LocationManager
     private val locationPermissionCode = 1
     private lateinit var mapView: MapView
-    private var userLocation: GeoPoint? = null // Salva la posizione dell'utente
+    private var userLocation: GeoPoint? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mappa_view)
-        Configuration.getInstance().userAgentValue = "ProvaLocationOSM/1.0"
+        Configuration.getInstance().userAgentValue = "LocationOSM/1.0"
 
         mapView = findViewById(R.id.map)
         mapView.setMultiTouchControls(true)
@@ -50,8 +56,8 @@ class mappaView : AppCompatActivity(), LocationListener {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(
                 LocationManager.NETWORK_PROVIDER,
-                5000,
-                10f,
+                2000,
+                1f,
                 this
             )
         } else {
@@ -59,23 +65,38 @@ class mappaView : AppCompatActivity(), LocationListener {
         }
     }
 
+    private fun trovaSedeVicina(latitude: Double, longitude: Double): GeoPoint {
+
+        var minLa= Double.MAX_VALUE
+        var minLo= Double.MAX_VALUE
+        var min= Double.MAX_VALUE
+        var result = FloatArray(1)
+
+        for (location in SedeLocations) {
+            Location.distanceBetween(latitude, longitude, location.second.latitude, location.second.longitude, result)
+            if(result[0].toDouble()<min){
+                minLa=location.second.latitude
+                minLo=location.second.longitude
+                min=result[0].toDouble()
+            }
+        }
+        return GeoPoint(minLa,minLo)
+    }
+
+
     override fun onLocationChanged(location: Location) {
         val geoPoint = GeoPoint(location.latitude, location.longitude)
-        userLocation = geoPoint // Aggiorna la posizione corrente dell'utente
-
-        // Rimuove i marker precedenti
-        mapView.overlays.clear()
-
-        // Aggiunge il marker per la posizione dell'utente
+        userLocation = geoPoint
         val marker = Marker(mapView)
         marker.position = geoPoint
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         marker.title = "Sei qui!"
+        mapView.overlays.clear()
         mapView.overlays.add(marker)
-
+        var Pref = trovaSedeVicina(location.latitude,location.longitude)
+        addSedeMarkers(Pref)
         mapView.controller.setCenter(geoPoint)
         mapView.controller.setZoom(13.0)
-
     }
 
     override fun onRequestPermissionsResult(
@@ -88,4 +109,18 @@ class mappaView : AppCompatActivity(), LocationListener {
             startLocationUpdates()
         }
     }
+
+    private fun addSedeMarkers(pref : GeoPoint) {
+        for (location in SedeLocations) {
+            val marker = Marker(mapView)
+            marker.position = location.second
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            if (location.second.latitude==pref.latitude && location.second.longitude==pref.longitude)
+                marker.title="Sede SecureTech vicina"
+            else
+                marker.title = "SecureTech"
+            mapView.overlays.add(marker)
+        }
+    }
+
 }

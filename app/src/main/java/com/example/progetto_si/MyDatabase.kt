@@ -5,10 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Registrazioni::class],version = 1, exportSchema = false)
+@Database(entities = [Registrazioni::class,Note::class,Cliente::class],version = 1, exportSchema = false)
+
 abstract class MyDatabase: RoomDatabase() {
 
     abstract fun RegistrazioneDao() : RegistrazioneDao
+    abstract fun NoteDao() : NoteDao
+    abstract fun ClienteDao() : ClienteDao
 
     companion object{
         @Volatile

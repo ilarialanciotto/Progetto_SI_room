@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RegistrazioniViewModel(application : Application) : AndroidViewModel(application) {
+
     private val RegDao = MyDatabase.getDatabase(application).RegistrazioneDao()
 
     fun insert(registrazione: Registrazioni) {
@@ -21,6 +22,33 @@ class RegistrazioniViewModel(application : Application) : AndroidViewModel(appli
             val count = RegDao.checkReg(user)
             withContext(Dispatchers.Main) {
                 callback(count > 0)
+            }
+        }
+    }
+
+    fun checkCredenziali(user: String, password: String, callback: (Boolean) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val count = RegDao.checkCredenziali(user,password)
+            withContext(Dispatchers.Main) {
+                callback(count > 0)
+            }
+        }
+    }
+
+    fun getAllnames(callback: (List<String>) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = RegDao.getAllnames()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
+    fun searchNames(query: String, callback:(List<String>)-> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = RegDao.searchNames(query)
+            withContext(Dispatchers.Main) {
+                callback(result)
             }
         }
     }
