@@ -3,15 +3,10 @@ package com.example.progetto_si
 import android.app.AlertDialog
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.*
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
@@ -34,7 +29,6 @@ class LoginAmministratore : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     private fun showNoteDialog(data: String, username : String) {
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_note, null)
@@ -42,6 +36,7 @@ class LoginAmministratore : AppCompatActivity() {
         val Layout = dialogView.findViewById<LinearLayout>(R.id.LL)
         val dialog = dialogBuilder.create()
         var NoteViewModel = NoteViewModel(application)
+
 
         lifecycleScope.launch{
             NoteViewModel.getNotesByDate(data,username) { notes->

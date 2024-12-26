@@ -18,6 +18,9 @@ interface NoteDao {
     @Query("SELECT * FROM note WHERE id=:id")
     fun getNota(id:Int) : Note
 
+    @Query("SELECT * FROM note")
+    fun getNotes() : MutableList<Note>
+
     @Delete
     fun deleteNota(nota: Note)
 

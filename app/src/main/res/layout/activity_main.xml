@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:background="@drawable/wave_shape">
 
     <androidx.appcompat.widget.Toolbar
             android:layout_width="363dp"
@@ -22,7 +22,7 @@
             app:layout_constraintVertical_bias="1.0"
             app:subtitleTextColor="#7E3BCC"
             app:titleTextColor="#7E3BCB"
-            android:background="#9E7DDB"
+            android:background="#009E7DDB"
     />
 
     <WebView
@@ -35,7 +35,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/webVW" />
+            android:id="@+id/webVW"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

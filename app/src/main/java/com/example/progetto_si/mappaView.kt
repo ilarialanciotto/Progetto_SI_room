@@ -56,8 +56,8 @@ class mappaView : AppCompatActivity(), LocationListener {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(
                 LocationManager.NETWORK_PROVIDER,
-                2000,
-                1f,
+                6000,
+                6f,
                 this
             )
         } else {
@@ -91,6 +91,8 @@ class mappaView : AppCompatActivity(), LocationListener {
         marker.position = geoPoint
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         marker.title = "Sei qui!"
+        val drawable = ContextCompat.getDrawable(this, R.drawable.baseline_man_24)
+        marker.icon = drawable
         mapView.overlays.clear()
         mapView.overlays.add(marker)
         var Pref = trovaSedeVicina(location.latitude,location.longitude)
@@ -115,10 +117,13 @@ class mappaView : AppCompatActivity(), LocationListener {
             val marker = Marker(mapView)
             marker.position = location.second
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-            if (location.second.latitude==pref.latitude && location.second.longitude==pref.longitude)
+            if (location.second.latitude==pref.latitude &&
+                location.second.longitude==pref.longitude)
                 marker.title="Sede SecureTech vicina"
             else
                 marker.title = "SecureTech"
+            val drawable = ContextCompat.getDrawable(this, R.drawable.baseline_location_pin_24)
+            marker.icon = drawable
             mapView.overlays.add(marker)
         }
     }

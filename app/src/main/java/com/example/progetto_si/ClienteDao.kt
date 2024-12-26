@@ -10,5 +10,4 @@ interface ClienteDao {
     @Insert
     fun insertCliente(cliente : Cliente)
 
-
 }

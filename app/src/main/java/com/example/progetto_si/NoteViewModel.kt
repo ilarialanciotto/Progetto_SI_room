@@ -51,4 +51,13 @@ class NoteViewModel(application : Application) : AndroidViewModel(application) {
         }
     }
 
+    fun getNotes(callback: (MutableList<Note>)->Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val note = NotaDao.getNotes()
+            withContext(Dispatchers.Main) {
+                callback(note)
+            }
+        }
+    }
+
 }

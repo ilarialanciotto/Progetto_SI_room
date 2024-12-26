@@ -167,7 +167,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\ilari\AppData\Local\Temp\baseline_arrow_back_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\ilari\AppData\Local\Temp\baseline_person_add_24.xml" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -179,7 +179,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_back/baseline_arrow_back_24.xml" />
+                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/person_add/baseline_person_add_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -223,7 +223,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="cancel" />
+                                      <entry key="outputName" value="register_2" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -334,7 +334,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/density_medium/baseline_density_medium_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/location_pin/baseline_location_pin_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -345,7 +345,8 @@
                         <option name="values">
                           <map>
                             <entry key="autoMirrored" value="true" />
-                            <entry key="outputName" value="menu_icon" />
+                            <entry key="color" value="ea1212" />
+                            <entry key="outputName" value="baseline_location_pin_24" />
                             <entry key="sourceFile" value="C:\Users\ilari\OneDrive\Downloads\visibility_off_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" />
                           </map>
                         </option>

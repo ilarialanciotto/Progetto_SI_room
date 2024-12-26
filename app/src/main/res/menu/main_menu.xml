@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
             android:id="@+id/menu_login"
-            android:title="Login"/>
+            android:title="Login" android:icon="@drawable/login" app:showAsAction="always"/>
 
     <item
             android:id="@+id/menu_register"
-            android:title="@string/register"/>
+            android:title="@string/register" android:icon="@drawable/register_2" app:showAsAction="always"/>
 
 </menu>
