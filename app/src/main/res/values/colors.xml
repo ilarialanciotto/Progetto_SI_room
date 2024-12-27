@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black_1">#FF000000</color>
+    <color name="white_1">#FFFFFFFF</color>
     <color name="light_blue_400">#FF29B6F6</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
+
+    <!-- possibile color palette -->
+    <color name="black">#FF000000</color>
+    <color name="oxford_blue">#14213D</color>
+    <color name="orange_web">#FCA311</color>
+    <color name="platinum">#E5E5E5</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="disabled_gray">#BDBDBD</color> <!-- Colore per stati disabilitati -->
+    <color name="highlight_blue">#3D5A80</color> <!-- Colore per selezioni o evidenziazioni -->
+    <color name="border_gray">#D1D1D1</color> <!-- Colore per bordi e divider -->
+    <color name="text_light_gray">#757575</color> <!-- Testo secondario -->
+    <color name="success_green">#28A745</color> <!-- Colore per stati di successo -->
+    <color name="warning_yellow">#FFC107</color> <!-- Colore per stati di avviso -->
+    <color name="error_red">#DC3545</color> <!-- Colore per stati di errore -->
+
 </resources>

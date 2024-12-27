@@ -1,7 +1,6 @@
 package com.example.progetto_si
 
 import android.content.Intent
-import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,9 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import com.example.progetto_si.Login.Login
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,12 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
-        Web.loadUrl("https://cybersicuri.certfin.it/")
 
-        lateinit var mappaView: mappaView
-        lateinit var locationManager: LocationManager
-        val locationPermissionCode = 1
-
+        //sito creato da noi
+        Web.loadUrl("https://676f170dba9db.site123.me/")
 
     }
 
@@ -45,6 +39,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_register -> {
                 val intent = Intent(this, Register::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.mappa -> {
+                val intent = Intent(this, mappaView::class.java)
                 startActivity(intent)
                 return true
             }

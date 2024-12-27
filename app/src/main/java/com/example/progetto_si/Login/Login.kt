@@ -1,4 +1,4 @@
-package com.example.progetto_si
+package com.example.progetto_si.Login
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.R
 import com.example.progetto_si.Registrazione.RegistrazioniViewModel
 import kotlinx.coroutines.launch
 

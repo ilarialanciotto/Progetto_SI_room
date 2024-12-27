@@ -10,6 +10,6 @@
             android:title="@string/register" android:icon="@drawable/register_2" app:showAsAction="always"/>
     <item
         android:id="@+id/mappa"
-        android:title="Mappa" app:showAsAction="always"/>
+        android:title="Mappa" android:icon="@android:drawable/ic_dialog_map" app:showAsAction="always"/>
 
 </menu>

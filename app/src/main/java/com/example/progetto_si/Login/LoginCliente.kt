@@ -1,4 +1,4 @@
-package com.example.progetto_si
+package com.example.progetto_si.Login
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.R
 import com.example.progetto_si.Registrazione.RegistrazioniViewModel
+import com.example.progetto_si.mappaView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 
