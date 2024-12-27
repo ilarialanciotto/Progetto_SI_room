@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
-        Web.loadUrl("https://www.nexsys.it/sicurezza-informatica-e-le-policy-piu-importanti/")
+        Web.loadUrl("https://cybersicuri.certfin.it/")
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
