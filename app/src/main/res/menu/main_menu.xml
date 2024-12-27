@@ -8,5 +8,8 @@
     <item
             android:id="@+id/menu_register"
             android:title="@string/register" android:icon="@drawable/register_2" app:showAsAction="always"/>
+    <item
+        android:id="@+id/mappa"
+        android:title="Mappa" app:showAsAction="always"/>
 
 </menu>

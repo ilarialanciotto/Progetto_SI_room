@@ -1,8 +1,7 @@
-package com.example.progetto_si
+package com.example.progetto_si.Cliente
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.Query
 
 @Dao
 interface ClienteDao {

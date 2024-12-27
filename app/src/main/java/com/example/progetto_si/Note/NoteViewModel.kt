@@ -1,8 +1,9 @@
-package com.example.progetto_si
+package com.example.progetto_si.Note
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

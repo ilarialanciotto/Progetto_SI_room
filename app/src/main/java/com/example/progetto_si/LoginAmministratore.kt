@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Note.Note
+import com.example.progetto_si.Note.NoteViewModel
 import kotlinx.coroutines.launch
 
 class LoginAmministratore : AppCompatActivity() {

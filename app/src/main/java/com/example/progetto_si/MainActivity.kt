@@ -1,6 +1,8 @@
 package com.example.progetto_si
 
 import android.content.Intent
+import android.location.LocationListener
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         Web.webViewClient = WebViewClient()
         Web.loadUrl("https://cybersicuri.certfin.it/")
 
+        lateinit var mappaView: mappaView
+        lateinit var locationManager: LocationManager
+        val locationPermissionCode = 1
+
 
     }
 
@@ -42,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+
         }
         return super.onOptionsItemSelected(item)
     }

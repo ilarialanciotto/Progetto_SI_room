@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Registrazione.Registrazioni
+import com.example.progetto_si.Registrazione.RegistrazioniViewModel
 import kotlinx.coroutines.launch
 
 class Register : AppCompatActivity() {
@@ -21,7 +23,6 @@ class Register : AppCompatActivity() {
         val editTextName: EditText = findViewById(R.id.et_name)
         val editTextSurname: EditText = findViewById(R.id.et_surname)
         val editTextUsername: EditText = findViewById(R.id.et_usernameR)
-        val editTextEta: EditText = findViewById(R.id.et_eta)
         val editTextPassword: EditText = findViewById(R.id.et_PasswordR)
         val btnAggiungi: Button = findViewById(R.id.btn_registra)
         val btnLog: Button = findViewById(R.id.btn_login)
@@ -42,7 +43,6 @@ class Register : AppCompatActivity() {
                             val registrazione = Registrazioni(
                                 nome = editTextName.text.toString(),
                                 cognome = editTextSurname.text.toString(),
-                                eta = editTextEta.text.toString().toIntOrNull() ?: 0,
                                 username = username,
                                 password = password
                             )

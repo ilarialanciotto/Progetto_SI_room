@@ -1,4 +1,4 @@
-package com.example.progetto_si
+package com.example.progetto_si.Note
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
