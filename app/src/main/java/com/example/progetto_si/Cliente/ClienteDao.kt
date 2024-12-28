@@ -15,4 +15,13 @@ interface ClienteDao {
     @Query("SELECT * FROM clienti WHERE id = :clienteId")
     fun getClienteById(clienteId: Int): Cliente
 
+    @Query("SELECT * FROM clienti WHERE email = :clienteEmail AND password = :clientepassword")
+    fun isCliente(clienteEmail: String, clientepassword: String): Boolean
+
+    @Query("SELECT COUNT(*) > 0 FROM clienti WHERE email = :clienteEmail")
+    fun isClienteExists(clienteEmail: String): Boolean
+
+    @Insert
+    fun insertAll(vararg clienti: Cliente)
+
 }

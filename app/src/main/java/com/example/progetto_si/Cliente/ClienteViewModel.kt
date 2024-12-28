@@ -20,4 +20,12 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
             clienteDao.insertCliente(cliente)
         }
     }
+
+    fun checkCliente(username: String, callback: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            val exists = clienteDao.isClienteExists(username)
+            callback(exists)
+        }
+    }
+
 }

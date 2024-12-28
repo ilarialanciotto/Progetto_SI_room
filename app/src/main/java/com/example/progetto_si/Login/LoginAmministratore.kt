@@ -3,10 +3,12 @@ package com.example.progetto_si.Login
 import android.app.AlertDialog
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +28,7 @@ class LoginAmministratore : AppCompatActivity() {
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_amministratore)
@@ -59,6 +62,7 @@ class LoginAmministratore : AppCompatActivity() {
         calendar.visibility = if (calendar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun showNoteDialog(data: String, username: String) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_note, null)
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView).setCancelable(true)

@@ -36,6 +36,8 @@ class RegistrazioniViewModel(application : Application) : AndroidViewModel(appli
         }
     }
 
+
+
     fun getAllnames(callback: (List<String>) -> Unit){
         viewModelScope.launch(Dispatchers.IO) {
             val result = RegDao.getAllnames()

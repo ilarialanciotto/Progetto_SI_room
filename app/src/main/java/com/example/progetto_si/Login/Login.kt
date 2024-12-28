@@ -10,7 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Auth.AuthViewModel
 import com.example.progetto_si.R
 import com.example.progetto_si.Registrazione.RegistrazioniViewModel
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ import kotlinx.coroutines.launch
 
 class Login : AppCompatActivity() {
 
+    private lateinit var authViewModel: AuthViewModel
     private var isPasswordVisible = false
     lateinit var editTextPassword: EditText
 
@@ -26,68 +29,49 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
         val editTextUsername: EditText = findViewById(R.id.et_username)
         editTextPassword = findViewById(R.id.et_Password)
         val buttonSend: Button = findViewById(R.id.btn_invia)
-        var registrazioniViewModel = RegistrazioniViewModel(application)
-
-        editTextPassword.setOnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                val drawableEnd = editTextPassword.compoundDrawables[2]
-                if (drawableEnd != null) {
-                    val drawableWidth = drawableEnd.bounds.width()
-                    val touchX = event.rawX
-
-                    val editTextRightEdge = editTextPassword.right - drawableWidth
-                    if (touchX >= editTextRightEdge) {
-                        togglePasswordVisibility()
-                        return@setOnTouchListener true
-                    }
-                }
-            }
-            false
-        }
 
         buttonSend.setOnClickListener {
             val username = editTextUsername.text.toString()
             val password = editTextPassword.text.toString()
-            lifecycleScope.launch {
-                registrazioniViewModel.checkCredenziali(username,password) { isSuccess ->
-                    if (isSuccess) {
-                        Toast.makeText(this@Login, "Account valido", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@Login, LoginAmministratore::class.java)
-                        intent.putExtra("EXTRA_USERNAME", username)
-                        intent.putExtra("EXTRA_PASSWORD", password)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this@Login, "Username o password errati", Toast.LENGTH_SHORT).show()
+
+            authViewModel.checkCredenziali(username, password) { isSuccess, role ->
+                if (isSuccess) {
+                    when (role) {
+                        "admin" -> navigateToLoginAdmin(username, password)
+                        "cliente" -> navigateToLoginCliente(username, password)
+                        "sviluppatore" -> navigateToLoginSviluppatore(username, password)
+                        else -> Toast.makeText(this@Login, "Ruolo non riconosciuto", Toast.LENGTH_SHORT).show()
                     }
+                } else {
+                    Toast.makeText(this@Login, "Username o password errati", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun togglePasswordVisibility() {
-        if (isPasswordVisible) {
-            editTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            editTextPassword.setCompoundDrawablesWithIntrinsicBounds(
-                null,
-                null,
-                ContextCompat.getDrawable(this, R.drawable.eyeon),
-                null
-            )
-        } else {
-            editTextPassword.inputType = InputType.TYPE_CLASS_TEXT
-            editTextPassword.setCompoundDrawablesWithIntrinsicBounds(
-                null,
-                null,
-                ContextCompat.getDrawable(this, R.drawable.eyeoff),
-                null
-            )
-        }
-        editTextPassword.setSelection(editTextPassword.text.length)
-        isPasswordVisible = !isPasswordVisible
+    private fun navigateToLoginAdmin(username: String, password: String) {
+        val intent = Intent(this, LoginAmministratore::class.java)
+        intent.putExtra("EXTRA_USERNAME", username)
+        intent.putExtra("EXTRA_PASSWORD", password)
+        startActivity(intent)
     }
 
+    private fun navigateToLoginCliente(username: String, password: String) {
+        val intent = Intent(this, LoginCliente::class.java)
+        intent.putExtra("EXTRA_USERNAME", username)
+        intent.putExtra("EXTRA_PASSWORD", password)
+        startActivity(intent)
+    }
 
+    private fun navigateToLoginSviluppatore(username: String, password: String) {
+        val intent = Intent(this, LoginSviluppatore::class.java)
+        intent.putExtra("EXTRA_USERNAME", username)
+        intent.putExtra("EXTRA_PASSWORD", password)
+        startActivity(intent)
+    }
 }
