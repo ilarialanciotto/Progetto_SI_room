@@ -88,10 +88,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="continuo a ri-graficare">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/Pacchetto.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" afterDir="false" />
+    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="tabella pacchetto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +191,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "#3 on chiaraMetteMano",
+    "git-widget-placeholder": "#4 on chiaraMetteMano",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ilari/eclipse-workspace/Esercitazione5",
     "node.js.detected.package.eslint": "true",
@@ -565,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735402358092</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tabella pacchetto">
+      <option name="closed" value="true" />
+      <created>1735405133506</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735405133507</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,6 +606,7 @@
     <MESSAGE value="inseriti nuovi package (TODO)" />
     <MESSAGE value="ora il calendario si apre e chiude" />
     <MESSAGE value="continuo a ri-graficare" />
-    <option name="LAST_COMMIT_MESSAGE" value="continuo a ri-graficare" />
+    <MESSAGE value="tabella pacchetto" />
+    <option name="LAST_COMMIT_MESSAGE" value="tabella pacchetto" />
   </component>
 </project>
