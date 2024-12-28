@@ -1,15 +1,14 @@
 package com.example.progetto_si
 
 import android.content.Intent
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import com.example.progetto_si.Login.Login
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
-        Web.loadUrl("https://www.nexsys.it/sicurezza-informatica-e-le-policy-piu-importanti/")
+
+        //sito creato da noi
+        Web.loadUrl("https://676f170dba9db.site123.me/")
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -40,6 +42,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.mappa -> {
+                val intent = Intent(this, mappaView::class.java)
+                startActivity(intent)
+                return true
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }

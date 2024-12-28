@@ -1,11 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Base.Theme.Progetto_SI" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/oxford_blue</item>
+        <item name="colorPrimaryVariant">@color/oxford_blue</item>
+        <item name="colorOnPrimary">@color/platinum</item>
 
-    <style name="ButtonStyle"
-           parent="Widget.AppCompat.Button">
-        <item name="android:backgroundTint">#D895FF</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/orange_web</item>
+        <item name="colorSecondaryVariant">@color/orange_web</item>
+        <item name="colorOnSecondary">@color/platinum</item>
+
+        <!-- Background and Surface Colors -->
+        <item name="colorOnBackground">@color/oxford_blue</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/oxford_blue</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/orange_web</item>
+        <item name="colorOnError">@color/white</item>
+
+        <!-- Text Appearance -->
+        <item name="android:textColorPrimary">@color/oxford_blue</item>
+        <item name="android:textColorSecondary">@color/orange_web</item>
+        <item name="android:textColorHint">@color/platinum</item>
+        <item name="android:textColorLink">@color/orange_web</item>
+
+        <!-- Button Styles -->
+        <item name="buttonStyle">@style/Widget.App.Button</item>
+        <item name="buttonTint">@color/orange_web</item>
+
+        <!-- Action Bar and Status Bar -->
+        <item name="android:statusBarColor">@color/oxford_blue</item>
+        <item name="android:colorAccent">@color/orange_web</item>
+        <item name="android:windowLightStatusBar">true</item> <!-- True per testo nero nel tema chiaro -->
+    </style>
+
+    <!-- Custom Button Style -->
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/orange_web</item>
+        <item name="android:textColor">@color/platinum</item>
         <item name="android:elevation">4dp</item>
     </style>
 
+    <!-- Application Theme -->
+    <style name="Theme.Progetto_SI" parent="Base.Theme.Progetto_SI" />
 </resources>

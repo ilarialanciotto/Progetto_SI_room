@@ -1,7 +1,6 @@
-package com.example.progetto_si
+package com.example.progetto_si.Login
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,11 +8,13 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.R
+import com.example.progetto_si.Registrazione.RegistrazioniViewModel
+import com.example.progetto_si.mappaView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 

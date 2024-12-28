@@ -17,25 +17,22 @@
             android:theme="@style/Theme.Progetto_SI"
             tools:targetApi="31">
         <activity
-                android:name=".LoginAmministratore"
+                android:name=".Login.LoginAmministratore"
                 android:exported="false"/>
         <activity
-                android:name=".LoginCliente"
+                android:name=".Login.LoginCliente"
                 android:exported="false"/>
         <activity
                 android:name=".mappaView"
                 android:exported="false"/>
         <activity
-                android:name=".Login"
+                android:name=".Login.Login"
                 android:exported="false"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
                 android:name=".Register"
                 android:exported="false"
                 android:windowSoftInputMode="adjustPan"/>
-        <activity
-                android:name=".LogActivity"
-                android:exported="false"/>
         <activity
                 android:name=".MainActivity"
                 android:exported="true">

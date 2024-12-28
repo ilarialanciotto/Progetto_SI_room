@@ -1,4 +1,4 @@
-package com.example.progetto_si
+package com.example.progetto_si.Login
 
 import android.app.AlertDialog
 import android.content.res.ColorStateList
@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Note.Note
+import com.example.progetto_si.Note.NoteViewModel
+import com.example.progetto_si.R
 import kotlinx.coroutines.launch
 
 class LoginAmministratore : AppCompatActivity() {
