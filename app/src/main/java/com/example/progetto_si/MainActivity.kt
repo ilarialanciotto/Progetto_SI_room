@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         Web.webViewClient = WebViewClient()
 
         //sito creato da noi
-        Web.loadUrl("https://676f170dba9db.site123.me/")
+        Web.loadUrl("https://cybersicuri.certfin.it/")
 
     }
 

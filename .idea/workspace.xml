@@ -88,16 +88,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="inseriti nuovi package (TODO)">
+    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="ora il calendario si apre e chiude">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Cliente.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/ClienteDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/ClienteDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/ClienteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/ClienteViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/Login.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/LoginAmministratore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/LoginAmministratore.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_amministratore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_amministratore.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/navigation_home_header.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/navigation_home_header.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -544,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735381434886</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ora il calendario si apre e chiude">
+      <option name="closed" value="true" />
+      <created>1735401450810</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735401450812</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,6 +580,7 @@
     <MESSAGE value="re-color della mappa, aggiunta mappa in home page" />
     <MESSAGE value="re-color dell'app, aggiunta mappa in home page" />
     <MESSAGE value="inseriti nuovi package (TODO)" />
-    <option name="LAST_COMMIT_MESSAGE" value="inseriti nuovi package (TODO)" />
+    <MESSAGE value="ora il calendario si apre e chiude" />
+    <option name="LAST_COMMIT_MESSAGE" value="ora il calendario si apre e chiude" />
   </component>
 </project>
