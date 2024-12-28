@@ -1,5 +1,6 @@
 package com.example.progetto_si.Login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
@@ -20,6 +21,7 @@ class Login : AppCompatActivity() {
     private var isPasswordVisible = false
     lateinit var editTextPassword: EditText
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -86,4 +88,6 @@ class Login : AppCompatActivity() {
         editTextPassword.setSelection(editTextPassword.text.length)
         isPasswordVisible = !isPasswordVisible
     }
+
+
 }

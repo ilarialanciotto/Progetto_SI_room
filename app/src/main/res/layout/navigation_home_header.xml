@@ -6,7 +6,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_vertical"
-        android:background="?attr/colorPrimary"
+        android:background="@color/orange_web"
         android:padding="15dp">
 
 </LinearLayout>
