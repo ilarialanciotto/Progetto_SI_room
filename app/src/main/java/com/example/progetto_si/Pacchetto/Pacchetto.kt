@@ -9,5 +9,7 @@ data class Pacchetto(
     val id: Int = 0,
     val nome: String,
     val descrizione: String,
-    val prezzo: Double
+    val prezzo: Double,
+    val componenteHardware: List<String>,
+    val componenteSoftware: List<String>
 )
