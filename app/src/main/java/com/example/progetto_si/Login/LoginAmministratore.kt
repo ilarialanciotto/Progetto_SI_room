@@ -5,9 +5,14 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.progetto_si.Cliente.ClienteViewModel
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.R
@@ -15,61 +20,88 @@ import kotlinx.coroutines.launch
 
 class LoginAmministratore : AppCompatActivity() {
 
-    private lateinit var calendar : CalendarView
+    private lateinit var calendar: CalendarView
+    private lateinit var btnToggleCalendar: Button
+
+    private lateinit var clienteViewModel: ClienteViewModel
+    private lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_amministratore)
 
+        // Inizializza View
         calendar = findViewById(R.id.calendarView)
-        val username = intent.getStringExtra("EXTRA_USERNAME")
-        val textViewWelcome: TextView = findViewById(R.id.txView)
-        textViewWelcome.setText("Ciao $username!")
+        btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
 
-        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
+        val textViewWelcome: TextView = findViewById(R.id.txView)
+        textViewWelcome.text = "Ciao $username!"
+
+
+        // Inizializza ViewModel
+        clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
+        noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+
+        // Listener per Mostrare/Nascondere il Calendario
+        btnToggleCalendar.setOnClickListener {
+            toggleCalendarVisibility()
+        }
+
+        // Listener per le date selezionate
+        calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = formatDate(year, month, dayOfMonth)
-            showNoteDialog(selectedDate,username.toString())
+            showNoteDialog(selectedDate, username)
         }
     }
 
-    private fun showNoteDialog(data: String, username : String) {
+    private fun toggleCalendarVisibility() {
+        calendar.visibility = if (calendar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+    }
 
+    private fun showNoteDialog(data: String, username: String) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_note, null)
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView).setCancelable(true)
-        val Layout = dialogView.findViewById<LinearLayout>(R.id.LL)
+        val layout = dialogView.findViewById<LinearLayout>(R.id.LL)
         val dialog = dialogBuilder.create()
-        var NoteViewModel = NoteViewModel(application)
 
-
-        lifecycleScope.launch{
-            NoteViewModel.getNotesByDate(data,username) { notes->
-                if (notes.isNotEmpty()){
+        lifecycleScope.launch {
+            noteViewModel.getNotesByDate(data, username) { notes ->
+                if (notes.isNotEmpty()) {
+                    layout.removeAllViews() // Pulire eventuali note precedenti
                     for (note in notes) {
-                        var dynamicNoteEditText  = EditText(this@LoginAmministratore)
+                        val dynamicNoteEditText = EditText(this@LoginAmministratore)
                         dynamicNoteEditText.setText(note)
-                        dynamicNoteEditText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#673AB7")))
-                        dynamicNoteEditText.isFocusableInTouchMode = false
+                        dynamicNoteEditText.setBackgroundTintList(
+                            ColorStateList.valueOf(Color.parseColor("#673AB7"))
+                        )
                         dynamicNoteEditText.isFocusable = false
-                        dynamicNoteEditText.setKeyListener(null)
-                        Layout.addView(dynamicNoteEditText)
+                        dynamicNoteEditText.isClickable = true
+                        layout.addView(dynamicNoteEditText)
+
+                        // Gestione del clic sulla nota
                         dynamicNoteEditText.setOnClickListener { view ->
-                            NoteViewModel.getNoteId(data,dynamicNoteEditText.text.toString(),username) { id->
-                                if (id!=-1){
-                                    dynamicNoteEditText.id=id
+                            noteViewModel.getNoteId(data, note, username) { id ->
+                                if (id != -1) {
+                                    dynamicNoteEditText.id = id
                                     val popupMenu = PopupMenu(this@LoginAmministratore, view)
-                                    val inflater = popupMenu.menuInflater
-                                    inflater.inflate(R.menu.note_menu, popupMenu.menu)
+                                    popupMenu.menuInflater.inflate(R.menu.note_menu, popupMenu.menu)
                                     popupMenu.setForceShowIcon(true)
                                     popupMenu.setOnMenuItemClickListener { menuItem ->
                                         when (menuItem.itemId) {
                                             R.id.delete_note -> {
-                                                NoteViewModel.getNota(dynamicNoteEditText.id) { nota ->
-                                                    NoteViewModel.deleteNota(nota)
-                                                    (view.parent as? LinearLayout)?.removeView(view)
-                                                    Toast.makeText(this@LoginAmministratore, "Nota eliminata" , Toast.LENGTH_SHORT).show()
+                                                noteViewModel.getNota(id) { nota ->
+                                                    noteViewModel.deleteNota(nota)
+                                                    layout.removeView(view)
+                                                    Toast.makeText(
+                                                        this@LoginAmministratore,
+                                                        "Nota eliminata",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
                                                 }
                                                 true
                                             }
+
                                             else -> false
                                         }
                                     }
@@ -96,13 +128,18 @@ class LoginAmministratore : AppCompatActivity() {
                 lifecycleScope.launch {
                     val nota = Note(
                         data = data,
-                        username= username,
-                        nota = notaT)
-                    NoteViewModel.insert(nota)
-                    Toast.makeText(this@LoginAmministratore, "Nota salvata per il $data", Toast.LENGTH_SHORT).show()
+                        username = username,
+                        nota = notaT
+                    )
+                    noteViewModel.insert(nota)
+                    Toast.makeText(
+                        this@LoginAmministratore,
+                        "Nota salvata per il $data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    dialog.dismiss()
                 }
             }
-            dialog.dismiss()
         }
     }
 
@@ -111,5 +148,4 @@ class LoginAmministratore : AppCompatActivity() {
         val dayFormatted = String.format("%02d", day)
         return "$year-$monthFormatted-$dayFormatted"
     }
-
 }
