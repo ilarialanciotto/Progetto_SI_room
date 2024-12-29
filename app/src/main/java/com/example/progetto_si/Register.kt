@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Cliente.ClienteDao
+import com.example.progetto_si.Cliente.ClienteViewModel
 import com.example.progetto_si.Login.Login
 import com.example.progetto_si.Registrazione.Registrazioni
 import com.example.progetto_si.Registrazione.RegistrazioniViewModel
@@ -20,6 +22,7 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         var registrazioniViewModel = RegistrazioniViewModel(application)
+        var ClienteViewModel = ClienteViewModel(application)
 
         val editTextName: EditText = findViewById(R.id.et_name)
         val editTextSurname: EditText = findViewById(R.id.et_surname)
@@ -44,10 +47,20 @@ class Register : AppCompatActivity() {
                             val registrazione = Registrazioni(
                                 nome = editTextName.text.toString(),
                                 cognome = editTextSurname.text.toString(),
-                                username = username,
-                                password = password
+                                email = editTextUsername.text.toString(),
+                                password = editTextPassword.text.toString()
                             )
                             registrazioniViewModel.insert(registrazione)
+                            ClienteViewModel.insertCliente(
+                                editTextName.text.toString(),
+                                editTextSurname.text.toString(),
+                                editTextUsername.text.toString(),
+                                editTextPassword.text.toString(),
+                                telefono = "",
+                                azienda = "",
+                                tipo = "cliente"
+                            )
+
                             Toast.makeText(this@Register, "Dati inseriti con successo", Toast.LENGTH_SHORT).show()
                         }
                     }

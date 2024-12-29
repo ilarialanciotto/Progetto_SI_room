@@ -3,6 +3,7 @@ package com.example.progetto_si.Registrazione
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.progetto_si.Cliente.ClienteViewModel
 import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,6 +12,30 @@ import kotlinx.coroutines.withContext
 class RegistrazioniViewModel(application : Application) : AndroidViewModel(application) {
 
     private val RegDao = MyDatabase.getDatabase(application).RegistrazioneDao()
+    private val clienteDao = MyDatabase.getDatabase(application).ClienteDao()
+//    private val adminDao = AppDatabase.getDatabase(application).adminDao()
+//    private val sviluppatoreDao = AppDatabase.getDatabase(application).sviluppatoreDao()
+
+    fun checkCredenziali(user: String, password: String, callback: (Boolean, String?) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val isCliente = clienteDao.checkCliente(user, password) > 0
+            // Aggiungi le seguenti righe quando gli altri DAO saranno implementati:
+            // val isAdmin = adminDao.checkAdmin(user, password) > 0
+            // val isSviluppatore = sviluppatoreDao.checkSviluppatore(user, password) > 0
+
+            val userType = when {
+                isCliente -> "cliente"
+                // isAdmin -> "admin"
+                // isSviluppatore -> "sviluppatore"
+                else -> null
+            }
+
+            withContext(Dispatchers.Main) {
+                callback(userType != null, userType)
+            }
+        }
+    }
+
 
     fun insert(registrazione: Registrazioni) {
         viewModelScope.launch (Dispatchers.IO){

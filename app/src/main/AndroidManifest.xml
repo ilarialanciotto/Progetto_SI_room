@@ -17,10 +17,10 @@
             android:theme="@style/Theme.Progetto_SI"
             tools:targetApi="31">
         <activity
-                android:name=".Login.LoginAmministratore"
+                android:name=".Login.DashboardCliente"
                 android:exported="false"/>
         <activity
-                android:name=".Login.LoginCliente"
+                android:name=".Login.DashboardCliente"
                 android:exported="false"/>
         <activity
                 android:name=".mappaView"

@@ -52,18 +52,34 @@ class Login : AppCompatActivity() {
             val username = editTextUsername.text.toString()
             val password = editTextPassword.text.toString()
             lifecycleScope.launch {
-                registrazioniViewModel.checkCredenziali(username,password) { isSuccess ->
-                    if (isSuccess) {
-                        Toast.makeText(this@Login, "Account valido", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@Login, LoginAmministratore::class.java)
-                        intent.putExtra("EXTRA_USERNAME", username)
-                        intent.putExtra("EXTRA_PASSWORD", password)
-                        startActivity(intent)
+                registrazioniViewModel.checkCredenziali(username, password) { isSuccess, userType ->
+                    if (isSuccess && userType != null) {
+                        when (userType) {
+                            "cliente" -> {
+                                val intent = Intent(this@Login, DashboardCliente::class.java)
+                                intent.putExtra("EXTRA_USERNAME", username)
+                                startActivity(intent)
+                            }
+                            "admin" -> {
+                                val intent = Intent(this@Login, DashboardAdmin::class.java)
+                                intent.putExtra("EXTRA_USERNAME", username)
+                                startActivity(intent)
+                            }
+                            "sviluppatore" -> {
+                                val intent = Intent(this@Login, DashboardSviluppatore::class.java)
+                                intent.putExtra("EXTRA_USERNAME", username)
+                                startActivity(intent)
+                            }
+                            else -> {
+                                Toast.makeText(this@Login, "Tipo di utente sconosciuto", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     } else {
                         Toast.makeText(this@Login, "Username o password errati", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+
         }
     }
 

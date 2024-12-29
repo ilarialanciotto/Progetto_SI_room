@@ -3,22 +3,22 @@ package com.example.progetto_si.Login
 import android.app.AlertDialog
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.progetto_si.Cliente.ClienteViewModel
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.R
 import kotlinx.coroutines.launch
 
-class LoginAmministratore : AppCompatActivity() {
+class DashboardCliente : AppCompatActivity() {
 
     private lateinit var calendar: CalendarView
     private lateinit var btnToggleCalendar: Button
@@ -26,9 +26,10 @@ class LoginAmministratore : AppCompatActivity() {
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_amministratore)
+        setContentView(R.layout.activity_login_cliente)
 
         // Inizializza View
         calendar = findViewById(R.id.calendarView)
@@ -59,6 +60,7 @@ class LoginAmministratore : AppCompatActivity() {
         calendar.visibility = if (calendar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun showNoteDialog(data: String, username: String) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_note, null)
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView).setCancelable(true)
@@ -70,7 +72,7 @@ class LoginAmministratore : AppCompatActivity() {
                 if (notes.isNotEmpty()) {
                     layout.removeAllViews() // Pulire eventuali note precedenti
                     for (note in notes) {
-                        val dynamicNoteEditText = EditText(this@LoginAmministratore)
+                        val dynamicNoteEditText = EditText(this@DashboardCliente)
                         dynamicNoteEditText.setText(note)
                         dynamicNoteEditText.setBackgroundTintList(
                             ColorStateList.valueOf(Color.parseColor("#673AB7"))
@@ -84,7 +86,7 @@ class LoginAmministratore : AppCompatActivity() {
                             noteViewModel.getNoteId(data, note, username) { id ->
                                 if (id != -1) {
                                     dynamicNoteEditText.id = id
-                                    val popupMenu = PopupMenu(this@LoginAmministratore, view)
+                                    val popupMenu = PopupMenu(this@DashboardCliente, view)
                                     popupMenu.menuInflater.inflate(R.menu.note_menu, popupMenu.menu)
                                     popupMenu.setForceShowIcon(true)
                                     popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -94,7 +96,7 @@ class LoginAmministratore : AppCompatActivity() {
                                                     noteViewModel.deleteNota(nota)
                                                     layout.removeView(view)
                                                     Toast.makeText(
-                                                        this@LoginAmministratore,
+                                                        this@DashboardCliente,
                                                         "Nota eliminata",
                                                         Toast.LENGTH_SHORT
                                                     ).show()
@@ -133,7 +135,7 @@ class LoginAmministratore : AppCompatActivity() {
                     )
                     noteViewModel.insert(nota)
                     Toast.makeText(
-                        this@LoginAmministratore,
+                        this@DashboardCliente,
                         "Nota salvata per il $data",
                         Toast.LENGTH_SHORT
                     ).show()
