@@ -3,16 +3,21 @@ package com.example.progetto_si.Cliente
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Transaction
 
 @Dao
 interface ClienteDao {
 
     @Insert
-    fun insertCliente(cliente: Cliente)
-
+    fun insert(cliente: Cliente)
 
     @Query("SELECT * FROM clienti WHERE id = :clienteId")
     fun getClienteById(clienteId: Int): Cliente
+
+    @Query("SELECT * FROM clienti WHERE email = :email AND password = :password")
+    fun getClienteByEmailAndPassword(email: String, password: String): Cliente?
+
+    @Query("SELECT COUNT(*) FROM clienti WHERE email = :email AND password = :password")
+    fun checkCliente(email: String, password: String): Int
+
 
 }

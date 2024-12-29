@@ -79,17 +79,11 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:backgroundTint="#673AB7"/>
+
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/eta"
-                    android:ems="10"
-                    android:id="@+id/et_eta" android:textColor="#1A1919" android:textColorHint="#0D0C0C"
-                    android:backgroundTint="#673AB7"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/username"
+                    android:hint="Email: "
                     android:ems="10"
                     android:id="@+id/et_usernameR" android:backgroundTint="#673AB7" android:textColor="#040404"
                     android:textColorHint="#121212"/>
