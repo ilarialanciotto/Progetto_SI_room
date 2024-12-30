@@ -4,15 +4,23 @@ import android.content.Intent
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Admin.Admin
+import com.example.progetto_si.Cliente.Cliente
 import com.example.progetto_si.Login.Login
+import com.example.progetto_si.Sviluppatore.Sviluppatore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -22,6 +30,66 @@ class MainActivity : AppCompatActivity() {
 
         //sito creato da noi
         Web.loadUrl("https://cybersicuri.certfin.it/")
+
+        // Popola il database
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = MyDatabase.getDatabase(applicationContext)
+
+            // Popolamento della tabella Cliente
+            db.ClienteDao().insert(
+                Cliente(
+                    nome = "Mario",
+                    cognome = "Rossi",
+                    email = "mario.rossi@example.com",
+                    password = "password123",
+                    telefono = "1234567890",
+                    azienda = "Example Corp",
+                    tipo = "cliente"
+                )
+            )
+            Log.d("DatabasePopulation", "Cliente Mario Rossi inserito.")
+
+            db.ClienteDao().insert(
+                Cliente(
+                    nome = "Luca",
+                    cognome = "Bianchi",
+                    email = "luca.bianchi@example.com",
+                    password = "securePass",
+                    telefono = "0987654321",
+                    azienda = "Tech Corp",
+                    tipo = "cliente"
+                )
+            )
+            Log.d("DatabasePopulation", "Cliente Luca Bianchi inserito.")
+
+            // Popolamento della tabella Admin
+            db.AdminDao().insert(
+                Admin(
+                    nome = "Admin",
+                    cognome = "SuperUser",
+                    email = "admin@example.com",
+                    password = "admin123",
+                    ruolo = "admin"
+                )
+            )
+            Log.d("DatabasePopulation", "Admin SuperUser inserito.")
+
+            // Popolamento della tabella Sviluppatore
+            db.SviluppatoreDao().insert(
+                Sviluppatore(
+                    nome = "Marco",
+                    cognome = "Verdi",
+                    email = "marco.verdi@example.com",
+                    password = "developer123",
+                    livello = "senior",
+                    progetti = "Progetto A, Progetto B",
+                    tipo = "sviluppatore"
+                )
+            )
+            Log.d("DatabasePopulation", "Sviluppatore Marco Verdi inserito.")
+
+            Log.d("DatabasePopulation", "Popolamento del database completato.")
+        }
 
     }
 
