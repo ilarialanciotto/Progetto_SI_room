@@ -13,20 +13,19 @@ class RegistrazioniViewModel(application : Application) : AndroidViewModel(appli
 
     private val RegDao = MyDatabase.getDatabase(application).RegistrazioneDao()
     private val clienteDao = MyDatabase.getDatabase(application).ClienteDao()
-//    private val adminDao = AppDatabase.getDatabase(application).adminDao()
-//    private val sviluppatoreDao = AppDatabase.getDatabase(application).sviluppatoreDao()
+    private val adminDao = MyDatabase.getDatabase(application).AdminDao()
+    private val sviluppatoreDao = MyDatabase.getDatabase(application).SviluppatoreDao()
 
     fun checkCredenziali(user: String, password: String, callback: (Boolean, String?) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val isCliente = clienteDao.checkCliente(user, password) > 0
-            // Aggiungi le seguenti righe quando gli altri DAO saranno implementati:
-            // val isAdmin = adminDao.checkAdmin(user, password) > 0
-            // val isSviluppatore = sviluppatoreDao.checkSviluppatore(user, password) > 0
+             val isAdmin = adminDao.checkAdmin(user, password) > 0
+             val isSviluppatore = sviluppatoreDao.checkSviluppatore(user, password) > 0
 
             val userType = when {
                 isCliente -> "cliente"
-                // isAdmin -> "admin"
-                // isSviluppatore -> "sviluppatore"
+                isAdmin -> "admin"
+                isSviluppatore -> "sviluppatore"
                 else -> null
             }
 
@@ -52,31 +51,5 @@ class RegistrazioniViewModel(application : Application) : AndroidViewModel(appli
         }
     }
 
-    fun checkCredenziali(user: String, password: String, callback: (Boolean) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val count = RegDao.checkCredenziali(user,password)
-            withContext(Dispatchers.Main) {
-                callback(count > 0)
-            }
-        }
-    }
-
-    fun getAllnames(callback: (List<String>) -> Unit){
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = RegDao.getAllnames()
-            withContext(Dispatchers.Main) {
-                callback(result)
-            }
-        }
-    }
-
-    fun searchNames(query: String, callback:(List<String>)-> Unit){
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = RegDao.searchNames(query)
-            withContext(Dispatchers.Main) {
-                callback(result)
-            }
-        }
-    }
 
 }
