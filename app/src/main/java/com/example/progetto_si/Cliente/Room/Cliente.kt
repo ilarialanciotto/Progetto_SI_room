@@ -1,8 +1,7 @@
-package com.example.progetto_si.Cliente
+package com.example.progetto_si.Cliente.Room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.Relation
 
 @Entity(tableName="clienti")
 data class Cliente(

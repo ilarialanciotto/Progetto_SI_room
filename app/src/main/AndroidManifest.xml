@@ -20,8 +20,20 @@
                 android:name=".Login.DashboardCliente"
                 android:exported="false"/>
         <activity
-                android:name=".Login.DashboardCliente"
+                android:name=".Login.DashboardAdmin"
                 android:exported="false"/>
+        <activity
+            android:name=".Login.DashboardSviluppatore"
+            android:exported="false"/>
+        <activity
+            android:name=".Cliente.Activity.PacchettiActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Cliente.Activity.RichiesteActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Cliente.Activity.AcquistaPacchettoActivity"
+            android:exported="false"/>
         <activity
                 android:name=".mappaView"
                 android:exported="false"/>

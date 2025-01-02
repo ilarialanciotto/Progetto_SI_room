@@ -1,27 +1,35 @@
 package com.example.progetto_si.Login
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.progetto_si.Cliente.ClienteViewModel
+import com.example.progetto_si.Cliente.Activity.AcquistaPacchettoActivity
+import com.example.progetto_si.Cliente.Room.ClienteViewModel
+import com.example.progetto_si.Cliente.Activity.PacchettiActivity
+import com.example.progetto_si.Cliente.Activity.RichiesteActivity
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 
 class DashboardCliente : AppCompatActivity() {
 
     private lateinit var calendar: CalendarView
     private lateinit var btnToggleCalendar: Button
+
+    private lateinit var fab: FloatingActionButton
 
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
@@ -37,8 +45,6 @@ class DashboardCliente : AppCompatActivity() {
 
         val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
         val textViewWelcome: TextView = findViewById(R.id.txView)
-        textViewWelcome.text = "Ciao $username!"
-
 
         // Inizializza ViewModel
         clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
@@ -53,6 +59,37 @@ class DashboardCliente : AppCompatActivity() {
         calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = formatDate(year, month, dayOfMonth)
             showNoteDialog(selectedDate, username)
+        }
+
+        // Gestione del FAB
+        val fab: FloatingActionButton = findViewById(R.id.floatingActionButton2)
+        fab.setOnClickListener {
+            val popupMenu = PopupMenu(this, fab)
+            popupMenu.menuInflater.inflate(R.menu.menu_fab, popupMenu.menu)
+            popupMenu.setForceShowIcon(true)
+
+            // Gestione del clic delle opzioni
+            popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+                when (item.itemId) {
+                    R.id.action_pacchetti -> {
+                        startActivity(Intent(this, PacchettiActivity::class.java))
+                        true
+                    }
+                    R.id.action_richieste -> {
+                        startActivity(Intent(this, RichiesteActivity::class.java))
+                        true
+                    }
+                    R.id.action_acquista -> {
+                        startActivity(Intent(this, AcquistaPacchettoActivity::class.java))
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+            // Mostra il popup
+            popupMenu.show()
+
         }
     }
 

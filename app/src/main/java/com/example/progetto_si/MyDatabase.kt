@@ -7,12 +7,14 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.progetto_si.Registrazione.Registrazioni
 import com.example.progetto_si.Registrazione.RegistrazioneDao
-import com.example.progetto_si.Cliente.Cliente
-import com.example.progetto_si.Cliente.ClienteDao
+import com.example.progetto_si.Cliente.Room.Cliente
+import com.example.progetto_si.Cliente.Room.ClienteDao
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteDao
 import com.example.progetto_si.Admin.Admin
 import com.example.progetto_si.Admin.AdminDao
+import com.example.progetto_si.Pacchetto.Pacchetto
+import com.example.progetto_si.Pacchetto.PacchettoDao
 import com.example.progetto_si.Sviluppatore.Sviluppatore
 import com.example.progetto_si.Sviluppatore.SviluppatoreDao
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +23,7 @@ import kotlinx.coroutines.launch
 
 
 @Database(
-    entities = [Registrazioni::class, Note::class, Cliente::class, Admin::class, Sviluppatore::class],
+    entities = [Registrazioni::class, Note::class, Cliente::class, Admin::class, Sviluppatore::class, Pacchetto::class],
     version = 1,
     exportSchema = false
 )
@@ -32,6 +34,7 @@ abstract class MyDatabase : RoomDatabase() {
     abstract fun ClienteDao(): ClienteDao
     abstract fun AdminDao(): AdminDao
     abstract fun SviluppatoreDao(): SviluppatoreDao
+    abstract fun PacchettoDao(): PacchettoDao
 
     companion object {
         @Volatile
@@ -112,6 +115,32 @@ abstract class MyDatabase : RoomDatabase() {
                         livello = "senior",
                         progetti = "Progetto A, Progetto B",
                         tipo = "sviluppatore"
+                    )
+                )
+
+                val pacchettoDao = db.PacchettoDao()
+                pacchettoDao.insertPacchetto(
+                    Pacchetto(
+                        nome = "Pacchetto A",
+                        descrizione = "Descrizione del pacchetto A",
+                        prezzo = 99.99,
+                        durata = "30 giorni"
+                    )
+                )
+                pacchettoDao.insertPacchetto(
+                    Pacchetto(
+                        nome = "Pacchetto B",
+                        descrizione = "Descrizione del pacchetto B",
+                        prezzo = 149.99,
+                        durata = "60 giorni"
+                    )
+                )
+                pacchettoDao.insertPacchetto(
+                    Pacchetto(
+                        nome = "Pacchetto C",
+                        descrizione = "Descrizione del pacchetto C",
+                        prezzo = 199.99,
+                        durata = "90 giorni"
                     )
                 )
 

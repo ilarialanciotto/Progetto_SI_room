@@ -8,8 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.progetto_si.Cliente.ClienteDao
-import com.example.progetto_si.Cliente.ClienteViewModel
+import com.example.progetto_si.Cliente.Room.ClienteViewModel
 import com.example.progetto_si.Login.Login
 import com.example.progetto_si.Registrazione.Registrazioni
 import com.example.progetto_si.Registrazione.RegistrazioniViewModel
