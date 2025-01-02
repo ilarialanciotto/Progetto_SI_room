@@ -49,8 +49,8 @@ class Login : AppCompatActivity() {
         }
 
         buttonSend.setOnClickListener {
-            val username = editTextUsername.text.toString()
-            val password = editTextPassword.text.toString()
+            val username = editTextUsername.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
             lifecycleScope.launch {
                 registrazioniViewModel.checkCredenziali(username, password) { isSuccess, userType ->
                     if (isSuccess && userType != null) {

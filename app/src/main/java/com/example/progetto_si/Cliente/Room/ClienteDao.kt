@@ -27,4 +27,5 @@ interface ClienteDao {
     @Query("INSERT INTO pacchetto (id, id) VALUES (:clienteId, :pacchettoId)")
     fun acquistaPacchetto(clienteId: Int, pacchettoId: Int)
 
+
 }
