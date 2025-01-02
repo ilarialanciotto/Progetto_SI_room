@@ -9,6 +9,7 @@ data class Note(
     val data:String,
     val username: String,
     val nota: String,
+    val pacchetto: Int
 )
 
 

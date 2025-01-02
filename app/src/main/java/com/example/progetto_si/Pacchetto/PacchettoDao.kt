@@ -1,23 +1,26 @@
 package com.example.progetto_si.Pacchetto
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
-//@Dao
-//interface PacchettoDao {
-//
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insert(pacchetto: Pacchetto)
-//
-//    @Update
-//    suspend fun update(pacchetto: Pacchetto)
-//
-//    @Delete
-//    suspend fun delete(pacchetto: Pacchetto)
-//
-//    @Query("SELECT * FROM pacchetto ORDER BY nome ASC")
-//    fun getAllPacchetti(): LiveData<List<Pacchetto>>
-//
-//    @Query("SELECT * FROM pacchetto WHERE id = :pacchettoId")
-//    suspend fun getPacchettoById(pacchettoId: Int): Pacchetto?
-//}
+@Dao
+interface PacchettoDao {
+
+    @Insert
+    fun insertPacchetto(pacchetto : Pacchetto)
+
+    @Update
+    fun aggiorna(pacchetto: Pacchetto)
+
+    @Query("SELECT nome FROM pacchetto ORDER BY id ASC")
+    fun getAllPacchetti() : List<String>
+
+    @Query ("SELECT id FROM pacchetto ORDER BY id ASC")
+    fun getAllId(): List<Int>
+
+    @Query("SELECT * FROM pacchetto WHERE nome=:nome LIMIT 1")
+    fun getDettaggliPacchetto(nome : String) : Pacchetto
+
+}
