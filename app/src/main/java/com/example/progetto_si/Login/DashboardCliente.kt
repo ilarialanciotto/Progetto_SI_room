@@ -130,7 +130,7 @@ class DashboardCliente : AppCompatActivity() {
                 lifecycleScope.launch {
                     val nota = Note(
                         data = data,
-                        username = username,
+                        email = username,
                         nota = notaT,
                         pacchetto = 1  //----finire la gestione della nota del cliente per uno specifico pacchetto
                     )

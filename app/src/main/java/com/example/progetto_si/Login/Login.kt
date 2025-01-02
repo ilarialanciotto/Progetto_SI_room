@@ -21,7 +21,6 @@ class Login : AppCompatActivity() {
     private var isPasswordVisible = false
     lateinit var editTextPassword: EditText
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)

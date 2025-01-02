@@ -20,7 +20,10 @@
                 android:name=".Login.DashboardCliente"
                 android:exported="false"/>
         <activity
-                android:name=".Login.DashboardCliente"
+                android:name=".Login.DashboardSviluppatore"
+                android:exported="false"/>
+        <activity
+                android:name=".Login.DashboardAdmin"
                 android:exported="false"/>
         <activity
                 android:name=".mappaView"

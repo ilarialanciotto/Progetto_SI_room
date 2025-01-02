@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,23 +43,25 @@ class DashboardSviluppatore : AppCompatActivity() {
         var packVM= PacchettoViewModel(application)
         var acquistoWM = AcquistiViewModel(application)
         var clWM = ClienteViewModel(application)
-        var listN = mutableListOf<String>()
+        val tempListN = mutableListOf<String>()
 
         lifecycleScope.launch {
-            packVM.getAllid { ListId->
-                for (id in ListId){
-                    acquistoWM.getNumeroAcquisti(id) { n->
-                        listN.add(n.toString())
-                        val adapeter2= AdapterStringNoedit(listN.toList<String>())
-                        num.adapter=adapeter2
+            packVM.getAllid { ListId ->
+                for (id in ListId) {
+                    acquistoWM.getNumeroAcquisti(id) { n ->
+                        tempListN.addLast(n.toString())
+                        if (tempListN.size == ListId.size) {
+                            val adapter2 = AdapterStringNoedit(tempListN.toList())
+                            num.adapter = adapter2
+                        }
                     }
                 }
             }
 
-            packVM.getAllPacchetti { dati->
+            packVM.getAllPacchetti { dati ->
                 val adapter = StringAdapter(dati) { item ->
-                    if (!show){
-                        showItemDialog(item,packVM,clWM)
+                    if (!show) {
+                        showItemDialog(item, packVM, clWM)
                         show = true
                     }
                 }

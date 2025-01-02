@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
         var not = Note(
             data = "2025-1-1",
-            username = "lalla",
+            email = "mario.rossi@example.com",
             nota = "nota di prova",
             pacchetto = 1
         )

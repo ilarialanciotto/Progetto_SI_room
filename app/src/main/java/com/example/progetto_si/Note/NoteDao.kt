@@ -9,10 +9,10 @@ interface NoteDao {
     @Insert
     fun insertNote(nota : Note)
 
-    @Query("SELECT nota FROM note WHERE data=:dt AND username=:user ")
+    @Query("SELECT nota FROM note WHERE data=:dt AND email=:user ")
     fun getNotesByDate(dt: String, user: String) : List<String>
 
-    @Query("SELECT id FROM note WHERE username=:user AND data=:dt AND nota=:nt")
+    @Query("SELECT id FROM note WHERE email=:user AND data=:dt AND nota=:nt")
     fun getNoteId(dt: String, nt: String, user: String): Int?
 
     @Query("SELECT * FROM note WHERE id=:id")

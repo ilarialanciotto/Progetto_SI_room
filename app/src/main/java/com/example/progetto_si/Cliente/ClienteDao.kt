@@ -20,7 +20,7 @@ interface ClienteDao {
     @Query("SELECT COUNT(*) FROM clienti WHERE email = :email AND password = :password")
     fun checkCliente(email: String, password: String): Int
 
-    @Query ("SELECT N.nota,C.email FROM CLIENTI C JOIN NOTE N ON C.email=N.username WHERE N.pacchetto=:pacchetto")
+    @Query ("SELECT N.nota,C.email FROM CLIENTI C JOIN NOTE N ON C.email=N.email WHERE N.pacchetto=:pacchetto")
     fun getNotaClientePacchetto(pacchetto : Int) : List<Coppia>
 
     @Query("SELECT * FROM clienti")
