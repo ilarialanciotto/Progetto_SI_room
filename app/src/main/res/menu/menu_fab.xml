@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_pacchetti"
+    android:title="I tuoi pacchetti" />
+    <item
+        android:id="@+id/action_richieste"
+    android:title="Le tue richieste" />
+    <item
+        android:id="@+id/action_acquista"
+    android:title="Acquista pacchetto" />
+</menu>

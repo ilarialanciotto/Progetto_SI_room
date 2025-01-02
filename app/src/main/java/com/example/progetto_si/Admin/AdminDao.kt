@@ -3,7 +3,6 @@ package com.example.progetto_si.Admin
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.progetto_si.Cliente.Cliente
 
 @Dao
 interface AdminDao {

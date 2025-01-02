@@ -1,23 +1,22 @@
 package com.example.progetto_si.Pacchetto
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
-//@Dao
-//interface PacchettoDao {
-//
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insert(pacchetto: Pacchetto)
-//
-//    @Update
-//    suspend fun update(pacchetto: Pacchetto)
-//
-//    @Delete
-//    suspend fun delete(pacchetto: Pacchetto)
-//
-//    @Query("SELECT * FROM pacchetto ORDER BY nome ASC")
-//    fun getAllPacchetti(): LiveData<List<Pacchetto>>
-//
-//    @Query("SELECT * FROM pacchetto WHERE id = :pacchettoId")
-//    suspend fun getPacchettoById(pacchettoId: Int): Pacchetto?
-//}
+
+@Dao
+interface PacchettoDao {
+
+    @Query("SELECT * FROM pacchetto ORDER BY id ASC")
+    fun getAllPacchetti(): Flow<List<Pacchetto>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPacchetto(pacchetto: Pacchetto)
+
+    @Query("DELETE FROM pacchetto")
+    fun deleteAllPacchetti()
+
+}

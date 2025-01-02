@@ -1,4 +1,4 @@
-package com.example.progetto_si.Cliente
+package com.example.progetto_si.Cliente.Room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -33,6 +33,10 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch(Dispatchers.IO) {
             clienteDao.insert(cliente)
         }
+    }
+
+    fun getClienteByEmailAndPassword(email: String, password: String): Cliente? {
+        return clienteDao.getClienteByEmailAndPassword(email, password)
     }
 
 

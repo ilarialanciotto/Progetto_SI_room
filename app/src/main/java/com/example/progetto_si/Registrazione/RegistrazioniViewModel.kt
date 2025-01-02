@@ -3,7 +3,6 @@ package com.example.progetto_si.Registrazione
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.progetto_si.Cliente.ClienteViewModel
 import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

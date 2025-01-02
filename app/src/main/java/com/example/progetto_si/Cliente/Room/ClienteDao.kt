@@ -1,8 +1,10 @@
-package com.example.progetto_si.Cliente
+package com.example.progetto_si.Cliente.Room
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.progetto_si.Pacchetto.Pacchetto
 
 @Dao
 interface ClienteDao {
@@ -21,5 +23,8 @@ interface ClienteDao {
 
     @Query("SELECT * FROM clienti")
     fun getAllClients(): List<Cliente>
+
+    @Query("INSERT INTO pacchetto (id, id) VALUES (:clienteId, :pacchettoId)")
+    fun acquistaPacchetto(clienteId: Int, pacchettoId: Int)
 
 }

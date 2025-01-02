@@ -1,7 +1,6 @@
 package com.example.progetto_si
 
 import android.content.Intent
-import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.lifecycleScope
 import com.example.progetto_si.Admin.Admin
-import com.example.progetto_si.Cliente.Cliente
+import com.example.progetto_si.Cliente.Room.Cliente
 import com.example.progetto_si.Login.Login
 import com.example.progetto_si.Sviluppatore.Sviluppatore
 import kotlinx.coroutines.Dispatchers
