@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.progetto_si.Acquisti.Acquisti
 import com.example.progetto_si.Acquisti.AcquistiViewModel
 import com.example.progetto_si.Admin.Admin
+import com.example.progetto_si.Admin.AdminViewModel
 import com.example.progetto_si.Cliente.Room.Cliente
 import com.example.progetto_si.Cliente.Room.ClienteViewModel
 import com.example.progetto_si.Login.Login
@@ -20,6 +21,7 @@ import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.Pacchetto.Pacchetto
 import com.example.progetto_si.Pacchetto.PacchettoViewModel
 import com.example.progetto_si.Sviluppatore.Sviluppatore
+import com.example.progetto_si.Sviluppatore.SviluppatoreViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -34,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
         Web.settings.javaScriptEnabled = true
-
         //sito creato da noi
         Web.loadUrl("https://cybersicuri.certfin.it/")
 
@@ -43,81 +44,64 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             packWM.getAllPacchetti { stringList->
                 if(stringList.isEmpty())
-                    initPacchetti(packWM)
+                    initDB(packWM)
             }
-            val db = MyDatabase.getDatabase(applicationContext)
-
-            // Popolamento della tabella Cliente
-            db.ClienteDao().insert(
-                Cliente(
-                    nome = "Mario",
-                    cognome = "Rossi",
-                    email = "mario.rossi@example.com",
-                    password = "password123",
-                    telefono = "1234567890",
-                    azienda = "Example Corp",
-                    tipo = "cliente"
-                )
-            )
-            Log.d("DatabasePopulation", "Cliente Mario Rossi inserito.")
-
-            db.ClienteDao().insert(
-                Cliente(
-                    nome = "Luca",
-                    cognome = "Bianchi",
-                    email = "luca.bianchi@example.com",
-                    password = "securePass",
-                    telefono = "0987654321",
-                    azienda = "Tech Corp",
-                    tipo = "cliente"
-                )
-            )
-            Log.d("DatabasePopulation", "Cliente Luca Bianchi inserito.")
-
-            // Popolamento della tabella Admin
-            db.AdminDao().insert(
-                Admin(
-                    nome = "Admin",
-                    cognome = "SuperUser",
-                    email = "admin@example.com",
-                    password = "admin123",
-                    ruolo = "admin"
-                )
-            )
-            Log.d("DatabasePopulation", "Admin SuperUser inserito.")
-
-            // Popolamento della tabella Sviluppatore
-            db.SviluppatoreDao().insert(
-                Sviluppatore(
-                    nome = "Marco",
-                    cognome = "Verdi",
-                    email = "marco.verdi@example.com",
-                    password = "developer123",
-                    livello = "senior",
-                    progetti = "Progetto A, Progetto B",
-                    tipo = "sviluppatore"
-                )
-            )
-            Log.d("DatabasePopulation", "Sviluppatore Marco Verdi inserito.")
-
-            Log.d("DatabasePopulation", "Popolamento del database completato.")
         }
-
     }
 
-    private fun initPacchetti(packWM : PacchettoViewModel){
+    private fun initDB(packWM : PacchettoViewModel){
 
         var clWM = ClienteViewModel(application)
         var acquistoWM = AcquistiViewModel(application)
         var noteWM = NoteViewModel(application)
+        var admWM = AdminViewModel(application)
+        var sviWM = SviluppatoreViewModel(application)
 
-        var cli = Cliente(
+        val admin = Admin(
+            nome = "Admin",
+            cognome = "SuperUser",
+            email = "admin@example.com",
+            password = "admin123",
+            ruolo = "admin"
+        )
+
+        val svi = Sviluppatore(
+            nome = "Marco",
+            cognome = "Verdi",
+            email = "marco.verdi@example.com",
+            password = "developer123",
+            livello = "senior",
+            progetti = "Progetto A, Progetto B",
+            tipo = "sviluppatore"
+        )
+
+        val cli = Cliente(
             nome = "ilaria",
             cognome = "lanciotto",
             email = "lalla@example.com",
             password = "securePass",
             telefono = "0987654321",
             azienda = "Secure Tech",
+            tipo = "cliente"
+        )
+
+        val cli2 = Cliente(
+            nome = "Mario",
+            cognome = "Rossi",
+            email = "mario.rossi@example.com",
+            password = "password123",
+            telefono = "1234567890",
+            azienda = "Example Corp",
+            tipo = "cliente"
+        )
+
+        val cli3 = Cliente(
+            nome = "Luca",
+            cognome = "Bianchi",
+            email = "luca.bianchi@example.com",
+            password = "securePass",
+            telefono = "0987654321",
+            azienda = "Tech Corp",
             tipo = "cliente"
         )
 
@@ -133,8 +117,12 @@ class MainActivity : AppCompatActivity() {
             pacchetto = 1,
         )
 
+        sviWM.insert(svi)
         clWM.insert(cli)
+        clWM.insert(cli2)
+        clWM.insert(cli3)
         noteWM.insert(not)
+        admWM.insert(admin)
         acquistoWM.insert(acquisto)
 
         val pacchettoBase = Pacchetto(
