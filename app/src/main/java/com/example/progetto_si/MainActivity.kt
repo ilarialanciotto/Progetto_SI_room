@@ -23,7 +23,6 @@ import com.example.progetto_si.Sviluppatore.Sviluppatore
 import com.example.progetto_si.Sviluppatore.SviluppatoreViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.String
 
 class MainActivity : AppCompatActivity() {
 
