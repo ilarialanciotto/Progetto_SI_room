@@ -1,0 +1,54 @@
+<!-- dialog_custom_options.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:padding="16dp"
+              android:layout_width="match_parent"
+              android:focusableInTouchMode="true"
+              android:background="@drawable/wave_shape"
+              android:focusable="true"
+              android:layout_height="wrap_content"
+              android:id="@+id/Layout">
+    <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                      android:orientation="vertical">
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txTT" android:textSize="26dp"
+                    android:textAlignment="center"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/listaClienti"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/ListaNote" android:paddingLeft="10dp"/>
+                <ScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:paddingLeft="10dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                                  android:orientation="vertical" android:id="@+id/LayoutL"/>
+                </ScrollView>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <Button
+                        android:text="modifica"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" android:id="@+id/modifica" android:layout_weight="1"/>
+                <Button
+                        android:text="esci"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/esci" android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

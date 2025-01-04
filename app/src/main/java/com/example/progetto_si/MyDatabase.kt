@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.progetto_si.Acquisti.Acquisti
+import com.example.progetto_si.Acquisti.AcquistoDao
 import com.example.progetto_si.Registrazione.Registrazioni
 import com.example.progetto_si.Registrazione.RegistrazioneDao
 import com.example.progetto_si.Cliente.Room.Cliente
@@ -14,6 +16,7 @@ import com.example.progetto_si.Note.NoteDao
 import com.example.progetto_si.Admin.Admin
 import com.example.progetto_si.Admin.AdminDao
 import com.example.progetto_si.Pacchetto.Pacchetto
+import com.example.progetto_si.Pacchetto.PacchettoAcquistato
 import com.example.progetto_si.Pacchetto.PacchettoDao
 import com.example.progetto_si.Sviluppatore.Sviluppatore
 import com.example.progetto_si.Sviluppatore.SviluppatoreDao
@@ -23,7 +26,8 @@ import kotlinx.coroutines.launch
 
 
 @Database(
-    entities = [Registrazioni::class, Note::class, Cliente::class, Admin::class, Sviluppatore::class, Pacchetto::class],
+    entities = [Registrazioni::class, Note::class, Cliente::class, Admin::class, Sviluppatore::class, Pacchetto::class,
+               Acquisti::class, PacchettoAcquistato::class],
     version = 1,
     exportSchema = false
 )
@@ -35,6 +39,7 @@ abstract class MyDatabase : RoomDatabase() {
     abstract fun AdminDao(): AdminDao
     abstract fun SviluppatoreDao(): SviluppatoreDao
     abstract fun PacchettoDao(): PacchettoDao
+    abstract fun AcquistoDao() : AcquistoDao
 
     companion object {
         @Volatile
@@ -124,7 +129,9 @@ abstract class MyDatabase : RoomDatabase() {
                         nome = "Pacchetto A",
                         descrizione = "Descrizione del pacchetto A",
                         prezzo = 99.99,
-                        durata = "30 giorni"
+                        durata = "30 giorni",
+                        componenteHardware = "Router di base",
+                        componenteSoftware = "Antivirus standard"
                     )
                 )
                 pacchettoDao.insertPacchetto(
@@ -132,7 +139,9 @@ abstract class MyDatabase : RoomDatabase() {
                         nome = "Pacchetto B",
                         descrizione = "Descrizione del pacchetto B",
                         prezzo = 149.99,
-                        durata = "60 giorni"
+                        durata = "60 giorni",
+                        componenteHardware = "Router di base",
+                        componenteSoftware = "Antivirus standard"
                     )
                 )
                 pacchettoDao.insertPacchetto(
@@ -140,7 +149,9 @@ abstract class MyDatabase : RoomDatabase() {
                         nome = "Pacchetto C",
                         descrizione = "Descrizione del pacchetto C",
                         prezzo = 199.99,
-                        durata = "90 giorni"
+                        durata = "90 giorni",
+                        componenteHardware = "Router di base",
+                        componenteSoftware = "Antivirus standard"
                     )
                 )
 

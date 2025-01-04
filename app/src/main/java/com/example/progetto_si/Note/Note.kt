@@ -10,7 +10,8 @@ data class Note(
     val email: String,
     val nota: String,
     val risposta: String? = null, // Risposta opzionale per l'assistenza
-    val stato: String = "In attesa" // Stato della richiesta
+    val stato: String = "In attesa", // Stato della richiesta
+    val pacchetto : Int
 )
 
 

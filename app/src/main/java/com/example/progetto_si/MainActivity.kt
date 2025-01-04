@@ -9,9 +9,16 @@ import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Acquisti.Acquisti
+import com.example.progetto_si.Acquisti.AcquistiViewModel
 import com.example.progetto_si.Admin.Admin
 import com.example.progetto_si.Cliente.Room.Cliente
+import com.example.progetto_si.Cliente.Room.ClienteViewModel
 import com.example.progetto_si.Login.Login
+import com.example.progetto_si.Note.Note
+import com.example.progetto_si.Note.NoteViewModel
+import com.example.progetto_si.Pacchetto.Pacchetto
+import com.example.progetto_si.Pacchetto.PacchettoViewModel
 import com.example.progetto_si.Sviluppatore.Sviluppatore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +39,12 @@ class MainActivity : AppCompatActivity() {
         Web.loadUrl("https://cybersicuri.certfin.it/")
 
         // Popola il database
+        var packWM = PacchettoViewModel(application)
         lifecycleScope.launch(Dispatchers.IO) {
+            packWM.getAllPacchetti { stringList->
+                if(stringList.isEmpty())
+                    initPacchetti(packWM)
+            }
             val db = MyDatabase.getDatabase(applicationContext)
 
             // Popolamento della tabella Cliente
@@ -90,6 +102,106 @@ class MainActivity : AppCompatActivity() {
 
             Log.d("DatabasePopulation", "Popolamento del database completato.")
         }
+
+    }
+
+    private fun initPacchetti(packWM : PacchettoViewModel){
+
+        var clWM = ClienteViewModel(application)
+        var acquistoWM = AcquistiViewModel(application)
+        var noteWM = NoteViewModel(application)
+
+        var cli = Cliente(
+            nome = "ilaria",
+            cognome = "lanciotto",
+            email = "lalla@example.com",
+            password = "securePass",
+            telefono = "0987654321",
+            azienda = "Secure Tech",
+            tipo = "cliente"
+        )
+
+        var not = Note(
+            data = "2025-1-1",
+            email = "lalla@example.com",
+            nota = "nota di prova",
+            pacchetto = 1
+        )
+
+        var acquisto = Acquisti(
+            cliente = 1,
+            pacchetto = 1,
+        )
+
+        clWM.insert(cli)
+        noteWM.insert(not)
+        acquistoWM.insert(acquisto)
+
+        val pacchettoBase = Pacchetto(
+            nome = "Pacchetto Base",
+            descrizione = "Un pacchetto base per piccole aziende.",
+            prezzo = 299.99,
+            durata = "10g",
+            componenteHardware = "Router di base",
+            componenteSoftware = "Antivirus standard"
+        )
+
+        packWM.insert(pacchettoBase)
+
+        val pacchettoAvanzato = Pacchetto(
+            nome = "Pacchetto Avanzato",
+            descrizione = "Un pacchetto avanzato per medie imprese.",
+            prezzo = 599.99,
+            durata = "10g",
+            componenteHardware = "Router avanzato + Firewall",
+            componenteSoftware = "Antivirus avanzato + Gestione della rete"
+        )
+
+        packWM.insert(pacchettoAvanzato)
+
+        val pacchettoPremium = Pacchetto(
+            nome = "Pacchetto Premium",
+            descrizione = "Un pacchetto premium per grandi aziende.",
+            prezzo = 1299.99,
+            durata = "10g",
+            componenteHardware = "Server dedicato + Router di alta gamma",
+            componenteSoftware = "Suite completa di sicurezza informatica"
+        )
+
+        packWM.insert(pacchettoPremium)
+
+        val pacchettoStartup = Pacchetto(
+            nome = "Pacchetto Startup",
+            descrizione = "Un pacchetto pensato per startup e nuove attività.",
+            prezzo = 399.99,
+            durata = "10g",
+            componenteHardware = "Router base",
+            componenteSoftware = "Gestione della rete + Antivirus"
+        )
+
+        packWM.insert(pacchettoStartup)
+
+        val pacchettoEnterprise = Pacchetto(
+            nome = "Pacchetto Enterprise",
+            descrizione = "Un pacchetto su misura per grandi imprese.",
+            prezzo = 1999.99,
+            durata = "10g",
+            componenteHardware = "Server aziendale + Firewall dedicato",
+            componenteSoftware = "Sicurezza totale + Gestione centralizzata"
+        )
+
+        packWM.insert(pacchettoEnterprise)
+
+        val pacchettoHomeOffice = Pacchetto(
+            nome = "Pacchetto Home Office",
+            descrizione = "Un pacchetto per chi lavora da casa.",
+            prezzo = 199.99,
+            durata = "10g",
+            componenteHardware = "Modem router",
+            componenteSoftware = "Antivirus base + Protezione dati"
+        )
+
+        packWM.insert(pacchettoHomeOffice)
 
     }
 

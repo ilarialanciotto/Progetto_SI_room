@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.example.progetto_si.Pacchetto.Pacchetto
 
 import androidx.room.*
+import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.Pacchetto.PacchettoAcquistato
 
 @Dao
@@ -23,6 +24,9 @@ interface ClienteDao {
 
     @Query("SELECT COUNT(*) FROM clienti WHERE email = :email AND password = :password")
     fun checkCliente(email: String, password: String): Int
+
+    @Query ("SELECT N.nota,C.email FROM CLIENTI C JOIN NOTE N ON C.email=N.email WHERE N.pacchetto=:pacchetto")
+    fun getNotaClientePacchetto(pacchetto : Int) : List<Coppia>
 
     @Query("SELECT * FROM clienti")
     fun getAllClients(): List<Cliente>

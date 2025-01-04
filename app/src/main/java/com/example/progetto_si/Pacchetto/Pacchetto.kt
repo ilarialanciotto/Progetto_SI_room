@@ -9,5 +9,7 @@ data class Pacchetto(
     val nome: String,
     val descrizione: String,
     val prezzo: Double,
-    val durata: String
+    val durata: String,
+    val componenteHardware: String,
+    val componenteSoftware: String
 )
