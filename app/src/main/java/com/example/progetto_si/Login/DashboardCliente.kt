@@ -168,7 +168,8 @@ class DashboardCliente : AppCompatActivity() {
                     val nota = Note(
                         data = data,
                         username = username,
-                        nota = notaT
+                        nota = notaT,
+                        pacchetto=1
                     )
                     noteViewModel.insert(nota)
                     Toast.makeText(

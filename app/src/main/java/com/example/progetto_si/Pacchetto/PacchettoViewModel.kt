@@ -1,27 +1,58 @@
 package com.example.progetto_si.Pacchetto
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PacchettoViewModel(private val pacchettoDao: PacchettoDao) : ViewModel() {
+class PacchettoViewModel (application : Application) : AndroidViewModel(application) {
 
-    val allPacchetti: Flow<List<Pacchetto>> = pacchettoDao.getAllPacchetti()
+    private val pacchettoDao = MyDatabase.getDatabase(application).PacchettoDao()
 
-    fun insertPacchetto(pacchetto: Pacchetto) {
-        viewModelScope.launch {
+    fun insert(pacchetto : Pacchetto){
+        viewModelScope.launch(Dispatchers.IO) {
             pacchettoDao.insertPacchetto(pacchetto)
         }
     }
 
-    fun deleteAllPacchetti() {
-        viewModelScope.launch {
-            pacchettoDao.deleteAllPacchetti()
+    fun getAllPacchetti(callback: (List<String>) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = pacchettoDao.getAllPacchetti()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
         }
     }
+
+    fun getAllid(callback: (List<Int>) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = pacchettoDao.getAllId()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
+    fun Aggiorna(pack : Pacchetto){
+        viewModelScope.launch(Dispatchers.IO) {
+            pacchettoDao.aggiorna(pack)
+        }
+    }
+
+    fun getDettaggliPacchetto(nome : String , callback: (List<String>) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = pacchettoDao.getDettaggliPacchetto(nome)
+            var dettagli : List<String> = listOf(result.id.toString() , result.nome , result.prezzo.toString() ,
+                result.descrizione , result.durata, result.componenteHardware , result.componenteSoftware)
+            withContext(Dispatchers.Main) {
+                callback(dettagli)
+            }
+        }
+    }
+
 }
+
 

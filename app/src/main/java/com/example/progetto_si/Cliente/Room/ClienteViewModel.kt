@@ -3,6 +3,7 @@ package com.example.progetto_si.Cliente.Room
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +33,15 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
         )
         viewModelScope.launch(Dispatchers.IO) {
             clienteDao.insert(cliente)
+        }
+    }
+
+    fun getNotaClientePacchetto(idPacchetto : Int, callback : (List<Coppia>)->Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = clienteDao.getNotaClientePacchetto(idPacchetto)
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
         }
     }
 
