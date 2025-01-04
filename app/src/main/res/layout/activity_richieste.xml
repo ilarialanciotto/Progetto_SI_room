@@ -1,23 +1,41 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@drawable/wave_shape"
+    tools:context=".Cliente.Activity.RichiesteActivity">
 
-    <TextView
-        android:id="@+id/textViewEmpty"
-        android:layout_width="wrap_content"
+    <!-- Barra di ricerca -->
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="No notes available"
-        android:visibility="gone"
-        android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:hint="Cerca richiesta..."
+        android:padding="12dp"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:background="@android:drawable/edit_text"
+        android:inputType="text" />
 
+    <!-- Lista delle richieste -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNotes"
+        android:id="@+id/recycler_richieste"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false" />
-</LinearLayout>
+        android:layout_below="@id/search_bar"
+        android:padding="8dp"
+        tools:listitem="@layout/item_richiesta" />
+
+    <!-- Messaggio in caso di lista vuota -->
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Nessuna richiesta trovata"
+        android:visibility="gone"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray" />
+
+</RelativeLayout>
