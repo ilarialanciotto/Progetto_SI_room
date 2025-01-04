@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
+
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
         Web.settings.javaScriptEnabled = true
