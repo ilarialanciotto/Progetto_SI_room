@@ -2,6 +2,8 @@ package com.example.progetto_si.Pacchetto
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
@@ -18,9 +20,9 @@ class PacchettoViewModel (application : Application) : AndroidViewModel(applicat
         }
     }
 
-    fun getAllPacchetti(callback: (List<String>) -> Unit){
+    fun getAllPacchettiS(callback: (List<String>) -> Unit){
         viewModelScope.launch(Dispatchers.IO) {
-            val result = pacchettoDao.getAllPacchetti()
+            val result = pacchettoDao.getAllPacchettiS()
             withContext(Dispatchers.Main) {
                 callback(result)
             }
@@ -39,6 +41,27 @@ class PacchettoViewModel (application : Application) : AndroidViewModel(applicat
     fun Aggiorna(pack : Pacchetto){
         viewModelScope.launch(Dispatchers.IO) {
             pacchettoDao.aggiorna(pack)
+        }
+    }
+
+    private val _pacchetti = MutableLiveData<List<Pacchetto>>()
+    val pacchetti: LiveData<List<Pacchetto>> = _pacchetti
+
+    fun caricaPacchetti() {
+        // Simulazione di caricamento pacchetti
+        _pacchetti.value = listOf(
+            Pacchetto(1, "Pacchetto Base", "pacchetto base",29.99, "30 giorni","Router di base","Antivirus standard"),
+            Pacchetto(2, "Pacchetto Intermedio", "pacchetto intermedio", 49.99, "60 giorni","Router di base","Antivirus standard"),
+            Pacchetto(3, "Pacchetto Avanzato", "pacchetto avanzato", 99.99, "90 giorni","Router di base","Antivirus standard")
+        )
+    }
+
+    fun acquistaPacchetto(pacchetto: Pacchetto, username: String, callback: (Boolean) -> Unit) {
+        // Simula un acquisto
+        if (username.isNotEmpty()) {
+            callback(true)
+        } else {
+            callback(false)
         }
     }
 

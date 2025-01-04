@@ -66,12 +66,27 @@
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_dettagli_nota.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_note.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_notedit.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_pacchetto.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
@@ -118,30 +133,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="aggiunta Sviluppatore">
-      <changelist_data name="ila" email="" automatic="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Aquisti/Acquisti.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Aquisti/AcquistiViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Aquisti/AcquistoDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/AdapterStringNoedit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/Coppia.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/StringAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_custom_options.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_notedit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_string.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_dettagli_nota.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_note.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardSviluppatore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardSviluppatore.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MyDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MyDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/Note.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/Note.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/Pacchetto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/Pacchetto.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_sviluppatore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_sviluppatore.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +207,17 @@
     &quot;assignee&quot;: &quot;ilarialanciotto&quot;
   }
 }</component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDONh7lk86Gupxl",
+        "number": 11
+      },
+      "lastSeen": 1735993964486
+    }
+  ]
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/ilarialanciotto/Progetto_SI_room.git",
@@ -251,7 +263,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "ilaria____",
+    "git-widget-placeholder": "#11 on ilaria____",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ilari/eclipse-workspace/Progetto_SI_room/app/src/main/res/layout",
     "node.js.detected.package.eslint": "true",
@@ -594,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735513402134</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="aggiunta Sviluppatore">
+      <option name="closed" value="true" />
+      <created>1735993840969</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1735993840969</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

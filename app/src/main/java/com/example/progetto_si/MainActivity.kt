@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             var packWM = PacchettoViewModel(application)
             lifecycleScope.launch {
-                packWM.getAllPacchetti { stringList ->
+                packWM.getAllPacchettiS { stringList ->
                     if (stringList.isEmpty())
                         initDB(packWM)
                 }

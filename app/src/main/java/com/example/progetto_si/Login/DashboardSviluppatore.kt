@@ -57,7 +57,7 @@ class DashboardSviluppatore : AppCompatActivity() {
                 }
             }
 
-            packVM.getAllPacchetti { dati->
+            packVM.getAllPacchettiS { dati->
                 val adapter = StringAdapter(dati) { item ->
                     if (!show){
                         showItemDialog(item,packVM,clWM)

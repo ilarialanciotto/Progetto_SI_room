@@ -165,13 +165,6 @@ class DashboardCliente : AppCompatActivity() {
             val notaT = noteEditText.text.toString()
             if (notaT.isNotEmpty()) {
                 lifecycleScope.launch {
-                    val nota = Note(
-                        data = data,
-                        username = username,
-                        nota = notaT,
-                        pacchetto=1
-                    )
-                    noteViewModel.insert(nota)
                     Toast.makeText(
                         this@DashboardCliente,
                         "Nota salvata per il $data",

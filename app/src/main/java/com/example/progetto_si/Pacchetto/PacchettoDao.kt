@@ -15,19 +15,22 @@ interface PacchettoDao {
     @Insert
     fun insertPacchetto(pacchetto: Pacchetto)
 
-    @Delete
-    fun deleteAllPacchetti(pacchetto : Pacchetto)
+    @Query("SELECT * FROM pacchetto ORDER BY id ASC")
+    fun getAllPacchetti(): Flow<List<Pacchetto>>
 
     @Update
     fun aggiorna(pacchetto: Pacchetto)
 
     @Query("SELECT nome FROM pacchetto ORDER BY id ASC")
-    fun getAllPacchetti() : List<String>
+    fun getAllPacchettiS() : List<String>
 
     @Query ("SELECT id FROM pacchetto ORDER BY id ASC")
     fun getAllId(): List<Int>
 
     @Query("SELECT * FROM pacchetto WHERE nome=:nome LIMIT 1")
     fun getDettaggliPacchetto(nome : String) : Pacchetto
+
+    @Delete
+    fun deleteAllPacchetti(pacchetto : Pacchetto)
 
 }
