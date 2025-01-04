@@ -77,10 +77,4 @@ class PacchettoViewModel (application : Application) : AndroidViewModel(applicat
         }
     }
 
-    fun getPacchettiByCliente(email: String, callback: (List<Pacchetto>) -> Unit) {
-        viewModelScope.launch {
-            val pacchetti = pacchettoDao.getPacchettiByCliente(email)
-            callback(pacchetti)
-        }
-    }
 }

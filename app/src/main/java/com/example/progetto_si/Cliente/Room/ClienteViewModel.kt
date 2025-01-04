@@ -3,9 +3,11 @@ package com.example.progetto_si.Cliente.Room
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
 import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.MyDatabase
 import com.example.progetto_si.Pacchetto.Pacchetto
+import com.example.progetto_si.Pacchetto.PacchettoDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,6 +16,10 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
 
     // Istanzia il DAO da Room
     private val clienteDao = MyDatabase.getDatabase(application).ClienteDao()
+    private val pacchettoDao: PacchettoDao =
+        Room.databaseBuilder(application, MyDatabase::class.java, "Database")
+            .build()
+            .PacchettoDao()
 
 
     fun insert(cliente: Cliente) {
