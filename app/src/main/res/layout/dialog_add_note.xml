@@ -23,6 +23,11 @@
             android:lines="3"
             android:maxLines="5"
             android:scrollbars="vertical" android:textColor="#101010"/>
+    <Spinner
+        android:id="@+id/spinner_pacchetti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
 
     <!-- Pulsante Salva -->
     <Button

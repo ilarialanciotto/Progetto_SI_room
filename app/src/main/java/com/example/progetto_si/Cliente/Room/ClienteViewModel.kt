@@ -47,6 +47,8 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
     }
 
 
+
+
 //    fun getPurchasedPacchetti(email: String, callback: (List<Pacchetto>) -> Unit) {
 //        viewModelScope.launch {
 //            callback(ClienteDao.getPurchasedPacchetti(email))

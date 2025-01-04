@@ -31,4 +31,5 @@ interface PacchettoDao {
 
     @Query("SELECT * FROM pacchetto WHERE nome=:nome LIMIT 1")
     fun getDettaggliPacchetto(nome : String) : Pacchetto
+
 }

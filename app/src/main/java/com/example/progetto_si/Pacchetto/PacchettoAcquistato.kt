@@ -25,5 +25,6 @@ import com.example.progetto_si.Cliente.Room.Cliente
 data class PacchettoAcquistato(
     val clienteId: Int,
     val pacchettoId: Int,
-    val dataAcquisto: String  // es. "04-01-2025"
+    val dataAcquisto: String,  // es. "04-01-2025"
+
 )
