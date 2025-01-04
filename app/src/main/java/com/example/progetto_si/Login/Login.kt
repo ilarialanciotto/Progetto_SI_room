@@ -58,6 +58,7 @@ class Login : AppCompatActivity() {
                             "cliente" -> {
                                 val intent = Intent(this@Login, DashboardCliente::class.java)
                                 intent.putExtra("EXTRA_USERNAME", username)
+                                intent.putExtra("EXTRA_PASSWORD", password)
                                 startActivity(intent)
                             }
                             "admin" -> {

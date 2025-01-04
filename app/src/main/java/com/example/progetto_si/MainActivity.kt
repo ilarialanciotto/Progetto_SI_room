@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         // Popola il database
         var packWM = PacchettoViewModel(application)
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch {
             packWM.getAllPacchetti { stringList->
                 if(stringList.isEmpty())
                     initDB(packWM)

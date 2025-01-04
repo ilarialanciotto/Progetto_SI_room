@@ -46,6 +46,14 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun getIdCliente(email : String,password: String, callback: (Int) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result =  clienteDao.getClienteByEmailAndPassword(email,password)
+            withContext(Dispatchers.Main) {
+                callback(result?.id ?: -1)
+            }
+        }
+    }
 
 //    fun getPurchasedPacchetti(email: String, callback: (List<Pacchetto>) -> Unit) {
 //        viewModelScope.launch {

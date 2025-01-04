@@ -44,6 +44,7 @@ class DashboardCliente : AppCompatActivity() {
         btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
 
         val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
+        val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
         val textViewWelcome: TextView = findViewById(R.id.txView)
 
         // Inizializza ViewModel
@@ -89,6 +90,7 @@ class DashboardCliente : AppCompatActivity() {
                     R.id.action_acquista -> {
                         val intent = Intent(this@DashboardCliente, AcquistaPacchettoActivity::class.java)
                         intent.putExtra("EXTRA_USERNAME", username)
+                        intent.putExtra("EXTRA_PASSWORD", password)
                         startActivity(intent)
                         true
                     }
