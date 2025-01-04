@@ -25,28 +25,5 @@ class RichiesteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_richieste)
-
-        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
-
-        recyclerView = findViewById(R.id.recyclerViewNotes)
-        textViewEmpty = findViewById(R.id.textViewEmpty)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
-
-        lifecycleScope.launch {
-            noteViewModel.getNotesByUser(username) { notes ->
-                if (notes.isNotEmpty()) {
-                    textViewEmpty.visibility = View.GONE
-                    recyclerView.visibility = View.VISIBLE
-                    adapter = NoteAdapter(notes)
-                    recyclerView.adapter = adapter
-                } else {
-                    textViewEmpty.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
-                }
-            }
-        }
     }
 }

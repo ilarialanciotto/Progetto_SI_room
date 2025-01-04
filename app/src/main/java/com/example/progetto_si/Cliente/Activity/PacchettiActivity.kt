@@ -17,45 +17,9 @@ import kotlinx.coroutines.launch
 
 class PacchettiActivity : AppCompatActivity() {
 
-    private lateinit var clienteViewModel: ClienteViewModel
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: PacchettoAdapter
-    private lateinit var textViewEmpty: TextView
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pacchetti)
-
-        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
-
-        // Initialize Views
-        recyclerView = findViewById(R.id.recyclerViewPacchetti)
-        textViewEmpty = findViewById(R.id.textViewEmpty)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Set up the Adapter
-        adapter = PacchettoAdapter { pacchetto ->
-            // Handle package click if needed
-        }
-        recyclerView.adapter = adapter
-
-        // Initialize ViewModel
-        clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
-
-        // Fetch purchased packages
-//        lifecycleScope.launch {
-//            clienteViewModel.getPurchasedPacchetti(username) { pacchetti ->
-//                if (pacchetti.isNotEmpty()) {
-//                    textViewEmpty.visibility = View.GONE
-//                    recyclerView.visibility = View.VISIBLE
-//                    adapter.submitList(pacchetti)
-//                } else {
-//                    textViewEmpty.visibility = View.VISIBLE
-//                    recyclerView.visibility = View.GONE
-//                }
-//            }
-//        }
     }
 }
