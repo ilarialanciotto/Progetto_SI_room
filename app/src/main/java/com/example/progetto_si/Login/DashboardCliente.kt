@@ -71,21 +71,33 @@ class DashboardCliente : AppCompatActivity() {
             // Gestione del clic delle opzioni
             popupMenu.setOnMenuItemClickListener { item: MenuItem ->
                 when (item.itemId) {
+                    //pacchetti acquistati dal cliente
                     R.id.action_pacchetti -> {
-                        startActivity(Intent(this, PacchettiActivity::class.java))
+                        val intent = Intent(this@DashboardCliente, PacchettiActivity::class.java)
+                        intent.putExtra("EXTRA_USERNAME", username)
+                        startActivity(intent)
                         true
                     }
+                    //note del cliente
                     R.id.action_richieste -> {
-                        startActivity(Intent(this, RichiesteActivity::class.java))
+                        val intent = Intent(this@DashboardCliente, RichiesteActivity::class.java)
+                        intent.putExtra("EXTRA_USERNAME", username)
+                        startActivity(intent)
                         true
                     }
+                    //shop pacchetti
                     R.id.action_acquista -> {
-                        startActivity(Intent(this, AcquistaPacchettoActivity::class.java))
+                        val intent = Intent(this@DashboardCliente, AcquistaPacchettoActivity::class.java)
+                        intent.putExtra("EXTRA_USERNAME", username)
+                        startActivity(intent)
                         true
                     }
+
                     else -> false
                 }
+
             }
+
 
             // Mostra il popup
             popupMenu.show()
@@ -167,7 +179,7 @@ class DashboardCliente : AppCompatActivity() {
                 lifecycleScope.launch {
                     val nota = Note(
                         data = data,
-                        username = username,
+                        email = username,
                         nota = notaT
                     )
                     noteViewModel.insert(nota)

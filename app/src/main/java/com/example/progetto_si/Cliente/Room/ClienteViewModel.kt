@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.MyDatabase
+import com.example.progetto_si.Pacchetto.Pacchetto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,9 +36,12 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getClienteByEmailAndPassword(email: String, password: String): Cliente? {
-        return clienteDao.getClienteByEmailAndPassword(email, password)
-    }
+
+//    fun getPurchasedPacchetti(email: String, callback: (List<Pacchetto>) -> Unit) {
+//        viewModelScope.launch {
+//            callback(ClienteDao.getPurchasedPacchetti(email))
+//        }
+//    }
 
 
 }

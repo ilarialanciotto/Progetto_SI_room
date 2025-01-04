@@ -44,17 +44,17 @@ class Register : AppCompatActivity() {
                             btnLog.visibility = View.VISIBLE
                         } else {
                             val registrazione = Registrazioni(
-                                nome = editTextName.text.toString(),
-                                cognome = editTextSurname.text.toString(),
-                                email = editTextUsername.text.toString(),
-                                password = editTextPassword.text.toString()
+                                nome = editTextName.text.toString().trim(),
+                                cognome = editTextSurname.text.toString().trim(),
+                                email = editTextUsername.text.toString().trim(),
+                                password = editTextPassword.text.toString().trim()
                             )
                             registrazioniViewModel.insert(registrazione)
                             ClienteViewModel.insertCliente(
-                                editTextName.text.toString(),
-                                editTextSurname.text.toString(),
-                                editTextUsername.text.toString(),
-                                editTextPassword.text.toString(),
+                                editTextName.text.toString().trim(),
+                                editTextSurname.text.toString().trim(),
+                                editTextUsername.text.toString().trim(),
+                                editTextPassword.text.toString().trim(),
                                 telefono = "",
                                 azienda = "",
                                 tipo = "cliente"

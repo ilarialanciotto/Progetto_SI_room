@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
+        Web.settings.javaScriptEnabled = true
 
         //sito creato da noi
         Web.loadUrl("https://cybersicuri.certfin.it/")
