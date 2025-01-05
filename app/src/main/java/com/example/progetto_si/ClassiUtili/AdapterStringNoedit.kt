@@ -13,7 +13,7 @@ class AdapterStringNoedit(
 
     // ViewHolder per gestire gli elementi della lista
     class ViewHolderOne(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.findViewById(R.id.textV1)
+        val textView: TextView = itemView.findViewById(R.id.txtDP)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderOne {

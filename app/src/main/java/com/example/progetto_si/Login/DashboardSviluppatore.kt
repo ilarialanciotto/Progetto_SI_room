@@ -37,28 +37,14 @@ class DashboardSviluppatore : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.lista)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val num: RecyclerView = findViewById(R.id.Num)
-        num.layoutManager = LinearLayoutManager(this)
         var packVM= PacchettoViewModel(application)
         var acquistoWM = AcquistiViewModel(application)
         var clWM = ClienteViewModel(application)
 
         lifecycleScope.launch {
-            packVM.getAllid { ListId ->
-                val tempListN = MutableList(ListId.size) { "" }
-                for (id in ListId) {
-                    acquistoWM.getNumeroAcquisti(id) { n ->
-                        tempListN[id - 1] = n.toString()
-                        if (tempListN.size == ListId.size) {
-                            val adapter2 = AdapterStringNoedit(tempListN.toList())
-                            num.adapter = adapter2
-                        }
-                    }
-                }
-            }
 
             packVM.getAllPacchetti { dati->
-                val adapter = StringAdapter(dati) { item ->
+                val adapter = StringAdapter(dati,acquistoWM) { item ->
                     if (!show){
                         showItemDialog(item,packVM,clWM)
                         show = true
