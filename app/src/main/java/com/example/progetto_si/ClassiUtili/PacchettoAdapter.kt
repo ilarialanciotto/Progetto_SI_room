@@ -1,4 +1,4 @@
-package com.example.progetto_si.Pacchetto
+package com.example.progetto_si.ClassiUtili
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.progetto_si.Pacchetto.Pacchetto
 import com.example.progetto_si.R
 
 class PacchettoAdapter(private val onClick: (Pacchetto) -> Unit) :
@@ -19,6 +20,7 @@ class PacchettoAdapter(private val onClick: (Pacchetto) -> Unit) :
         private val nomeTextView: TextView = view.findViewById(R.id.txtNomePacchetto)
         private val prezzoTextView: TextView = view.findViewById(R.id.txtPrezzoPacchetto)
         private val btnAcquista: Button = view.findViewById(R.id.btnAcquista)
+        private val descrionePacchetto : TextView = view.findViewById(R.id.txtDescrizionePacchetto)
 
         private var pacchetto: Pacchetto? = null
 
@@ -36,6 +38,7 @@ class PacchettoAdapter(private val onClick: (Pacchetto) -> Unit) :
             this.pacchetto = pacchetto
             nomeTextView.text = pacchetto.nome
             prezzoTextView.text = "${pacchetto.prezzo} €"
+            descrionePacchetto.text= pacchetto.descrizione
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.progetto_si.Pacchetto
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,6 +14,9 @@ interface PacchettoDao {
 
     @Query("SELECT * FROM pacchetto ORDER BY id ASC")
     fun getAllPacchetti(): Flow<List<Pacchetto>>
+
+    @Query("SELECT * FROM pacchetto ORDER BY id ASC")
+    fun getPacchettiP() : LiveData<List<Pacchetto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPacchetto(pacchetto: Pacchetto)
