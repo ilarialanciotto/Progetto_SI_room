@@ -36,7 +36,7 @@ class AcquistaPacchettoActivity : AppCompatActivity() {
         password = intent.getStringExtra("EXTRA_PASSWORD") ?: "N/D"
 
         // Inizializza l'adapter
-        pacchettoAdapter = PacchettoAdapter { pacchetto ->
+        pacchettoAdapter = PacchettoAdapter(true) { pacchetto ->
             acquistaPacchetto(pacchetto)
         }
         recyclerView.adapter = pacchettoAdapter
