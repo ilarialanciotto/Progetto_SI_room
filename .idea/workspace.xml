@@ -137,18 +137,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="Adesso abbiamo gli acquisti coerenti tra cliente e sviluppatore. Non c'è bisogno delle entità per pacchettoAcquistato ecc.. li possiamo trovare con una query con la tabella Acuisto.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="ora il cliente può vedere i suoi pacchetti acquistati">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Acquisti/AcquistiViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Acquisti/AcquistiViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Acquisti/AcquistoDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Acquisti/AcquistoDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/PacchettoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/PacchettoAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/AcquistaPacchettoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/AcquistaPacchettoActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/PacchettiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/PacchettiActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/RichiesteActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/RichiesteActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pacchetti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pacchetti.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/NoteAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/NoteAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/NoteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Note/NoteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +262,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "Chiara",
+    "git-widget-placeholder": "#13 on Chiara",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ilari/eclipse-workspace/Progetto_SI_room/app/src/main/res/layout",
     "node.js.detected.package.eslint": "true",
@@ -708,7 +703,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736054343336</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="ora il cliente può vedere i suoi pacchetti acquistati">
+      <option name="closed" value="true" />
+      <created>1736537357198</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1736537357199</updated>
+    </task>
+    <task id="LOCAL-00022" summary="ora il cliente può vedere i suoi pacchetti acquistati">
+      <option name="closed" value="true" />
+      <created>1736537455106</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1736537455106</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,6 +762,7 @@
     <MESSAGE value="modifica populate db" />
     <MESSAGE value="modifica acquisto --da controllare" />
     <MESSAGE value="Adesso abbiamo gli acquisti coerenti tra cliente e sviluppatore. Non c'è bisogno delle entità per pacchettoAcquistato ecc.. li possiamo trovare con una query con la tabella Acuisto." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adesso abbiamo gli acquisti coerenti tra cliente e sviluppatore. Non c'è bisogno delle entità per pacchettoAcquistato ecc.. li possiamo trovare con una query con la tabella Acuisto." />
+    <MESSAGE value="ora il cliente può vedere i suoi pacchetti acquistati" />
+    <option name="LAST_COMMIT_MESSAGE" value="ora il cliente può vedere i suoi pacchetti acquistati" />
   </component>
 </project>

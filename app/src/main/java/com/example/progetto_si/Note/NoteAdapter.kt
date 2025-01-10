@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.R
 
-class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private var notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
@@ -30,5 +30,13 @@ class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdap
             textViewDate.text = note.data
             textViewNote.text = note.nota
         }
+    }
+
+    /**
+     * Metodo per aggiornare dinamicamente la lista delle note.
+     */
+    fun updateNotes(newNotes: List<Note>) {
+        notes = newNotes
+        notifyDataSetChanged()
     }
 }
