@@ -93,6 +93,7 @@ class DashboardCliente : AppCompatActivity() {
             R.id.action_richieste -> {
                 startActivity(Intent(this, RichiesteActivity::class.java).apply {
                     putExtra("EXTRA_USERNAME", username)
+                    putExtra("EXTRA_PASSWORD", password)
                 })
                 true
             }

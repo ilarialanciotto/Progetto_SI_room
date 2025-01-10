@@ -20,9 +20,12 @@
             android:text="Richiesta del cliente..."
             android:textSize="18sp"
             android:textColor="@color/oxford_blue"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Risposta dello Sviluppatore -->
         <TextView
@@ -32,10 +35,12 @@
             android:text="Risposta dello sviluppatore..."
             android:textSize="16sp"
             android:textColor="@color/black"
+            android:ellipsize="end"
+            android:maxLines="3"
             app:layout_constraintTop_toBottomOf="@id/txtRichiesta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
 
         <!-- Data della Richiesta -->
         <TextView
@@ -47,7 +52,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/txtRisposta"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
 
         <!-- Stato della Richiesta -->
         <TextView
@@ -57,8 +62,10 @@
             android:text="Stato: In Attesa"
             android:textSize="14sp"
             android:textColor="@color/orange_web"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/txtRisposta"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
