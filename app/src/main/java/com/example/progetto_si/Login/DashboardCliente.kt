@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.progetto_si.Cliente.Activity.AcquistaPacchettoActivity
@@ -23,12 +24,10 @@ import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
-
 class DashboardCliente : AppCompatActivity() {
 
     private lateinit var calendar: CalendarView
     private lateinit var btnToggleCalendar: Button
-
     private lateinit var fab: FloatingActionButton
 
     private lateinit var clienteViewModel: ClienteViewModel
@@ -42,6 +41,7 @@ class DashboardCliente : AppCompatActivity() {
         // Inizializza View
         calendar = findViewById(R.id.calendarView)
         btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
+        fab = findViewById(R.id.floatingActionButton2)
 
         val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
         val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
@@ -62,53 +62,53 @@ class DashboardCliente : AppCompatActivity() {
             showNoteDialog(selectedDate, username)
         }
 
-        // Gestione del FAB
-        val fab: FloatingActionButton = findViewById(R.id.floatingActionButton2)
+        // Configura il FAB
+        setupFab(username, password)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun setupFab(username: String, password: String) {
         fab.setOnClickListener {
             val popupMenu = PopupMenu(this, fab)
             popupMenu.menuInflater.inflate(R.menu.menu_fab, popupMenu.menu)
             popupMenu.setForceShowIcon(true)
 
-            // Gestione del clic delle opzioni
-            popupMenu.setOnMenuItemClickListener { item: MenuItem ->
-                when (item.itemId) {
-                    //pacchetti acquistati dal cliente
-                    R.id.action_pacchetti -> {
-                        val intent = Intent(this@DashboardCliente, PacchettiActivity::class.java)
-                        intent.putExtra("EXTRA_USERNAME", username)
-                        startActivity(intent)
-                        true
-                    }
-                    //note del cliente
-                    R.id.action_richieste -> {
-                        val intent = Intent(this@DashboardCliente, RichiesteActivity::class.java)
-                        intent.putExtra("EXTRA_USERNAME", username)
-                        startActivity(intent)
-                        true
-                    }
-                    //shop pacchetti
-                    R.id.action_acquista -> {
-                        val intent = Intent(this@DashboardCliente, AcquistaPacchettoActivity::class.java)
-                        intent.putExtra("EXTRA_USERNAME", username)
-                        intent.putExtra("EXTRA_PASSWORD", password)
-                        startActivity(intent)
-                        true
-                    }
-
-                    else -> false
-                }
-
+            popupMenu.setOnMenuItemClickListener { item ->
+                handleFabAction(item.itemId, username, password)
             }
 
-
-            // Mostra il popup
             popupMenu.show()
+        }
+    }
 
+    private fun handleFabAction(actionId: Int, username: String, password: String): Boolean {
+        return when (actionId) {
+            R.id.action_pacchetti -> {
+                startActivity(Intent(this, PacchettiActivity::class.java).apply {
+                    putExtra("EXTRA_USERNAME", username)
+                    putExtra("EXTRA_PASSWORD", password)
+                })
+                true
+            }
+            R.id.action_richieste -> {
+                startActivity(Intent(this, RichiesteActivity::class.java).apply {
+                    putExtra("EXTRA_USERNAME", username)
+                })
+                true
+            }
+            R.id.action_acquista -> {
+                startActivity(Intent(this, AcquistaPacchettoActivity::class.java).apply {
+                    putExtra("EXTRA_USERNAME", username)
+                    putExtra("EXTRA_PASSWORD", password)
+                })
+                true
+            }
+            else -> false
         }
     }
 
     private fun toggleCalendarVisibility() {
-        calendar.visibility = if (calendar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+        calendar.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -119,46 +119,25 @@ class DashboardCliente : AppCompatActivity() {
         val dialog = dialogBuilder.create()
 
         lifecycleScope.launch {
-            noteViewModel.getNotesByDate(data, username) { notes ->
-                if (notes.isNotEmpty()) {
-                    layout.removeAllViews() // Pulire eventuali note precedenti
-                    for (note in notes) {
-                        val dynamicNoteEditText = EditText(this@DashboardCliente)
-                        dynamicNoteEditText.setText(note)
-                        dynamicNoteEditText.setBackgroundTintList(
-                            ColorStateList.valueOf(Color.parseColor("#673AB7"))
-                        )
-                        dynamicNoteEditText.isFocusable = false
-                        dynamicNoteEditText.isClickable = true
-                        layout.addView(dynamicNoteEditText)
+            if (isActivityActive()) {
+                noteViewModel.getNotesByDate(data, username) { notes ->
+                    if (isActivityActive() && notes.isNotEmpty()) {
+                        layout.removeAllViews()
+                        notes.forEach { note ->
+                            val dynamicNoteEditText = EditText(this@DashboardCliente).apply {
+                                setText(note)
+                                backgroundTintList =
+                                    ColorStateList.valueOf(Color.parseColor("#673AB7"))
+                                isFocusable = false
+                                isClickable = true
+                            }
+                            layout.addView(dynamicNoteEditText)
 
-                        // Gestione del clic sulla nota
-                        dynamicNoteEditText.setOnClickListener { view ->
-                            noteViewModel.getNoteId(data, note, username) { id ->
-                                if (id != -1) {
-                                    dynamicNoteEditText.id = id
-                                    val popupMenu = PopupMenu(this@DashboardCliente, view)
-                                    popupMenu.menuInflater.inflate(R.menu.note_menu, popupMenu.menu)
-                                    popupMenu.setForceShowIcon(true)
-                                    popupMenu.setOnMenuItemClickListener { menuItem ->
-                                        when (menuItem.itemId) {
-                                            R.id.delete_note -> {
-                                                noteViewModel.getNota(id) { nota ->
-                                                    noteViewModel.deleteNota(nota)
-                                                    layout.removeView(view)
-                                                    Toast.makeText(
-                                                        this@DashboardCliente,
-                                                        "Nota eliminata",
-                                                        Toast.LENGTH_SHORT
-                                                    ).show()
-                                                }
-                                                true
-                                            }
-
-                                            else -> false
-                                        }
+                            dynamicNoteEditText.setOnClickListener { view ->
+                                noteViewModel.getNoteId(data, note, username) { id ->
+                                    if (id != -1) {
+                                        showNotePopup(view, id, layout)
                                     }
-                                    popupMenu.show()
                                 }
                             }
                         }
@@ -186,15 +165,35 @@ class DashboardCliente : AppCompatActivity() {
                         pacchetto = 1
                     )
                     noteViewModel.insert(nota)
-                    Toast.makeText(
-                        this@DashboardCliente,
-                        "Nota salvata per il $data",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@DashboardCliente, "Nota salvata per il $data", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun showNotePopup(view: View, noteId: Int, layout: LinearLayout) {
+        val popupMenu = PopupMenu(this@DashboardCliente, view)
+        popupMenu.menuInflater.inflate(R.menu.note_menu, popupMenu.menu)
+        popupMenu.setForceShowIcon(true)
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.delete_note -> {
+                    lifecycleScope.launch {
+                        noteViewModel.getNota(noteId) { nota ->
+                            noteViewModel.deleteNota(nota)
+                            layout.removeView(view)
+                            Toast.makeText(this@DashboardCliente, "Nota eliminata", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
 
     private fun formatDate(year: Int, month: Int, day: Int): String {
@@ -202,4 +201,6 @@ class DashboardCliente : AppCompatActivity() {
         val dayFormatted = String.format("%02d", day)
         return "$year-$monthFormatted-$dayFormatted"
     }
+
+    private fun isActivityActive(): Boolean = !isFinishing && !isDestroyed
 }
