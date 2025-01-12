@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editNomePacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome Pacchetto" />
+
+    <EditText
+        android:id="@+id/editDescrizionePacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descrizione" />
+
+    <EditText
+        android:id="@+id/editPrezzoPacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prezzo"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editDurataPacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Durata" />
+
+    <EditText
+        android:id="@+id/editHardwarePacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Componente Hardware" />
+
+    <EditText
+        android:id="@+id/editSoftwarePacchetto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Componente Software" />
+</LinearLayout>

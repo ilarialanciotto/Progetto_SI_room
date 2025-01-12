@@ -2,6 +2,7 @@ package com.example.progetto_si.Cliente.Room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.MyDatabase
@@ -53,6 +54,9 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
                 callback(result?.id ?: -1)
             }
         }
+    }
+    fun getClientiConPacchetti(): LiveData<List<ClienteConPacchetti>> {
+        return clienteDao.getClientiConPacchetti()
     }
 
 //    fun getPurchasedPacchetti(email: String, callback: (List<Pacchetto>) -> Unit) {

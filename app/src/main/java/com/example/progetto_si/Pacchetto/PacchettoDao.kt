@@ -18,6 +18,9 @@ interface PacchettoDao {
     @Query("SELECT * FROM pacchetto ORDER BY id ASC")
     fun getPacchettiP() : LiveData<List<Pacchetto>>
 
+    @Query("SELECT * FROM pacchetto ORDER BY id ASC")
+    fun getAllPacchettiLiveData(): LiveData<List<Pacchetto>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPacchetto(pacchetto: Pacchetto)
 
@@ -35,4 +38,17 @@ interface PacchettoDao {
 
     @Query("SELECT * FROM pacchetto WHERE nome=:nome LIMIT 1")
     fun getDettaggliPacchetto(nome : String) : Pacchetto
+
+    @Query("""
+        DELETE FROM pacchetto
+        WHERE id = :pacchettoId
+        AND NOT EXISTS (
+            SELECT 1 FROM ordine WHERE id = :pacchettoId
+        )
+    """)
+    fun eliminaPacchettoSeNonAssociato(pacchettoId: Int)
+    @Query("DELETE FROM pacchetto WHERE id = :pacchettoId")
+    fun eliminaPacchetto(pacchettoId: Int)
+
+
 }

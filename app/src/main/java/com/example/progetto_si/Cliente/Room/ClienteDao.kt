@@ -1,7 +1,9 @@
 package com.example.progetto_si.Cliente.Room
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.progetto_si.ClassiUtili.Coppia
 
@@ -27,4 +29,22 @@ interface ClienteDao {
     @Query("SELECT * FROM clienti")
     fun getAllClients(): List<Cliente>
 
+    @Query("""
+    WITH PacchettiAcquistati AS (
+        SELECT clienteld, COUNT(*) AS numeroPacchetti
+        FROM Ordine
+        GROUP BY clienteld
+    )
+    SELECT 
+        c.id AS clienteld, 
+        c.nome, 
+        c.email, 
+        COALESCE(pa.numeroPacchetti, 0) AS numeroPacchetti
+    FROM clienti c
+    LEFT JOIN PacchettiAcquistati pa ON c.id = pa.clienteld
+    ORDER BY c.nome ASC
+""")
+    fun getClientiConPacchetti(): LiveData<List<ClienteConPacchetti>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCliente(cliente: Cliente)
 }
