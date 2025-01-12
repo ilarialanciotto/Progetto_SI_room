@@ -40,6 +40,11 @@
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_sviluppatori.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
@@ -76,6 +81,11 @@
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sviluppatore_adapter.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_add_cliente.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
@@ -91,12 +101,27 @@
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_sviluppatore.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_custom_options.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_dettagli_nota.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_pacchetto.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_sviluppatore.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
@@ -127,6 +152,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_string.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sviluppatore.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
@@ -167,30 +197,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="ora il cliente può vedere i suoi pacchetti acquistati">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneClientiActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/ClienteAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/Ordine.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteConPacchetti.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cliente_adapter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_clienti.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_pacchetti.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_cliente.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_pacchetto.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_cliente.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="l'admin può fare crud su clienti e pacchetti">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneSviluppatoriActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/SviluppatoreAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_sviluppatori.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sviluppatore_adapter.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_sviluppatore.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_pacchetto.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_sviluppatore.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_sviluppatore.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/PacchettoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili/PacchettoAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardAdmin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardAdmin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MyDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MyDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Sviluppatore/SviluppatoreDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Sviluppatore/SviluppatoreDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Sviluppatore/SviluppatoreViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Sviluppatore/SviluppatoreViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_admin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_pacchetti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_pacchetti.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,8 +255,8 @@
         <option value="Kotlin Data Class" />
         <option value="resourceFile" />
         <option value="Class" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -260,22 +284,22 @@
     &quot;assignee&quot;: &quot;ilarialanciotto&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ilarialanciotto/Progetto_SI_room.git",
-    "accountId": "08c5f85b-550c-4a99-b7c6-4d9685191c40"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ilarialanciotto/Progetto_SI_room.git&quot;,
+    &quot;accountId&quot;: &quot;08c5f85b-550c-4a99-b7c6-4d9685191c40&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "ilarialanciotto",
-    "repository": "Progetto_SI_room"
+    &quot;owner&quot;: &quot;ilarialanciotto&quot;,
+    &quot;repository&quot;: &quot;Progetto_SI_room&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -339,6 +363,26 @@
     <key name="android.template.2123275739">
       <recent name="com.example.progetto_si" />
     </key>
+    <key name="android.template.-935335931">
+      <recent name="com.example.progetto_si" />
+    </key>
+    <key name="android.template.1535689248">
+      <recent name="com.example.progetto_si.ClassiUtili" />
+      <recent name="com.example.progetto_si.Admin" />
+    </key>
+    <key name="android.template.1721952084">
+      <recent name="com.example.progetto_si" />
+    </key>
+    <key name="android.template.-341776544">
+      <recent name="com.example.progetto_si" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.progetto_si.ClassiUtili" />
+      <recent name="com.example.progetto_si.Acquisti" />
+    </key>
+    <key name="android.template.-1974105874">
+      <recent name="com.example.progetto_si" />
+    </key>
     <key name="android.template.908340256">
       <recent name="com.example.progetto_si" />
     </key>
@@ -348,9 +392,6 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/ClassiUtili" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room" />
-    </key>
-    <key name="android.template.-935335931">
-      <recent name="com.example.progetto_si" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ilari\eclipse-workspace\Progetto_SI\app\src\main\res\drawable" />
@@ -369,19 +410,6 @@
       <recent name="com.example.progetto_si.Login" />
       <recent name="com.example.progetto_si.Registrazione" />
       <recent name="com.example.progetto_si.Note" />
-    </key>
-    <key name="android.template.1721952084">
-      <recent name="com.example.progetto_si" />
-    </key>
-    <key name="android.template.-341776544">
-      <recent name="com.example.progetto_si" />
-    </key>
-    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.example.progetto_si.ClassiUtili" />
-      <recent name="com.example.progetto_si.Acquisti" />
-    </key>
-    <key name="android.template.-1974105874">
-      <recent name="com.example.progetto_si" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -767,7 +795,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736537455106</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="l'admin può fare crud su clienti e pacchetti">
+      <option name="closed" value="true" />
+      <created>1736677752711</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1736677752711</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -811,6 +847,7 @@
     <MESSAGE value="modifica acquisto --da controllare" />
     <MESSAGE value="Adesso abbiamo gli acquisti coerenti tra cliente e sviluppatore. Non c'è bisogno delle entità per pacchettoAcquistato ecc.. li possiamo trovare con una query con la tabella Acuisto." />
     <MESSAGE value="ora il cliente può vedere i suoi pacchetti acquistati" />
-    <option name="LAST_COMMIT_MESSAGE" value="ora il cliente può vedere i suoi pacchetti acquistati" />
+    <MESSAGE value="l'admin può fare crud su clienti e pacchetti" />
+    <option name="LAST_COMMIT_MESSAGE" value="l'admin può fare crud su clienti e pacchetti" />
   </component>
 </project>

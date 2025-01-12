@@ -18,31 +18,39 @@
         android:layout_marginBottom="16dp" />
 
     <!-- RecyclerView per visualizzare i pacchetti -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_pacchetti"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
     <!-- Pulsanti per gestire i pacchetti -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_pacchetti"
+        android:layout_width="380dp"
+        android:layout_height="549dp"
+        android:layout_weight="1" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_aggiungi_pacchetto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aggiungi Pacchetto"
-            android:layout_margin="8dp" />
+            android:layout_width="158dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="Aggiungi Pacchetto" />
+
+        <Button
+            android:id="@+id/btn_modifica_pacchetto"
+            android:layout_width="121dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="Modifica Pacchetto" />
 
         <Button
             android:id="@+id/btn_elimina_pacchetto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Elimina Pacchetto"
-            android:layout_margin="8dp" />
+            android:layout_width="128dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="Elimina Pacchetto" />
     </LinearLayout>
 </LinearLayout>

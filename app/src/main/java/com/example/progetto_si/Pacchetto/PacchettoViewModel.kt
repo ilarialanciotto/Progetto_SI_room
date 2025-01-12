@@ -63,6 +63,11 @@ class PacchettoViewModel (application : Application) : AndroidViewModel(applicat
             pacchettoDao.eliminaPacchetto(pacchetto.id)
         }
     }
+    fun aggiornaPacchetto(pacchetto: Pacchetto) {
+        viewModelScope.launch(Dispatchers.IO) {
+            pacchettoDao.aggiorna(pacchetto)
+        }
+    }
     fun getAllId(callback: (List<Int>) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val ids = pacchettoDao.getAllId()
