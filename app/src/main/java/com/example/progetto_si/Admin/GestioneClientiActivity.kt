@@ -34,7 +34,7 @@ class GestioneClientiActivity : AppCompatActivity() {
 
         var clientiWM = ClienteViewModel(application)
         lifecycleScope.launch{
-            clientiWM.getClientiConPacchetti { clienti ->
+            clientiWM.getAllClients { clienti ->
                 clienteAdapter.submitList(clienti) }
         }
 

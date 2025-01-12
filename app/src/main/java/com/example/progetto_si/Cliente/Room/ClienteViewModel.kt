@@ -56,6 +56,15 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun getAllClients(callback : (List<Cliente>)->Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result =  clienteDao.getAllClients()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
     fun getClientiConPacchetti(callback : (List<Cliente>)->Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val result =  clienteDao.getClientiConPacchetti()

@@ -95,7 +95,7 @@ class GestionePacchettiActivity : AppCompatActivity() {
                 val nuovoPrezzo = prezzoEditText.text.toString().toDoubleOrNull() ?: 0.0
 
                 val pacchettoModificato = pacchetto.copy(nome = nuovoNome, prezzo = nuovoPrezzo)
-                viewModel.aggiornaPacchetto(pacchettoModificato)
+                viewModel.Aggiorna(pacchettoModificato)
             }
             .setNegativeButton("Annulla", null)
             .show()
