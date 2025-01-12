@@ -109,7 +109,7 @@ class GestionePacchettiActivity : AppCompatActivity() {
                 .setTitle("Conferma Eliminazione")
                 .setMessage("Vuoi eliminare il pacchetto \"${pacchetto.nome}\"?")
                 .setPositiveButton("Elimina") { _, _ ->
-                    viewModel.eliminaPacchetto(pacchetto)
+                    viewModel.eliminaPa(pacchetto)
                     Toast.makeText(this, "Pacchetto eliminato", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Annulla", null)

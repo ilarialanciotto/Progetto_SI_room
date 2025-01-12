@@ -19,4 +19,7 @@ interface AcquistoDao {
 
     @Query("SELECT pacchetto.* FROM acquisti JOIN pacchetto ON pacchetto.id = acquisti.pacchetto WHERE acquisti.cliente = :idCliente")
     fun getPacchettoById(idCliente: Int): List<Pacchetto>
+
+    @Query ("SELECT COUNT (DISTINCT pacchetto) FROM ACQUISTI WHERE cliente=:idC")
+    fun getNumeroAcquistiPerCliente(idC: Int): Int
 }

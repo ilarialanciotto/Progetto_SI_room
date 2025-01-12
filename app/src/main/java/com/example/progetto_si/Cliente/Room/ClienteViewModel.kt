@@ -55,15 +55,15 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
             }
         }
     }
-    fun getClientiConPacchetti(): LiveData<List<ClienteConPacchetti>> {
-        return clienteDao.getClientiConPacchetti()
+
+    fun getClientiConPacchetti(callback : (List<Cliente>)->Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result =  clienteDao.getClientiConPacchetti()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+
     }
-
-//    fun getPurchasedPacchetti(email: String, callback: (List<Pacchetto>) -> Unit) {
-//        viewModelScope.launch {
-//            callback(ClienteDao.getPurchasedPacchetti(email))
-//        }
-//    }
-
 
 }

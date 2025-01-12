@@ -2,6 +2,7 @@ package com.example.progetto_si.Pacchetto
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -39,16 +40,6 @@ interface PacchettoDao {
     @Query("SELECT * FROM pacchetto WHERE nome=:nome LIMIT 1")
     fun getDettaggliPacchetto(nome : String) : Pacchetto
 
-    @Query("""
-        DELETE FROM pacchetto
-        WHERE id = :pacchettoId
-        AND NOT EXISTS (
-            SELECT 1 FROM ordine WHERE id = :pacchettoId
-        )
-    """)
-    fun eliminaPacchettoSeNonAssociato(pacchettoId: Int)
-    @Query("DELETE FROM pacchetto WHERE id = :pacchettoId")
-    fun eliminaPacchetto(pacchettoId: Int)
-
-
+    @Delete
+    fun Delete(pack: Pacchetto)
 }
