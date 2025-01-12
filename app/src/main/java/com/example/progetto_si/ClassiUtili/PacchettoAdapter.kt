@@ -46,6 +46,9 @@ class PacchettoAdapter(
             nomeTextView.text = pacchetto.nome
             prezzoTextView.text = "${pacchetto.prezzo} €"
             descrionePacchetto.text = pacchetto.descrizione
+            itemView.setOnClickListener {
+                onClick(pacchetto) // Passa il pacchetto selezionato
+            }
         }
     }
 
@@ -68,5 +71,8 @@ class PacchettoAdapter(
     fun submitList(list: List<Pacchetto>) {
         pacchettiList = list
         notifyDataSetChanged()  // Notifica il cambiamento nella lista
+    }
+    fun getItemAt(position: Int): Pacchetto? {
+        return pacchettiList.getOrNull(position)
     }
 }

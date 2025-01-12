@@ -4,14 +4,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:background="@drawable/wave_shape">
+
 
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Benvenuto!"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black" />
+        android:textStyle="bold" />
+    <!-- Pulsante per Gestione Clienti -->
+
+    <Button
+        android:id="@+id/btn_gestione_clienti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Gestione Clienti" />
+
+    <!-- Pulsante per Gestione Pacchetti -->
+    <Button
+        android:id="@+id/btn_gestione_pacchetti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestione Pacchetti" />
 </LinearLayout>

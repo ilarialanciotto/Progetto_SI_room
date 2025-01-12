@@ -17,6 +17,15 @@
             android:theme="@style/Theme.Progetto_SI"
             tools:targetApi="31">
         <activity
+            android:name=".Admin.GestioneClientiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.GestionePacchettiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClassiUtili.ClienteAdapter"
+            android:exported="false" />
+        <activity
                 android:name=".Login.DashboardCliente"
                 android:exported="false"/>
         <activity
