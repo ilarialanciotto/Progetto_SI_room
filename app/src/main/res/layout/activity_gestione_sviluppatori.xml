@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/wave_shape"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <Button
+        android:id="@+id/btn_aggiungi_sviluppatore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Aggiungi Sviluppatore" />
+
+    <Button
+        android:id="@+id/btn_modifica_sviluppatore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Modifica Sviluppatore" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_sviluppatori"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

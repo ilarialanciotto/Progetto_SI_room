@@ -2,6 +2,7 @@ package com.example.progetto_si.Sviluppatore
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.MyDatabase
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,13 @@ class SviluppatoreViewModel(application: Application) : AndroidViewModel(applica
         viewModelScope.launch(Dispatchers.IO) {
             sviluppatoreDao.insert(sviluppatore)
         }
+    }
+
+    fun update(sviluppatore: Sviluppatore) = viewModelScope.launch(Dispatchers.IO) {
+        sviluppatoreDao.update(sviluppatore)
+    }
+    fun getAllSviluppatori(): List<Sviluppatore> {
+        return sviluppatoreDao.getAllSviluppatori()
     }
 
     fun insertSviluppatore(nome: String, cognome: String, email: String, password: String, livello: String, progetti: String) {

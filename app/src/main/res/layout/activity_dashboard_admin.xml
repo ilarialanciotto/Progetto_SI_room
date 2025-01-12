@@ -16,7 +16,13 @@
         android:textSize="24sp"
         android:textStyle="bold" />
     <!-- Pulsante per Gestione Clienti -->
-
+    <Button
+        android:id="@+id/btn_gestione_sviluppatori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:text="Gestione Sviluppatori" />
     <Button
         android:id="@+id/btn_gestione_clienti"
         android:layout_width="wrap_content"
@@ -30,4 +36,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gestione Pacchetti" />
+
 </LinearLayout>
