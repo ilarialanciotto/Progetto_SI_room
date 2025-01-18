@@ -20,8 +20,8 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        var registrazioniViewModel = RegistrazioniViewModel(application)
-        var ClienteViewModel = ClienteViewModel(application)
+        val registrazioniViewModel = RegistrazioniViewModel(application)
+        val clienteViewModel = ClienteViewModel(application)
 
         val editTextName: EditText = findViewById(R.id.et_name)
         val editTextSurname: EditText = findViewById(R.id.et_surname)
@@ -36,6 +36,8 @@ class Register : AppCompatActivity() {
 
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Inserire almeno username e password", Toast.LENGTH_SHORT).show()
+            } else if (!isValidEmail(username)) {
+                Toast.makeText(this, "Inserire un'email valida", Toast.LENGTH_SHORT).show()
             } else {
                 lifecycleScope.launch {
                     registrazioniViewModel.checkReg(username) { isUserExist ->
@@ -50,7 +52,7 @@ class Register : AppCompatActivity() {
                                 password = editTextPassword.text.toString().trim()
                             )
                             registrazioniViewModel.insert(registrazione)
-                            ClienteViewModel.insertCliente(
+                            clienteViewModel.insertCliente(
                                 editTextName.text.toString().trim(),
                                 editTextSurname.text.toString().trim(),
                                 editTextUsername.text.toString().trim(),
@@ -72,5 +74,10 @@ class Register : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return email.matches(emailPattern.toRegex())
     }
 }
