@@ -13,7 +13,6 @@ import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteDao
 import com.example.progetto_si.Admin.Admin
 import com.example.progetto_si.Admin.AdminDao
-import com.example.progetto_si.ClassiUtili.Ordine
 import com.example.progetto_si.Pacchetto.Pacchetto
 import com.example.progetto_si.Pacchetto.PacchettoDao
 import com.example.progetto_si.Sviluppatore.Sviluppatore
@@ -21,8 +20,8 @@ import com.example.progetto_si.Sviluppatore.SviluppatoreDao
 
 @Database(
     entities = [Registrazioni::class, Note::class, Cliente::class, Admin::class, Sviluppatore::class, Pacchetto::class,
-               Acquisti::class, Ordine::class],
-    version = 1,
+               Acquisti::class],
+    version = 3,
     exportSchema = false
 )
 abstract class MyDatabase : RoomDatabase() {
@@ -35,9 +34,9 @@ abstract class MyDatabase : RoomDatabase() {
     abstract fun PacchettoDao(): PacchettoDao
     abstract fun AcquistoDao() : AcquistoDao
 
-    companion object {
+    companion object{
         @Volatile
-        private var INSTANCE: MyDatabase? = null
+        private var INSTANCE : MyDatabase? = null
 
         fun getDatabase(context: Context) : MyDatabase{
             return INSTANCE?: synchronized(this){

@@ -19,6 +19,15 @@ class AcquistiViewModel (application : Application) : AndroidViewModel(applicati
         }
     }
 
+    fun getNumeroAcquistiCliente(cl : Int , callback : (Int)->Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = acquistoDao.getNumCliePacch(cl)
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
     fun getNumeroAcquisti(pk : Int , callback : (Int)->Unit){
         viewModelScope.launch(Dispatchers.IO) {
             val result = acquistoDao.getNumCliePacch(pk)

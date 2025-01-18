@@ -3,12 +3,16 @@ package com.example.progetto_si.Sviluppatore
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface SviluppatoreDao {
 
     @Insert
     fun insert(sviluppatore: Sviluppatore)
+
+    @Update
+    fun update (sviluppatore: Sviluppatore)
 
     @Query("SELECT * FROM sviluppatori WHERE id = :sviluppatoreId")
     fun getSviluppatoreById(sviluppatoreId: Int): Sviluppatore

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_nome_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edit_cognome_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cognome"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edit_email_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edit_ruolo_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ruolo"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edit_livello_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Livello"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edit_progetti_sviluppatore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Progetti"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
+</ScrollView>

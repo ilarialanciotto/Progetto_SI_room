@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.progetto_si.Admin.GestioneClientiActivity
 import com.example.progetto_si.Admin.GestionePacchettiActivity
+import com.example.progetto_si.Admin.GestioneSviluppatoriActivity
 import com.example.progetto_si.R
 
 class DashboardAdmin : AppCompatActivity() {
@@ -32,6 +33,10 @@ class DashboardAdmin : AppCompatActivity() {
         val btnGestionePacchetti = findViewById<Button>(R.id.btn_gestione_pacchetti)
         btnGestionePacchetti.setOnClickListener {
             val intent = Intent(this, GestionePacchettiActivity::class.java)
+            startActivity(intent)
+        }
+        findViewById<Button>(R.id.btn_gestione_sviluppatori).setOnClickListener {
+            val intent = Intent(this, GestioneSviluppatoriActivity::class.java)
             startActivity(intent)
         }
     }

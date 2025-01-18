@@ -1,32 +1,34 @@
 package com.example.progetto_si.ClassiUtili
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.progetto_si.Cliente.Room.ClienteConPacchetti
+import com.example.progetto_si.Cliente.Room.Cliente
+import androidx.lifecycle.lifecycleScope
+import com.example.progetto_si.Acquisti.AcquistiViewModel
 import com.example.progetto_si.R
+import kotlinx.coroutines.launch
+import kotlin.collections.get
+import kotlin.toString
 
-class ClienteAdapter : RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>() {
+class ClienteAdapter(private var acqWM : AcquistiViewModel) : RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>() {
 
-    private var clienti: List<ClienteConPacchetti> = listOf()
+    private var clienti: List<Cliente> = listOf()
+
 
     class ClienteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nomeTextView: TextView = itemView.findViewById(R.id.txt_nome)
         private val emailTextView: TextView = itemView.findViewById(R.id.txt_email)
-        private val pacchettiTextView: TextView = itemView.findViewById(R.id.txt_numero_pacchetti)
+        val pacchettiTextView: TextView = itemView.findViewById(R.id.txt_numero_pacchetti)
 
-        fun bind(cliente: ClienteConPacchetti) {
+        fun bind(cliente: Cliente) {
             nomeTextView.text = cliente.nome
             emailTextView.text = cliente.email
-            pacchettiTextView.text = "Pacchetti: ${cliente.numeroPacchetti}"
         }
     }
 
@@ -37,17 +39,17 @@ class ClienteAdapter : RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ClienteViewHolder, position: Int) {
-        val cliente = clienti[position] // Accedi direttamente alla lista
+        val cliente = clienti[position]
         holder.bind(cliente)
-    }
-    object DiffCallback : DiffUtil.ItemCallback<ClienteConPacchetti>() {
-        override fun areItemsTheSame(oldItem: ClienteConPacchetti, newItem: ClienteConPacchetti) = oldItem.clienteld == newItem.clienteld
-        override fun areContentsTheSame(oldItem: ClienteConPacchetti, newItem: ClienteConPacchetti) = oldItem == newItem
+
+        acqWM.getNumeroAcquistiCliente(cliente.id) { count ->
+            holder.pacchettiTextView.text = count.toString()
+        }
     }
 
     override fun getItemCount() = clienti.size
 
-    fun submitList(newClienti: List<ClienteConPacchetti>) {
+    fun submitList(newClienti: List<Cliente>) {
         clienti = newClienti
         notifyDataSetChanged()
     }

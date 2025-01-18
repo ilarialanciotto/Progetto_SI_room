@@ -50,7 +50,8 @@ class GestionePacchettiActivity : AppCompatActivity() {
                 val child = rv.findChildViewUnder(e.x, e.y)
                 if (child != null && e.action == MotionEvent.ACTION_UP) {
                     val position = rv.getChildAdapterPosition(child)
-                    selectedPacchetto = adapter.getItemAt(position) // Recupera il pacchetto selezionato
+                    selectedPacchetto =
+                        adapter.getItemAt(position) // Recupera il pacchetto selezionato
                     Toast.makeText(
                         this@GestionePacchettiActivity,
                         "Selezionato: ${selectedPacchetto?.nome}",
@@ -69,6 +70,35 @@ class GestionePacchettiActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_elimina_pacchetto).setOnClickListener {
             eliminaPacchetto() // Chiama la funzione eliminaPacchetto
         }
+        val btnModificaPacchetto = findViewById<Button>(R.id.btn_modifica_pacchetto)
+        btnModificaPacchetto.setOnClickListener {
+            selectedPacchetto?.let { pacchetto ->
+                showEditPacchettoDialog(pacchetto)
+            } ?: Toast.makeText(this, "Seleziona un pacchetto da modificare", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+    private fun showEditPacchettoDialog(pacchetto: Pacchetto) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_modifica_pacchetto, null)
+        val nomeEditText = dialogView.findViewById<EditText>(R.id.edit_nome_pacchetto)
+        val prezzoEditText = dialogView.findViewById<EditText>(R.id.edit_prezzo_pacchetto)
+
+        // Popola i campi con i dati attuali
+        nomeEditText.setText(pacchetto.nome)
+        prezzoEditText.setText(pacchetto.prezzo.toString())
+
+        AlertDialog.Builder(this)
+            .setTitle("Modifica Pacchetto")
+            .setView(dialogView)
+            .setPositiveButton("Salva") { _, _ ->
+                val nuovoNome = nomeEditText.text.toString()
+                val nuovoPrezzo = prezzoEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+                val pacchettoModificato = pacchetto.copy(nome = nuovoNome, prezzo = nuovoPrezzo)
+                viewModel.Aggiorna(pacchettoModificato)
+            }
+            .setNegativeButton("Annulla", null)
+            .show()
     }
 
     private fun mostraDialogAggiungiPacchetto() {
@@ -109,7 +139,7 @@ class GestionePacchettiActivity : AppCompatActivity() {
                 .setTitle("Conferma Eliminazione")
                 .setMessage("Vuoi eliminare il pacchetto \"${pacchetto.nome}\"?")
                 .setPositiveButton("Elimina") { _, _ ->
-                    viewModel.eliminaPacchetto(pacchetto)
+                    viewModel.eliminaPa(pacchetto)
                     Toast.makeText(this, "Pacchetto eliminato", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Annulla", null)

@@ -58,9 +58,9 @@ class PacchettoViewModel (application : Application) : AndroidViewModel(applicat
             }
         }
     }
-    fun eliminaPacchetto(pacchetto: Pacchetto) {
+    fun eliminaPa(pacchetto: Pacchetto) {
         viewModelScope.launch(Dispatchers.IO) {
-            pacchettoDao.eliminaPacchetto(pacchetto.id)
+            pacchettoDao.Delete(pacchetto)
         }
     }
     fun getAllId(callback: (List<Int>) -> Unit) {
