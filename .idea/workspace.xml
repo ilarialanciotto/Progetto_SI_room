@@ -174,6 +174,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Pacchetto/PacchettoViewModel.kt" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +184,9 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RZCX610N97Z)]" />
+
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -243,22 +246,23 @@
     &quot;assignee&quot;: &quot;ilarialanciotto&quot;
   }
 }</component>
+
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/ilarialanciotto/Progetto_SI_room.git",
     "accountId": "7c495804-8a38-4c33-a6c2-d17ded3427d3"
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "ilarialanciotto",
-    "repository": "Progetto_SI_room"
+    &quot;owner&quot;: &quot;ilarialanciotto&quot;,
+    &quot;repository&quot;: &quot;Progetto_SI_room&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -292,7 +296,9 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
+
     "git-widget-placeholder": "master",
+
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ilari/eclipse-workspace/Progetto_SI_room",
     "node.js.detected.package.eslint": "true",
@@ -451,6 +457,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.RegisterActivity" />
         <item itemvalue="Android App.RegisterActivity" />
         <item itemvalue="Android App.RegisterActivity" />
       </list>
