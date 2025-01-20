@@ -74,6 +74,36 @@ class MainActivity : AppCompatActivity() {
             tipo = "sviluppatore"
         )
 
+        val svi1 = Sviluppatore(
+            nome = "Luigi",
+            cognome = "Verdi",
+            email = "luigi.verdi@example.com",
+            password = "developer123",
+            livello = "senior",
+            progetti = "Progetto A, Progetto B",
+            tipo = "Analista"
+        )
+
+        val svi2 = Sviluppatore(
+            nome = "Francesco",
+            cognome = "Verdi",
+            email = "francesco.verdi@example.com",
+            password = "developer123",
+            livello = "junior",
+            progetti = "Progetto A, Progetto B",
+            tipo = "sviluppatore"
+        )
+
+        val svi3 = Sviluppatore(
+            nome = "Chiara",
+            cognome = "Verdi",
+            email = "chira.verdi@example.com",
+            password = "developer123",
+            livello = "senior",
+            progetti = "Progetto A, Progetto B",
+            tipo = "Responsabile consegne digitali"
+        )
+
         val cli = Cliente(
             nome = "ilaria",
             cognome = "lanciotto",
@@ -122,6 +152,9 @@ class MainActivity : AppCompatActivity() {
         clWM.insert(cli3)
         noteWM.insert(not)
         admWM.insert(admin)
+        sviWM.insert(svi1)
+        sviWM.insert(svi2)
+        sviWM.insert(svi3)
         acquistoWM.insert(acquisto)
 
         val pacchettoBase = Pacchetto(
