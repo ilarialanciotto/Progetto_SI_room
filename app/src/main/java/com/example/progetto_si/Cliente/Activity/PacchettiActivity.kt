@@ -1,6 +1,5 @@
 package com.example.progetto_si.Cliente.Activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
