@@ -26,7 +26,8 @@
         <activity android:name=".Admin.GestioneSviluppatoriActivity" />
         <activity
             android:name=".ClassiUtili.ClienteAdapter"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".Login.DashboardCliente"
             android:exported="false" />
@@ -44,6 +45,8 @@
             android:exported="false" />
         <activity
             android:name=".Cliente.Activity.AcquistaPacchettoActivity"
+            android:exported="false" />
+        <activity android:name=".Cliente.Activity.GestioneDatiActivity"
             android:exported="false" />
         <activity
             android:name=".mappaView"

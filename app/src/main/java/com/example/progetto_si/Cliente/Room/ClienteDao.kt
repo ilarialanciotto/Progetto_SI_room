@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.progetto_si.ClassiUtili.Coppia
 
 
@@ -31,5 +32,8 @@ interface ClienteDao {
 
     @Query("SELECT C.* FROM clienti C JOIN Acquisti A ON C.id=A.cliente")
     fun getClientiConPacchetti(): List<Cliente>
+
+    @Update
+    fun update(cliente: Cliente)
 
 }

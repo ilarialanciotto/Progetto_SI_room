@@ -2,11 +2,9 @@ package com.example.progetto_si.Cliente.Room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.MyDatabase
-import com.example.progetto_si.Pacchetto.Pacchetto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -73,6 +71,12 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
             }
         }
 
+    }
+
+    fun update(cliente: Cliente) {
+        viewModelScope.launch(Dispatchers.IO) {
+            clienteDao.update(cliente)
+        }
     }
 
 }

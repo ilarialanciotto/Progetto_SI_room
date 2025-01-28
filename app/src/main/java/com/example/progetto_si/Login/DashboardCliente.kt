@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -16,6 +15,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.progetto_si.Cliente.Activity.AcquistaPacchettoActivity
+import com.example.progetto_si.Cliente.Activity.GestioneDatiActivity
 import com.example.progetto_si.Cliente.Room.ClienteViewModel
 import com.example.progetto_si.Cliente.Activity.PacchettiActivity
 import com.example.progetto_si.Cliente.Activity.RichiesteActivity
@@ -81,6 +81,7 @@ class DashboardCliente : AppCompatActivity() {
         }
     }
 
+
     private fun handleFabAction(actionId: Int, username: String, password: String): Boolean {
         return when (actionId) {
             R.id.action_pacchetti -> {
@@ -99,6 +100,13 @@ class DashboardCliente : AppCompatActivity() {
             }
             R.id.action_acquista -> {
                 startActivity(Intent(this, AcquistaPacchettoActivity::class.java).apply {
+                    putExtra("EXTRA_USERNAME", username)
+                    putExtra("EXTRA_PASSWORD", password)
+                })
+                true
+            }
+            R.id.action_iMieiDati -> {
+                startActivity(Intent(this, GestioneDatiActivity::class.java).apply {
                     putExtra("EXTRA_USERNAME", username)
                     putExtra("EXTRA_PASSWORD", password)
                 })
