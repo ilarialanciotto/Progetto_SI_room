@@ -43,6 +43,8 @@ class DashboardCliente : AppCompatActivity() {
         btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
         fab = findViewById(R.id.floatingActionButton2)
 
+        calendar.visibility = View.INVISIBLE
+
         val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
         val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
         val textViewWelcome: TextView = findViewById(R.id.txView)
