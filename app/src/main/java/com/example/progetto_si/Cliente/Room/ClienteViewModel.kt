@@ -2,6 +2,7 @@ package com.example.progetto_si.Cliente.Room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.ClassiUtili.Coppia
 import com.example.progetto_si.MyDatabase
@@ -73,10 +74,13 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
 
     }
 
-    fun update(cliente: Cliente) {
-        viewModelScope.launch(Dispatchers.IO) {
-            clienteDao.update(cliente)
-        }
+    // Recupera un cliente per email
+    suspend fun getClienteByEmail(email: String): Cliente? = withContext(Dispatchers.IO) {
+        clienteDao.getClienteByEmail(email)
     }
 
+    // Aggiorna i dati del cliente
+    suspend fun updateCliente(cliente: Cliente) = withContext(Dispatchers.IO) {
+        clienteDao.updateCliente(cliente)
+    }
 }
