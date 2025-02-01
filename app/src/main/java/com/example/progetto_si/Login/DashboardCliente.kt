@@ -14,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.progetto_si.Acquisti.AcquistiViewModel
+import com.example.progetto_si.ClassiUtili.AdapterStringNoedit
+import com.example.progetto_si.ClassiUtili.StringAdapter
 import com.example.progetto_si.Cliente.Activity.AcquistaPacchettoActivity
 import com.example.progetto_si.Cliente.Activity.GestioneDatiActivity
 import com.example.progetto_si.Cliente.Room.ClienteViewModel
@@ -29,7 +34,8 @@ class DashboardCliente : AppCompatActivity() {
     private lateinit var calendar: CalendarView
     private lateinit var btnToggleCalendar: Button
     private lateinit var fab: FloatingActionButton
-
+    private lateinit var RW1 : RecyclerView
+    private lateinit var RW2 : RecyclerView
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
 
@@ -43,15 +49,43 @@ class DashboardCliente : AppCompatActivity() {
         btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
         fab = findViewById(R.id.floatingActionButton2)
 
-        calendar.visibility = View.INVISIBLE
-
         val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
         val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
         val textViewWelcome: TextView = findViewById(R.id.txView)
 
+        RW1 = findViewById(R.id.r1)
+        RW2 = findViewById(R.id.r2)
+        RW1.layoutManager = LinearLayoutManager(this)
+        RW2.layoutManager = LinearLayoutManager(this)
+
+
+        RW1.visibility = View.VISIBLE
+        RW2.visibility = View.VISIBLE
+        calendar.visibility = View.INVISIBLE
+
         // Inizializza ViewModel
-        clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
         noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+        var acquistoWM = AcquistiViewModel(application)
+        clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
+
+        //inserimento dei pacchetti consigliati
+
+        lifecycleScope.launch {
+
+            clienteViewModel.getIdCliente(username,password){ id ->
+                acquistoWM.getMaxPacchettoCliente(id) { pck->
+                    val adapter2 = AdapterStringNoedit(pck)
+                    RW2.adapter = adapter2
+                }
+            }
+
+            acquistoWM.getMaxPacchetto { pck->
+                val adapter = AdapterStringNoedit(pck)
+                RW1.adapter = adapter
+            }
+        }
+
+        // FINE -------------------------------------------
 
         // Listener per Mostrare/Nascondere il Calendario
         btnToggleCalendar.setOnClickListener {
@@ -120,6 +154,8 @@ class DashboardCliente : AppCompatActivity() {
 
     private fun toggleCalendarVisibility() {
         calendar.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
+        RW1.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
+        RW2.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)

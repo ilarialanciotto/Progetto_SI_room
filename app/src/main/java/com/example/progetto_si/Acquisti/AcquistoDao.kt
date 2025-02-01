@@ -1,5 +1,6 @@
 package com.example.progetto_si.Acquisti
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -22,4 +23,11 @@ interface AcquistoDao {
 
     @Query ("SELECT COUNT (DISTINCT pacchetto) FROM ACQUISTI WHERE cliente=:idC")
     fun getNumeroAcquistiPerCliente(idC: Int): Int
+
+    @Query ("SELECT p.nome  FROM acquisti a join pacchetto p on a.pacchetto=p.id  GROUP BY pacchetto ORDER BY COUNT(pacchetto) DESC LIMIT 2 ")
+    fun maxPacchettoAcquistato() : List<String>
+
+    @Query ("SELECT p.nome  FROM acquisti a join pacchetto p on a.pacchetto=p.id  WHERE cliente=:idCliente GROUP BY pacchetto ORDER BY COUNT(pacchetto) DESC LIMIT 2")
+    fun maxPacchettoCliente(idCliente : Int) : List<String>
+
 }

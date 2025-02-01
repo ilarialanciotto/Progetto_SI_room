@@ -2,6 +2,7 @@ package com.example.progetto_si.Acquisti
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.progetto_si.MyDatabase
 import com.example.progetto_si.Pacchetto.Pacchetto
@@ -40,6 +41,24 @@ class AcquistiViewModel (application : Application) : AndroidViewModel(applicati
     fun getPacchettoById(idCliente: Int, callback: (List<Pacchetto>) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = acquistoDao.getPacchettoById(idCliente)
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
+    fun getMaxPacchetto(callback: (List<String>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = acquistoDao.maxPacchettoAcquistato()
+            withContext(Dispatchers.Main) {
+                callback(result)
+            }
+        }
+    }
+
+    fun getMaxPacchettoCliente(idCliente: Int,callback: (List<String>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = acquistoDao.maxPacchettoCliente(idCliente)
             withContext(Dispatchers.Main) {
                 callback(result)
             }
