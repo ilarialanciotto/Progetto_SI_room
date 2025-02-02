@@ -74,13 +74,15 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
 
     }
 
-    // Recupera un cliente per email
-    suspend fun getClienteByEmail(email: String): Cliente? = withContext(Dispatchers.IO) {
-        clienteDao.getClienteByEmail(email)
+    fun getClienteByEmail(email: String): Cliente? {
+        return clienteDao.getClienteByEmail(email)
     }
 
+
     // Aggiorna i dati del cliente
-    suspend fun updateCliente(cliente: Cliente) = withContext(Dispatchers.IO) {
-        clienteDao.updateCliente(cliente)
+    fun updateCliente(cliente: Cliente) {
+        viewModelScope.launch(Dispatchers.IO) {
+            clienteDao.update(cliente)
+        }
     }
 }
