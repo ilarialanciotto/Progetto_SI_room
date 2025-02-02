@@ -34,7 +34,7 @@ interface ClienteDao {
     fun getClientiConPacchetti(): List<Cliente>
 
     @Update
-    fun updateCliente(cliente: Cliente)
+    fun update(cliente: Cliente)
 
     @Query("SELECT * FROM clienti WHERE email = :email")
     fun getClienteByEmail(email: String): Cliente
