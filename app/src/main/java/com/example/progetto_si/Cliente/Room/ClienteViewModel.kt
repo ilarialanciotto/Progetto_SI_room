@@ -1,6 +1,7 @@
 package com.example.progetto_si.Cliente.Room
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -79,10 +80,17 @@ class ClienteViewModel(application: Application) : AndroidViewModel(application)
     }
 
 
-    // Aggiorna i dati del cliente
     fun updateCliente(cliente: Cliente) {
         viewModelScope.launch(Dispatchers.IO) {
-            clienteDao.update(cliente)
+            val rowsUpdated = clienteDao.update(cliente)
+            withContext(Dispatchers.Main) {
+                if (rowsUpdated > 0) {
+                    Toast.makeText(getApplication(), "Dati aggiornati con successo!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(getApplication(), "Errore nell'aggiornamento", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
+
 }

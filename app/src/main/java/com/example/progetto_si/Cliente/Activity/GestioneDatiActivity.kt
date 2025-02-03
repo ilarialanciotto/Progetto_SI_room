@@ -26,7 +26,7 @@ class GestioneDatiActivity : AppCompatActivity() {
     private lateinit var buttonSave: Button
     private lateinit var buttonUndo: Button
 
-    private lateinit var clienteCorrente: Cliente
+    private var clienteCorrente: Cliente? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +44,15 @@ class GestioneDatiActivity : AppCompatActivity() {
         buttonSave = findViewById(R.id.buttonSave)
         buttonUndo = findViewById(R.id.buttonUndo)
 
-        val email = intent.getStringExtra("email")
+
+        val email = intent.getStringExtra("EXTRA_USERNAME")
 
         if (email != null) {
             caricaDatiCliente(email)
         } else {
-            Toast.makeText(this, "Errore: Nessuna email trovata", Toast.LENGTH_SHORT).show()
-            finish()  // Chiude l'activity se l'email non è disponibile
+            Toast.makeText(this, "Errore: Email non trovata", Toast.LENGTH_SHORT).show()
         }
+
 
         // Salva le modifiche al database
         buttonSave.setOnClickListener {
@@ -62,50 +63,58 @@ class GestioneDatiActivity : AppCompatActivity() {
         buttonUndo.setOnClickListener {
             ripristinaDatiOriginali()
         }
+
+
     }
 
     private fun caricaDatiCliente(email: String) {
         lifecycleScope.launch {
             val cliente = withContext(Dispatchers.IO) { clienteViewModel.getClienteByEmail(email) }
-            cliente?.let {
-                clienteCorrente = clienteViewModel.getClienteByEmail(email)!!
-                runOnUiThread {
-                    editName.setText(it.nome)
-                    editSurname.setText(it.cognome)
-                    editEmail.setText(it.email)  // Email non modificabile
+
+            if (cliente != null) {
+                clienteCorrente = cliente
+
+                withContext(Dispatchers.Main) {
+                    editName.setText(cliente.nome)
+                    editSurname.setText(cliente.cognome)
+                    editEmail.setText(cliente.email)
                     editEmail.isEnabled = false
-                    editPassword.setText(it.password)
-                    editPhone.setText(it.telefono)
-                    editCompany.setText(it.azienda)
+                    editPassword.setText(cliente.password)
+                    editPhone.setText(cliente.telefono)
+                    editCompany.setText(cliente.azienda)
                 }
-            } ?: runOnUiThread {
-                Toast.makeText(this@GestioneDatiActivity, "Errore: Utente non trovato", Toast.LENGTH_SHORT).show()
+            } else {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@GestioneDatiActivity, "Errore: Utente non trovato", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
+
     private fun aggiornaDatiCliente() {
-        if (clienteCorrente == null) {
-            Toast.makeText(this, "Errore: Nessun utente caricato", Toast.LENGTH_SHORT).show()
+        val cliente = clienteCorrente
+        if (cliente == null) {
+            Toast.makeText(this, "Errore: Nessun cliente caricato", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val updatedCliente = Cliente(
-            email = editEmail.text.toString(),
-            nome = editName.text.toString(),
-            cognome = editSurname.text.toString(),
-            password = editPassword.text.toString(),
-            telefono = editPhone.text.toString(),
-            azienda = editCompany.text.toString(),
-            tipo = "cliente"
+        val clienteAggiornato = Cliente(
+            cliente.id, // Mantieni lo stesso ID
+            editName.text.toString(),
+            editSurname.text.toString(),
+            editEmail.text.toString(),
+            editPassword.text.toString(),
+            editPhone.text.toString(),
+            editCompany.text.toString(),
+            "cliente"
         )
 
         lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                clienteViewModel.updateCliente(updatedCliente)
-            }
-            runOnUiThread {
-                Toast.makeText(this@GestioneDatiActivity, "Dati aggiornati con successo!", Toast.LENGTH_SHORT).show()
+            clienteViewModel.updateCliente(clienteAggiornato)
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@GestioneDatiActivity, "Dati aggiornati con successo", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
     }
