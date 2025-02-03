@@ -18,74 +18,73 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progetto_si.Acquisti.AcquistiViewModel
 import com.example.progetto_si.ClassiUtili.AdapterStringNoedit
-import com.example.progetto_si.ClassiUtili.StringAdapter
-import com.example.progetto_si.Cliente.Activity.AcquistaPacchettoActivity
-import com.example.progetto_si.Cliente.Activity.GestioneDatiActivity
+import com.example.progetto_si.Cliente.Activity.*
 import com.example.progetto_si.Cliente.Room.ClienteViewModel
-import com.example.progetto_si.Cliente.Activity.PacchettiActivity
-import com.example.progetto_si.Cliente.Activity.RichiesteActivity
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteViewModel
 import com.example.progetto_si.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+
 class DashboardCliente : AppCompatActivity() {
 
     private lateinit var calendar: CalendarView
     private lateinit var btnToggleCalendar: Button
     private lateinit var fab: FloatingActionButton
-    private lateinit var RW1 : RecyclerView
-    private lateinit var RW2 : RecyclerView
+    private lateinit var RW1: RecyclerView
+    private lateinit var RW2: RecyclerView
+    private lateinit var textView6: TextView
+    private lateinit var textView7: TextView
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
+
+    private var isCalendarVisible = false // Stato del calendario
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_cliente)
 
-        // Inizializza View
+        // Inizializza le view
         calendar = findViewById(R.id.calendarView)
         btnToggleCalendar = findViewById(R.id.btnToggleCalendar)
         fab = findViewById(R.id.floatingActionButton2)
-
-        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
-        val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
-        val textViewWelcome: TextView = findViewById(R.id.txView)
-
+        textView6 = findViewById(R.id.textView6)
+        textView7 = findViewById(R.id.textView7)
         RW1 = findViewById(R.id.r1)
         RW2 = findViewById(R.id.r2)
+
+        // Imposta i layout dei RecyclerView
         RW1.layoutManager = LinearLayoutManager(this)
         RW2.layoutManager = LinearLayoutManager(this)
 
-
-        RW1.visibility = View.VISIBLE
-        RW2.visibility = View.VISIBLE
-        calendar.visibility = View.INVISIBLE
-
         // Inizializza ViewModel
         noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
-        var acquistoWM = AcquistiViewModel(application)
+        val acquistoWM = AcquistiViewModel(application)
         clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
 
-        //inserimento dei pacchetti consigliati
+        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
+        val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
 
+        // Imposta la visibilità iniziale
+        calendar.visibility = View.GONE
+        textView6.visibility = View.VISIBLE
+        textView7.visibility = View.VISIBLE
+        RW1.visibility = View.VISIBLE
+        RW2.visibility = View.VISIBLE
+
+        // Carica i pacchetti consigliati
         lifecycleScope.launch {
-
-            clienteViewModel.getIdCliente(username,password){ id ->
-                acquistoWM.getMaxPacchettoCliente(id) { pck->
-                    val adapter2 = AdapterStringNoedit(pck)
-                    RW2.adapter = adapter2
+            clienteViewModel.getIdCliente(username, password) { id ->
+                acquistoWM.getMaxPacchettoCliente(id) { pck ->
+                    RW2.adapter = AdapterStringNoedit(pck)
                 }
             }
 
-            acquistoWM.getMaxPacchetto { pck->
-                val adapter = AdapterStringNoedit(pck)
-                RW1.adapter = adapter
+            acquistoWM.getMaxPacchetto { pck ->
+                RW1.adapter = AdapterStringNoedit(pck)
             }
         }
-
-        // FINE -------------------------------------------
 
         // Listener per Mostrare/Nascondere il Calendario
         btnToggleCalendar.setOnClickListener {
@@ -98,8 +97,26 @@ class DashboardCliente : AppCompatActivity() {
             showNoteDialog(selectedDate, username)
         }
 
-        // Configura il FAB
+        // Configura il Floating Action Button
         setupFab(username, password)
+    }
+
+    private fun toggleCalendarVisibility() {
+        isCalendarVisible = !isCalendarVisible
+
+        if (isCalendarVisible) {
+            calendar.visibility = View.VISIBLE
+            textView6.visibility = View.GONE
+            textView7.visibility = View.GONE
+            RW1.visibility = View.GONE
+            RW2.visibility = View.GONE
+        } else {
+            calendar.visibility = View.GONE
+            textView6.visibility = View.VISIBLE
+            textView7.visibility = View.VISIBLE
+            RW1.visibility = View.VISIBLE
+            RW2.visibility = View.VISIBLE
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -117,74 +134,45 @@ class DashboardCliente : AppCompatActivity() {
         }
     }
 
-
     private fun handleFabAction(actionId: Int, username: String, password: String): Boolean {
-        return when (actionId) {
-            R.id.action_pacchetti -> {
-                startActivity(Intent(this, PacchettiActivity::class.java).apply {
-                    putExtra("EXTRA_USERNAME", username)
-                    putExtra("EXTRA_PASSWORD", password)
-                })
-                true
-            }
-            R.id.action_richieste -> {
-                startActivity(Intent(this, RichiesteActivity::class.java).apply {
-                    putExtra("EXTRA_USERNAME", username)
-                    putExtra("EXTRA_PASSWORD", password)
-                })
-                true
-            }
-            R.id.action_acquista -> {
-                startActivity(Intent(this, AcquistaPacchettoActivity::class.java).apply {
-                    putExtra("EXTRA_USERNAME", username)
-                    putExtra("EXTRA_PASSWORD", password)
-                })
-                true
-            }
-            R.id.action_iMieiDati -> {
-                startActivity(Intent(this, GestioneDatiActivity::class.java).apply {
-                    putExtra("EXTRA_USERNAME", username)
-                    putExtra("EXTRA_PASSWORD", password)
-                })
-                true
-            }
-            else -> false
+        val intent = when (actionId) {
+            R.id.action_pacchetti -> Intent(this, PacchettiActivity::class.java)
+            R.id.action_richieste -> Intent(this, RichiesteActivity::class.java)
+            R.id.action_acquista -> Intent(this, AcquistaPacchettoActivity::class.java)
+            R.id.action_iMieiDati -> Intent(this, GestioneDatiActivity::class.java)
+            else -> return false
         }
-    }
 
-    private fun toggleCalendarVisibility() {
-        calendar.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
-        RW1.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
-        RW2.visibility = if (calendar.isVisible) View.GONE else View.VISIBLE
+        intent.putExtra("EXTRA_USERNAME", username)
+        intent.putExtra("EXTRA_PASSWORD", password)
+        startActivity(intent)
+
+        return true
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun showNoteDialog(data: String, username: String) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_note, null)
-        val dialogBuilder = AlertDialog.Builder(this).setView(dialogView).setCancelable(true)
         val layout = dialogView.findViewById<LinearLayout>(R.id.LL)
-        val dialog = dialogBuilder.create()
+        val dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(true).create()
 
         lifecycleScope.launch {
-            if (isActivityActive()) {
-                noteViewModel.getNotesByDate(data, username) { notes ->
-                    if (isActivityActive() && notes.isNotEmpty()) {
-                        layout.removeAllViews()
-                        notes.forEach { note ->
-                            val dynamicNoteEditText = EditText(this@DashboardCliente).apply {
-                                setText(note)
-                                backgroundTintList =
-                                    ColorStateList.valueOf(Color.parseColor("#673AB7"))
-                                isFocusable = false
-                                isClickable = true
-                            }
-                            layout.addView(dynamicNoteEditText)
+            noteViewModel.getNotesByDate(data, username) { notes ->
+                if (notes.isNotEmpty()) {
+                    layout.removeAllViews()
+                    notes.forEach { note ->
+                        val noteEditText = EditText(this@DashboardCliente).apply {
+                            setText(note)
+                            backgroundTintList = ColorStateList.valueOf(Color.parseColor("#673AB7"))
+                            isFocusable = false
+                            isClickable = true
+                        }
+                        layout.addView(noteEditText)
 
-                            dynamicNoteEditText.setOnClickListener { view ->
-                                noteViewModel.getNoteId(data, note, username) { id ->
-                                    if (id != -1) {
-                                        showNotePopup(view, id, layout)
-                                    }
+                        noteEditText.setOnClickListener { view ->
+                            noteViewModel.getNoteId(data, note, username) { id ->
+                                if (id != -1) {
+                                    showNotePopup(view, id, layout)
                                 }
                             }
                         }
@@ -221,33 +209,26 @@ class DashboardCliente : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun showNotePopup(view: View, noteId: Int, layout: LinearLayout) {
-        val popupMenu = PopupMenu(this@DashboardCliente, view)
+        val popupMenu = PopupMenu(this, view)
         popupMenu.menuInflater.inflate(R.menu.note_menu, popupMenu.menu)
         popupMenu.setForceShowIcon(true)
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.delete_note -> {
-                    lifecycleScope.launch {
-                        noteViewModel.getNota(noteId) { nota ->
-                            noteViewModel.deleteNota(nota)
-                            layout.removeView(view)
-                            Toast.makeText(this@DashboardCliente, "Nota eliminata", Toast.LENGTH_SHORT).show()
-                        }
+            if (menuItem.itemId == R.id.delete_note) {
+                lifecycleScope.launch {
+                    noteViewModel.getNota(noteId) { nota ->
+                        noteViewModel.deleteNota(nota)
+                        layout.removeView(view)
+                        Toast.makeText(this@DashboardCliente, "Nota eliminata", Toast.LENGTH_SHORT).show()
                     }
-                    true
                 }
-                else -> false
-            }
+                true
+            } else false
         }
         popupMenu.show()
     }
 
     private fun formatDate(year: Int, month: Int, day: Int): String {
-        val monthFormatted = String.format("%02d", month + 1)
-        val dayFormatted = String.format("%02d", day)
-        return "$year-$monthFormatted-$dayFormatted"
+        return "%04d-%02d-%02d".format(year, month + 1, day)
     }
-
-    private fun isActivityActive(): Boolean = !isFinishing && !isDestroyed
 }
