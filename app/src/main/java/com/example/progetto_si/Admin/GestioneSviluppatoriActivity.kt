@@ -30,7 +30,7 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
             selectedSviluppatore = sviluppatore
             Toast.makeText(
                 this,
-                "Selezionato: ${sviluppatore.nome}",
+                getString(R.string.Selezionato, sviluppatore.nome),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -53,7 +53,8 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_modifica_sviluppatore).setOnClickListener {
             selectedSviluppatore?.let {
                 showEditSviluppatoreDialog(it)
-            } ?: Toast.makeText(this, "Seleziona uno sviluppatore da modificare", Toast.LENGTH_SHORT).show()
+            } ?: Toast.makeText(this,
+                getString(R.string.seleziona_uno_sviluppatore_da_modificare), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -67,9 +68,9 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
         val progettiEditText = dialogView.findViewById<EditText>(R.id.edit_progetti_sviluppatore)
 
         AlertDialog.Builder(this)
-            .setTitle("Aggiungi Sviluppatore")
+            .setTitle(getString(R.string.aggiungi_sviluppatorE))
             .setView(dialogView)
-            .setPositiveButton("Aggiungi") { _, _ ->
+            .setPositiveButton(R.string.aggiungi) { _, _ ->
                 val nome = nomeEditText.text.toString()
                 val cognome = cognomeEditText.text.toString()
                 val email = emailEditText.text.toString()
@@ -87,12 +88,14 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
                         tipo = "sviluppatore"
                     )
                     viewModel.insert(nuovoSviluppatore)
-                    Toast.makeText(this, "Sviluppatore aggiunto", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.sviluppatore_aggiunto), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.compila_tutti_i_campi), Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Annulla", null)
+            .setNegativeButton(R.string.annullaa, null)
             .show()
     }
     private fun showEditSviluppatoreDialog(sviluppatore: Sviluppatore) {
@@ -111,9 +114,9 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
         progettiEditText.setText(sviluppatore.progetti)
 
         AlertDialog.Builder(this)
-            .setTitle("Modifica Sviluppatore")
+            .setTitle(R.string.modifica_sviluppatore)
             .setView(dialogView)
-            .setPositiveButton("Salva") { _, _ ->
+            .setPositiveButton(R.string.salva) { _, _ ->
                 val nome = nomeEditText.text.toString()
                 val cognome = cognomeEditText.text.toString()
                 val email = emailEditText.text.toString()
@@ -129,12 +132,14 @@ class GestioneSviluppatoriActivity : AppCompatActivity() {
                         progetti = progetti
                     )
                     viewModel.update(sviluppatoreModificato)
-                    Toast.makeText(this, "Sviluppatore modificato", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.sviluppatore_modificato), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.compila_tutti_i_campI), Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Annulla", null)
+            .setNegativeButton(R.string.annullaa, null)
             .show()
     }
 }

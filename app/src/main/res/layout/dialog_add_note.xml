@@ -8,7 +8,7 @@
 
     <!-- Input per la nota -->
     <TextView
-            android:text="NOTA"
+            android:text="@string/nota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/txt" android:textAlignment="center"
             android:textSize="26dp"/>
@@ -16,7 +16,7 @@
             android:id="@+id/nota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Testo della nota"
+            android:hint="@string/testo_della_nota"
             android:background="@drawable/edittext_border"
             android:padding="10dp"
             android:gravity="top"
@@ -29,7 +29,7 @@
             android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SALVA"
+            android:text="@string/Salva"
             android:layout_gravity="center"
             android:textColor="#1B1B1B" android:textColorLink="#673AB7"/>
 

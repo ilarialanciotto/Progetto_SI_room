@@ -35,14 +35,17 @@ class Register : AppCompatActivity() {
             val password = editTextPassword.text.toString()
 
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Inserire almeno username e password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.inserire_almeno_username_e_password), Toast.LENGTH_SHORT).show()
             } else if (!isValidEmail(username)) {
-                Toast.makeText(this, "Inserire un'email valida", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.inserire_un_email_valida), Toast.LENGTH_SHORT).show()
             } else {
                 lifecycleScope.launch {
                     registrazioniViewModel.checkReg(username) { isUserExist ->
                         if (isUserExist) {
-                            Toast.makeText(this@Register, "Registrazione già esistente", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Register,
+                                getString(R.string.registrazione_gi_esistente), Toast.LENGTH_SHORT).show()
                             btnLog.visibility = View.VISIBLE
                         } else {
                             val registrazione = Registrazioni(
@@ -62,7 +65,8 @@ class Register : AppCompatActivity() {
                                 tipo = "cliente"
                             )
 
-                            Toast.makeText(this@Register, "Dati inseriti con successo", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Register,
+                                getString(R.string.dati_inseriti_con_successo), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

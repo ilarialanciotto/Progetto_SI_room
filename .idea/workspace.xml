@@ -96,6 +96,11 @@
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_sviluppatore.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_custom_options.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
@@ -107,6 +112,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_pacchetto.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_sviluppatore.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
@@ -137,6 +147,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_string.xml">
+        <config>
+          <theme>@style/Theme.Progetto_SI</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sviluppatore.xml">
         <config>
           <theme>@style/Theme.Progetto_SI</theme>
         </config>
@@ -177,14 +192,74 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="corretto funzionamento di GestioneDatiActivity, piccole migliorie grafiche e risoluzione overlay di widget">
+    <list default="true" id="7257cc01-9501-462c-86c5-e6c2766f43bd" name="Changes" comment="layout gestione dati cliente">
+      <change afterPath="$PROJECT_DIR$/app/src/main/language-playstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/language_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/language.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/language_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/language.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/language_foreground.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/language_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/language.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/language_foreground.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/language_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/language.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/language_foreground.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/language_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/language.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/language_foreground.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/language_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/language.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/language_foreground.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/language_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneClientiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneClientiActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestionePacchettiActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneSviluppatoriActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Admin/GestioneSviluppatoriActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/AcquistaPacchettoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/AcquistaPacchettoActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/GestioneDatiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Activity/GestioneDatiActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Cliente/Room/ClienteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardAdmin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardAdmin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardCliente.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardSviluppatore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/DashboardSviluppatore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Login/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Register.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/Register.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/mappaView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progetto_si/mappaView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_acquista_pacchetto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_acquista_pacchetto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_admin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_sviluppatore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_sviluppatore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dettagli_nota.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dettagli_nota.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_clienti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_clienti.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_dati.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_dati.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_pacchetti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_pacchetti.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_sviluppatori.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gestione_sviluppatori.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_cliente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_cliente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pacchetti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pacchetti.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_richieste.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_richieste.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_cliente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_cliente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_note.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_pacchetto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_pacchetto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_sviluppatore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_aggiungi_sviluppatore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_custom_options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_custom_options.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_dettagli_nota.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_dettagli_nota.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_pacchetto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_pacchetto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_sviluppatore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_modifica_sviluppatore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_cliente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_cliente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_pacchetto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_pacchetto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_richiesta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_string.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_string.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_sviluppatore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_sviluppatore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_fab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_fab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,13 +295,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="valueResourceFile" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Data Class" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -254,24 +329,24 @@
     &quot;assignee&quot;: &quot;ilarialanciotto&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ilarialanciotto/Progetto_SI_room.git&quot;,
-    &quot;accountId&quot;: &quot;5214f425-6c18-47fb-8565-afd24c436c7e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ilarialanciotto/Progetto_SI_room.git",
+    "accountId": "5214f425-6c18-47fb-8565-afd24c436c7e"
   },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
     },
-    &quot;owner&quot;: &quot;ilarialanciotto&quot;,
-    &quot;repository&quot;: &quot;Progetto_SI_room&quot;
+    "owner": "ilarialanciotto",
+    "repository": "Progetto_SI_room"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="_Designer_Tab" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -285,48 +360,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;AnalyzeApkAction.lastApkPath&quot;: &quot;C:/Users/vogli/AndroidStudioProjects/Progetto_SI_room/app/build/intermediates/apk/debug/app-debug.apk&quot;,
-    &quot;Android App.MainActivity.executor&quot;: &quot;Run&quot;,
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;ApkExportedModule&quot;: &quot;Progetto_SI.app&quot;,
-    &quot;BundleExportedModule&quot;: &quot;Progetto_SI.app&quot;,
-    &quot;ExportApk.ApkPathForProgetto_SI.app&quot;: &quot;C:\\Users\\vogli\\AndroidStudioProjects\\Progetto_SI_room\\app&quot;,
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;android-custom-viewC:/Users/ilari/eclipse-workspace/Progetto_SI/app/src/main/java/com/example/progetto_si/MyView.kt_SELECTED&quot;: &quot;MyView&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ancoraGestioneClienti&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ilari/eclipse-workspace/Progetto_SI_room&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.XML&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "AnalyzeApkAction.lastApkPath": "C:/Users/vogli/AndroidStudioProjects/Progetto_SI_room/app/build/intermediates/apk/debug/app-debug.apk",
+    "Android App.MainActivity.executor": "Run",
+    "Android App.app.executor": "Run",
+    "ApkExportedModule": "Progetto_SI.app",
+    "BundleExportedModule": "Progetto_SI.app",
+    "ExportApk.ApkPathForProgetto_SI.app": "C:\\Users\\vogli\\AndroidStudioProjects\\Progetto_SI_room\\app",
+    "PROJECT_TRUSTED_KEY": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android-custom-viewC:/Users/ilari/eclipse-workspace/Progetto_SI/app/src/main/java/com/example/progetto_si/MyView.kt_SELECTED": "MyView",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.github.airsaid.androidlocalize.is_overwrite_existing_string": "true",
+    "com.github.airsaid.androidlocalize.selected_languages": "18,100",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "multilingua",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ilari/eclipse-workspace/Progetto_SI_room",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ],
-    &quot;ExportApk.BuildVariants&quot;: [
-      &quot;release&quot;
+    "ExportApk.BuildVariants": [
+      "release"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.2123275739">
       <recent name="com.example.progetto_si" />
@@ -515,7 +592,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Android App.RegisterActivity" />
         <item itemvalue="Android App.RegisterActivity" />
       </list>
     </recent_temporary>
@@ -795,15 +871,7 @@
       <option name="project" value="LOCAL" />
       <updated>1738363349804</updated>
     </task>
-    <task id="LOCAL-00027" summary="piccole modifihe, gestione clienti non fa quello che dovrebbe, app continua a funzionare tranquillamente">
-      <option name="closed" value="true" />
-      <created>1738529532413</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1738529532415</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -850,8 +918,6 @@
     <MESSAGE value="aggiunta utenti" />
     <MESSAGE value="gestione dati del cliente. non li fa ancora modificare e di conseguenza salvare nel db" />
     <MESSAGE value="layout gestione dati cliente" />
-    <MESSAGE value="piccole modifihe, gestione clienti non fa quello che dovrebbe, app continua a funzionare tranquillamente" />
-    <MESSAGE value="corretto funzionamento di GestioneDatiActivity, piccole migliorie grafiche e risoluzione overlay di widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="corretto funzionamento di GestioneDatiActivity, piccole migliorie grafiche e risoluzione overlay di widget" />
+    <option name="LAST_COMMIT_MESSAGE" value="layout gestione dati cliente" />
   </component>
 </project>

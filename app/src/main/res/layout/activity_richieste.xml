@@ -12,7 +12,7 @@
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cerca richiesta..."
+        android:hint="@string/cerca_richiesta"
         android:padding="12dp"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:background="@android:drawable/edit_text"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Nessuna richiesta trovata"
+        android:text="@string/nessuna_richiesta_trovata"
         android:visibility="gone"
         android:textSize="18sp"
         android:textColor="@android:color/darker_gray" />

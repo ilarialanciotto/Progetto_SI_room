@@ -35,7 +35,8 @@ class GestionePacchettiActivity : AppCompatActivity() {
             showBoolean = false,
             onClick = { pacchetto ->
                 selectedPacchetto = pacchetto
-                Toast.makeText(this, "Selezionato: ${pacchetto.nome}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.selezionato, pacchetto.nome), Toast.LENGTH_SHORT).show()
             }
         )
         recyclerView.adapter = adapter
@@ -74,7 +75,8 @@ class GestionePacchettiActivity : AppCompatActivity() {
         btnModificaPacchetto.setOnClickListener {
             selectedPacchetto?.let { pacchetto ->
                 showEditPacchettoDialog(pacchetto)
-            } ?: Toast.makeText(this, "Seleziona un pacchetto da modificare", Toast.LENGTH_SHORT)
+            } ?: Toast.makeText(this,
+                getString(R.string.seleziona_un_pacchetto_da_modificare), Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -88,25 +90,25 @@ class GestionePacchettiActivity : AppCompatActivity() {
         prezzoEditText.setText(pacchetto.prezzo.toString())
 
         AlertDialog.Builder(this)
-            .setTitle("Modifica Pacchetto")
+            .setTitle(getString(R.string.modifica_pacchettO))
             .setView(dialogView)
-            .setPositiveButton("Salva") { _, _ ->
+            .setPositiveButton(getString(R.string.salVaa)) { _, _ ->
                 val nuovoNome = nomeEditText.text.toString()
                 val nuovoPrezzo = prezzoEditText.text.toString().toDoubleOrNull() ?: 0.0
 
                 val pacchettoModificato = pacchetto.copy(nome = nuovoNome, prezzo = nuovoPrezzo)
                 viewModel.Aggiorna(pacchettoModificato)
             }
-            .setNegativeButton("Annulla", null)
+            .setNegativeButton(getString(R.string.annullaa), null)
             .show()
     }
 
     private fun mostraDialogAggiungiPacchetto() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_aggiungi_pacchetto, null)
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Aggiungi Pacchetto")
+            .setTitle(getString(R.string.aggiungi_pacchettO))
             .setView(dialogView)
-            .setPositiveButton("Aggiungi") { _, _ ->
+            .setPositiveButton(R.string.aggiungi) { _, _ ->
                 val nome = dialogView.findViewById<EditText>(R.id.editNomePacchetto).text.toString()
                 val descrizione = dialogView.findViewById<EditText>(R.id.editDescrizionePacchetto).text.toString()
                 val prezzo = dialogView.findViewById<EditText>(R.id.editPrezzoPacchetto).text.toString().toDoubleOrNull() ?: 0.0
@@ -124,9 +126,9 @@ class GestionePacchettiActivity : AppCompatActivity() {
                 )
 
                 viewModel.insert(nuovoPacchetto)
-                Toast.makeText(this, "Pacchetto aggiunto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.pacchetto_aggiunto), Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Annulla", null)
+            .setNegativeButton(getString(R.string.AnNulla), null)
             .create()
 
         dialog.show()
@@ -136,16 +138,17 @@ class GestionePacchettiActivity : AppCompatActivity() {
     private fun eliminaPacchetto() {
         selectedPacchetto?.let { pacchetto ->
             AlertDialog.Builder(this)
-                .setTitle("Conferma Eliminazione")
-                .setMessage("Vuoi eliminare il pacchetto \"${pacchetto.nome}\"?")
-                .setPositiveButton("Elimina") { _, _ ->
+                .setTitle(getString(R.string.conferma_eliminazione))
+                .setMessage(getString(R.string.vuoi_eliminare_il_pacchetto, pacchetto.nome))
+                .setPositiveButton(getString(R.string.elimina)) { _, _ ->
                     viewModel.eliminaPa(pacchetto)
-                    Toast.makeText(this, "Pacchetto eliminato", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.pacchetto_eliminato), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Annulla", null)
+                .setNegativeButton(getString(R.string.ANnulla), null)
                 .create()
                 .show()
-        } ?: Toast.makeText(this, "Nessun pacchetto selezionato", Toast.LENGTH_SHORT).show()
+        } ?: Toast.makeText(this,
+            getString(R.string.nessun_pacchetto_selezionato), Toast.LENGTH_SHORT).show()
     }
 
 }

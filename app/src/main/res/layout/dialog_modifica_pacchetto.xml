@@ -9,7 +9,7 @@
         android:id="@+id/edit_nome_pacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome Pacchetto"
+        android:hint="@string/nome_pacchetTO"
         android:minHeight="48dp"
         android:padding="8dp" />
 
@@ -17,7 +17,7 @@
         android:id="@+id/edit_prezzo_pacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Prezzo Pacchetto"
+        android:hint="@string/prezzo_pacchetto"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:padding="8dp" />

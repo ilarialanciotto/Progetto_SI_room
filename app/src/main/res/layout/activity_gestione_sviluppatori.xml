@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Aggiungi Sviluppatore" />
+        android:text="@string/aggiungi_sviluppatore" />
 
     <Button
         android:id="@+id/btn_modifica_sviluppatore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Modifica Sviluppatore" />
+        android:text="@string/modifica_sviluppatore" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_sviluppatori"

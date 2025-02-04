@@ -50,7 +50,7 @@ class GestioneDatiActivity : AppCompatActivity() {
         if (email != null) {
             caricaDatiCliente(email)
         } else {
-            Toast.makeText(this, "Errore: Email non trovata", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.errore_email_non_trovata), Toast.LENGTH_SHORT).show()
         }
 
 
@@ -85,7 +85,8 @@ class GestioneDatiActivity : AppCompatActivity() {
                 }
             } else {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@GestioneDatiActivity, "Errore: Utente non trovato", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@GestioneDatiActivity,
+                        getString(R.string.errore_utente_non_trovato), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -95,7 +96,8 @@ class GestioneDatiActivity : AppCompatActivity() {
     private fun aggiornaDatiCliente() {
         val cliente = clienteCorrente
         if (cliente == null) {
-            Toast.makeText(this, "Errore: Nessun cliente caricato", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.errore_nessun_cliente_caricato), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -113,7 +115,8 @@ class GestioneDatiActivity : AppCompatActivity() {
         lifecycleScope.launch {
             clienteViewModel.updateCliente(clienteAggiornato)
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@GestioneDatiActivity, "Dati aggiornati con successo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@GestioneDatiActivity,
+                    getString(R.string.dati_aggiornati_con_successo), Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
@@ -127,6 +130,7 @@ class GestioneDatiActivity : AppCompatActivity() {
             editPassword.setText(it.password)
             editPhone.setText(it.telefono)
             editCompany.setText(it.azienda)
-        } ?: Toast.makeText(this, "Nessun dato da ripristinare", Toast.LENGTH_SHORT).show()
+        } ?: Toast.makeText(this,
+            getString(R.string.nessun_dato_da_ripristinare), Toast.LENGTH_SHORT).show()
     }
 }

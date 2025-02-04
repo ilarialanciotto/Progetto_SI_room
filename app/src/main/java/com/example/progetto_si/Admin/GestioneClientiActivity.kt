@@ -51,9 +51,9 @@ class GestioneClientiActivity : AppCompatActivity() {
     private fun showAddClienteDialog(clienteWM: ClienteViewModel) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_cliente, null)
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Aggiungi Cliente")
+            .setTitle(getString(R.string.aggiungi_clienTE))
             .setView(dialogView)
-            .setPositiveButton("Aggiungi") { _, _ ->
+            .setPositiveButton(getString(R.string.aggiungi)) { _, _ ->
                 val nome = dialogView.findViewById<EditText>(R.id.etNome)?.text.toString()
                 val cognome = dialogView.findViewById<EditText>(R.id.etCognome)?.text.toString()
                 val email = dialogView.findViewById<EditText>(R.id.etEmail)?.text.toString()
@@ -75,7 +75,7 @@ class GestioneClientiActivity : AppCompatActivity() {
                 clienteWM.insert(nuovoCliente)
 
             }
-            .setNegativeButton("Annulla", null)
+            .setNegativeButton(getString(R.string.annuLLa), null)
             .create()
 
         dialog.show()

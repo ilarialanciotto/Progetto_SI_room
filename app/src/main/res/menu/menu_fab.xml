@@ -1,14 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_pacchetti"
-    android:title="I tuoi pacchetti" />
+    android:title="@string/i_tuoi_pacchettii" />
     <item
         android:id="@+id/action_richieste"
-    android:title="Le tue richieste" />
+    android:title="@string/le_tue_richieste" />
     <item
         android:id="@+id/action_acquista"
-    android:title="Acquista pacchetto" />
+    android:title="@string/acquista_pacchettoo" />
     <item
         android:id="@+id/action_iMieiDati"
-    android:title="I miei dati" />
+    android:title="@string/i_miei_datii" />
 </menu>

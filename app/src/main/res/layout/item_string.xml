@@ -20,11 +20,11 @@
             <TextView
                     android:id="@+id/txtP"
                     android:layout_height="match_parent"
-                    android:text="Nome pacchetto"
+                    android:text="@string/nome_pacchettO"
                     android:textSize="15sp"
                     android:textColor="@color/light_blue_400" android:layout_width="100dp"/>
             <Button
-                    android:text="maggiori info"
+                    android:text="@string/maggiori_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btn_dettagli" android:textSize="11dp"/>
             <TextView

@@ -22,12 +22,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="PACCHETTI \n DISPONIBILI"
+                    android:text="@string/pacchetti_disponibili"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"
                     android:paddingLeft="10dp"/>
             <TextView
-                    android:text="NUMERO ACQUISTI"
+                    android:text="@string/numero_acquisti"
                     android:layout_width="206dp"
                     android:id="@+id/textView3" android:layout_weight="1"
                     android:paddingLeft="110dp" android:layout_height="match_parent"/>

@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:hint="Inserisci Email: "
+                    android:hint="@string/inserisci_email"
                     android:backgroundTint="@color/oxford_blue"
                     android:padding="12dp"
                     android:layout_marginBottom="13dp"/>
