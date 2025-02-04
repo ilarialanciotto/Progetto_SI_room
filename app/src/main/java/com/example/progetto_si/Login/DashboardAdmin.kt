@@ -21,7 +21,7 @@ class DashboardAdmin : AppCompatActivity() {
 
         // Imposta il messaggio di benvenuto
         val welcomeTextView = findViewById<TextView>(R.id.welcomeTextView)
-        welcomeTextView.text = "Benvenuto, $nome!"
+        welcomeTextView.text = getString(R.string.benvenuTO, nome)
         // Navigazione verso Gestione Clienti
         val btnGestioneClienti = findViewById<Button>(R.id.btn_gestione_clienti)
         btnGestioneClienti.setOnClickListener {

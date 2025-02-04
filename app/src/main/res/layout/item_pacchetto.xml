@@ -18,7 +18,7 @@
             android:id="@+id/txtNomePacchetto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome pacchetto"
+            android:text="@string/nome_pacchetto"
             android:textSize="18sp"
             android:textColor="@android:color/black" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/txtDescrizionePacchetto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrizione pacchetto"
+            android:text="@string/descrizione_pacchetto"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"
             android:layout_marginTop="4dp" />
@@ -37,7 +37,7 @@
             android:id="@+id/txtPrezzoPacchetto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="€0.00"
+            android:text="@string/_0_00"
             android:textSize="16sp"
             android:textColor="@android:color/holo_blue_dark"
             android:layout_marginTop="8dp" />
@@ -47,7 +47,7 @@
             android:id="@+id/btnAcquista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Acquista"
+            android:text="@string/acquista"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/oxford_blue"
             android:textColor="@android:color/white"

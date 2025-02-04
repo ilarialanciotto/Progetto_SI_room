@@ -9,6 +9,6 @@
         android:id="@+id/txtNomeSviluppatore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome Sviluppatore"
+        android:text="@string/nome_sviluppatore"
         android:textSize="18sp" />
 </LinearLayout>

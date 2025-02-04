@@ -187,7 +187,7 @@ class DashboardCliente : AppCompatActivity() {
         val noteEditText = dialogView.findViewById<EditText>(R.id.nota)
         val btn = dialogView.findViewById<Button>(R.id.btn)
 
-        titleTextView.text = "Nota per il $data"
+        titleTextView.text = getString(R.string.nota_per_il, data)
 
         btn.setOnClickListener {
             val notaT = noteEditText.text.toString()
@@ -200,7 +200,8 @@ class DashboardCliente : AppCompatActivity() {
                         pacchetto = 1
                     )
                     noteViewModel.insert(nota)
-                    Toast.makeText(this@DashboardCliente, "Nota salvata per il $data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DashboardCliente,
+                        getString(R.string.nota_salvata_per_il, data), Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
             }
@@ -219,7 +220,8 @@ class DashboardCliente : AppCompatActivity() {
                     noteViewModel.getNota(noteId) { nota ->
                         noteViewModel.deleteNota(nota)
                         layout.removeView(view)
-                        Toast.makeText(this@DashboardCliente, "Nota eliminata", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DashboardCliente,
+                            getString(R.string.nota_eliminata), Toast.LENGTH_SHORT).show()
                     }
                 }
                 true

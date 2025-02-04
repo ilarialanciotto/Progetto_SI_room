@@ -14,7 +14,7 @@
         <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
                       android:orientation="vertical">
             <TextView
-                    android:text="TextView"
+                    android:text="@string/textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txTT" android:textSize="26dp"
@@ -41,11 +41,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <Button
-                        android:text="modifica"
+                        android:text="@string/modifica"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/modifica" android:layout_weight="1"/>
                 <Button
-                        android:text="esci"
+                        android:text="@string/esci"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/esci" android:layout_weight="1"/>
             </LinearLayout>

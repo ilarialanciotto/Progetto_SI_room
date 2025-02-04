@@ -80,7 +80,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\vogli\Downloads\DALL·E 2024-12-27 16.03.47 - A sleek, modern app icon featuring a stylized shield with a keyhole in the center, symbolizing software security and license management. The shield sh.webp" />
+                                                <entry key="imagePath" value="C:\Users\vogli\Downloads\R.png" />
                                                 <entry key="scalingPercent" value="101" />
                                               </map>
                                             </option>
@@ -109,6 +109,11 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="outputName" value="language" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -169,7 +174,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users" />
+                                                <entry key="imagePath" value="C:\Users\vogli\AppData\Local\Temp\ic_android_black_24dp.xml" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>

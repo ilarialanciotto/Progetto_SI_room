@@ -61,7 +61,8 @@ class mappaView : AppCompatActivity(), LocationListener {
                 this
             )
         } else {
-            Toast.makeText(this, "Permesso di localizzazione non concesso", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.permesso_di_localizzazione_non_concesso), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -90,7 +91,7 @@ class mappaView : AppCompatActivity(), LocationListener {
         val marker = Marker(mapView)
         marker.position = geoPoint
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        marker.title = "Sei qui!"
+        marker.title = getString(R.string.sei_qui)
         val drawable = ContextCompat.getDrawable(this, R.drawable.baseline_man_24)
         marker.icon = drawable
         mapView.overlays.clear()
@@ -119,9 +120,9 @@ class mappaView : AppCompatActivity(), LocationListener {
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
             if (location.second.latitude==pref.latitude &&
                 location.second.longitude==pref.longitude)
-                marker.title="Sede SecureTech vicina"
+                marker.title= getString(R.string.sede_securetech_vicina)
             else
-                marker.title = "SecureTech"
+                marker.title = getString(R.string.securetech)
             val drawable = ContextCompat.getDrawable(this, R.drawable.baseline_location_pin_24)
             marker.icon = drawable
             mapView.overlays.add(marker)

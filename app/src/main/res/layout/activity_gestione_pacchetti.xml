@@ -12,7 +12,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestione Pacchetti"
+        android:text="@string/gestione_pacchettI"
         android:textSize="24sp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp" />
@@ -37,20 +37,20 @@
             android:layout_width="158dp"
             android:layout_height="64dp"
             android:layout_margin="8dp"
-            android:text="Aggiungi Pacchetto" />
+            android:text="@string/aggiungi_pacchetto" />
 
         <Button
             android:id="@+id/btn_modifica_pacchetto"
             android:layout_width="121dp"
             android:layout_height="64dp"
             android:layout_margin="8dp"
-            android:text="Modifica Pacchetto" />
+            android:text="@string/modifica_pacchetto" />
 
         <Button
             android:id="@+id/btn_elimina_pacchetto"
             android:layout_width="128dp"
             android:layout_height="64dp"
             android:layout_margin="8dp"
-            android:text="Elimina Pacchetto" />
+            android:text="@string/elimina_pacchetto" />
     </LinearLayout>
 </LinearLayout>

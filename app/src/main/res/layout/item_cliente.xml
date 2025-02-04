@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Nome Cliente"
+        android:text="@string/nome_cliente"
         android:textSize="16sp" />
 
     <TextView
@@ -18,13 +18,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Email"
+        android:text="@string/email"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txt_numero_pacchetti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pacchetti: 0"
+        android:text="@string/pacchetti_0"
         android:textSize="16sp" />
 </LinearLayout>

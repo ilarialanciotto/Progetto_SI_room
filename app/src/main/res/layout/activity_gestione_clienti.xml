@@ -10,7 +10,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestione Clienti"
+        android:text="@string/Gestione_clienti"
         android:textSize="24sp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp" />
@@ -19,7 +19,7 @@
         android:id="@+id/btnAggiungiCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aggiungi Cliente"
+        android:text="@string/aggiungi_cliente"
         android:layout_gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView

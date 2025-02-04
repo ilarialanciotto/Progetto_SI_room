@@ -32,7 +32,7 @@ class DashboardSviluppatore : AppCompatActivity() {
 
         val username = intent.getStringExtra("EXTRA_USERNAME")
         val textViewWelcome: TextView = findViewById(R.id.txView)
-        textViewWelcome.setText("Ciao $username!")
+        textViewWelcome.setText(getString(R.string.ciao, username))
 
         val recyclerView: RecyclerView = findViewById(R.id.lista)
         recyclerView.layoutManager = LinearLayoutManager(this)

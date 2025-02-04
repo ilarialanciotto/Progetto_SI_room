@@ -35,7 +35,9 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/webVW"/>
+            android:id="@+id/webVW">
+
+    </WebView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

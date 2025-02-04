@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-light"
-        android:text="I tuoi Pacchetti"
+        android:text="@string/i_tuoi_pacchetti"
         android:textAlignment="center"
         android:textColor="@color/platinum"
         android:textSize="36sp"

@@ -9,44 +9,44 @@
         android:id="@+id/etNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome" />
+        android:hint="@string/Nome" />
 
     <EditText
         android:id="@+id/etCognome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cognome" />
+        android:hint="@string/Cognome" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:hint="@string/Email" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/etTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Telefono"
+        android:hint="@string/telefono"
         android:inputType="phone" />
 
     <EditText
         android:id="@+id/etAzienda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Azienda" />
+        android:hint="@string/azienda" />
 
     <EditText
         android:id="@+id/etTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tipo" />
+        android:hint="@string/tipo" />
 
 </LinearLayout>

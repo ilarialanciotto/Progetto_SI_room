@@ -1,6 +1,7 @@
 package com.example.progetto_si
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -22,10 +23,13 @@ import com.example.progetto_si.Pacchetto.PacchettoViewModel
 import com.example.progetto_si.Sviluppatore.Sviluppatore
 import com.example.progetto_si.Sviluppatore.SviluppatoreViewModel
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        loadLocale()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         val Web : WebView = findViewById(R.id.webVW)
         Web.webViewClient = WebViewClient()
         Web.settings.javaScriptEnabled = true
-        //sito creato da noi
         Web.loadUrl("https://cybersicuri.certfin.it/")
 
         // Popola il database
@@ -81,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             password = "developer123",
             livello = "senior",
             progetti = "Progetto A, Progetto B",
-            tipo = "Analista"
+            tipo = "analista"
         )
 
         val svi2 = Sviluppatore(
@@ -100,8 +103,8 @@ class MainActivity : AppCompatActivity() {
             email = "chira.verdi@example.com",
             password = "developer123",
             livello = "senior",
-            progetti = "Progetto A, Progetto B",
-            tipo = "Responsabile consegne digitali"
+            progetti = getString(R.string.progetto_a_progetto_b),
+            tipo = "responsabile consegne digitali"
         )
 
         val cli = Cliente(
@@ -137,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         var not = Note(
             data = "2025-1-1",
             email = "lalla@example.com",
-            nota = "nota di prova",
+            nota = getString(R.string.nota_di_prova),
             pacchetto = 1
         )
 
@@ -158,67 +161,67 @@ class MainActivity : AppCompatActivity() {
         acquistoWM.insert(acquisto)
 
         val pacchettoBase = Pacchetto(
-            nome = "Pacchetto Base",
-            descrizione = "Un pacchetto base per piccole aziende.",
+            nome = getString(R.string.pacchetto_base),
+            descrizione = getString(R.string.un_pacchetto_base_per_piccole_aziende),
             prezzo = 299.99,
             durata = "10g",
-            componenteHardware = "Router di base",
-            componenteSoftware = "Antivirus standard"
+            componenteHardware = getString(R.string.router_di_base),
+            componenteSoftware = getString(R.string.antivirus_standard)
         )
 
         packWM.insert(pacchettoBase)
 
         val pacchettoAvanzato = Pacchetto(
-            nome = "Pacchetto Avanzato",
-            descrizione = "Un pacchetto avanzato per medie imprese.",
+            nome = getString(R.string.pacchetto_avanzato),
+            descrizione = getString(R.string.un_pacchetto_avanzato_per_medie_imprese),
             prezzo = 599.99,
             durata = "10g",
-            componenteHardware = "Router avanzato + Firewall",
-            componenteSoftware = "Antivirus avanzato + Gestione della rete"
+            componenteHardware = getString(R.string.router_avanzato_firewall),
+            componenteSoftware = getString(R.string.antivirus_avanzato_gestione_della_rete)
         )
 
         packWM.insert(pacchettoAvanzato)
 
         val pacchettoPremium = Pacchetto(
-            nome = "Pacchetto Premium",
-            descrizione = "Un pacchetto premium per grandi aziende.",
+            nome = getString(R.string.pacchetto_premium),
+            descrizione = getString(R.string.un_pacchetto_premium_per_grandi_aziende),
             prezzo = 1299.99,
             durata = "10g",
-            componenteHardware = "Server dedicato + Router di alta gamma",
-            componenteSoftware = "Suite completa di sicurezza informatica"
+            componenteHardware = getString(R.string.server_dedicato_router_di_alta_gamma),
+            componenteSoftware = getString(R.string.suite_completa_di_sicurezza_informatica)
         )
 
         packWM.insert(pacchettoPremium)
 
         val pacchettoStartup = Pacchetto(
-            nome = "Pacchetto Startup",
-            descrizione = "Un pacchetto pensato per startup e nuove attività.",
+            nome = getString(R.string.pacchetto_startup),
+            descrizione = getString(R.string.un_pacchetto_pensato_per_startup_e_nuove_attivit),
             prezzo = 399.99,
             durata = "10g",
-            componenteHardware = "Router base",
-            componenteSoftware = "Gestione della rete + Antivirus"
+            componenteHardware = getString(R.string.router_base),
+            componenteSoftware = getString(R.string.gestione_della_rete_antivirus)
         )
 
         packWM.insert(pacchettoStartup)
 
         val pacchettoEnterprise = Pacchetto(
-            nome = "Pacchetto Enterprise",
-            descrizione = "Un pacchetto su misura per grandi imprese.",
+            nome = getString(R.string.pacchetto_enterprise),
+            descrizione = getString(R.string.un_pacchetto_su_misura_per_grandi_imprese),
             prezzo = 1999.99,
             durata = "10g",
-            componenteHardware = "Server aziendale + Firewall dedicato",
-            componenteSoftware = "Sicurezza totale + Gestione centralizzata"
+            componenteHardware = getString(R.string.server_aziendale_firewall_dedicato),
+            componenteSoftware = getString(R.string.sicurezza_totale_gestione_centralizzata)
         )
 
         packWM.insert(pacchettoEnterprise)
 
         val pacchettoHomeOffice = Pacchetto(
-            nome = "Pacchetto Home Office",
-            descrizione = "Un pacchetto per chi lavora da casa.",
+            nome = getString(R.string.pacchetto_home_office),
+            descrizione = getString(R.string.un_pacchetto_per_chi_lavora_da_casa),
             prezzo = 199.99,
             durata = "10g",
-            componenteHardware = "Modem router",
-            componenteSoftware = "Antivirus base + Protezione dati"
+            componenteHardware = getString(R.string.modem_router),
+            componenteSoftware = getString(R.string.antivirus_base_protezione_dati)
         )
 
         packWM.insert(pacchettoHomeOffice)
@@ -247,8 +250,63 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.menu_language -> {
+                showLanguageDialog()
+                return true
+            }
 
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun showLanguageDialog() {
+        val languages = arrayOf("Italiano", "English", "Français")
+
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("Seleziona Lingua")
+            .setItems(languages) { _, which ->
+                when (which) {
+                    0 -> setLocale("it") // Italiano
+                    1 -> setLocale("en") // Inglese
+                    2 -> setLocale("fr") // Francese
+                }
+            }
+        builder.create().show()
+    }
+
+    private fun setLocale(langCode: String) {
+        val locale = Locale(langCode)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        // Salva la lingua nelle SharedPreferences
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putString("App_Lang", langCode)
+        editor.apply()
+
+        // Ricarica l'activity per applicare la lingua
+        val intent = intent
+        finish()
+        startActivity(intent)
+    }
+
+
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("App_Lang", "it") // Default italiano
+
+        val locale = Locale(language!!)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
+
+
 }

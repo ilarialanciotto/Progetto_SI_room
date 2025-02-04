@@ -9,36 +9,36 @@
         android:id="@+id/editNomePacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome Pacchetto" />
+        android:hint="@string/Nome_pacchetto" />
 
     <EditText
         android:id="@+id/editDescrizionePacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descrizione" />
+        android:hint="@string/descrizione" />
 
     <EditText
         android:id="@+id/editPrezzoPacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Prezzo"
+        android:hint="@string/prezzo"
         android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editDurataPacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Durata" />
+        android:hint="@string/durata" />
 
     <EditText
         android:id="@+id/editHardwarePacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Componente Hardware" />
+        android:hint="@string/componente_hardware" />
 
     <EditText
         android:id="@+id/editSoftwarePacchetto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Componente Software" />
+        android:hint="@string/componente_software" />
 </LinearLayout>

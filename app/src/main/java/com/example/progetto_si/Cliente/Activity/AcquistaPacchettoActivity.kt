@@ -60,6 +60,6 @@ class AcquistaPacchettoActivity : AppCompatActivity() {
                 acqWM.insert(acqOk)
             }
         }
-        Toast.makeText(this,"Acquisto andato a buon fine", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.acquisto_andato_a_buon_fine), Toast.LENGTH_SHORT).show()
     }
 }

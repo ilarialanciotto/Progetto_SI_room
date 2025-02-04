@@ -72,11 +72,13 @@ class Login : AppCompatActivity() {
                                 startActivity(intent)
                             }
                             else -> {
-                                Toast.makeText(this@Login, "Tipo di utente sconosciuto", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@Login,
+                                    getString(R.string.tipo_di_utente_sconosciuto), Toast.LENGTH_SHORT).show()
                             }
                         }
                     } else {
-                        Toast.makeText(this@Login, "Username o password errati", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Login,
+                            getString(R.string.username_o_password_errati), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
