@@ -7,8 +7,10 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -17,14 +19,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progetto_si.Acquisti.AcquistiViewModel
+import com.example.progetto_si.Admin.GestionePacchettiActivity
 import com.example.progetto_si.ClassiUtili.AdapterStringNoedit
+import com.example.progetto_si.ClassiUtili.PacchettoAdapter
 import com.example.progetto_si.Cliente.Activity.*
 import com.example.progetto_si.Cliente.Room.ClienteViewModel
 import com.example.progetto_si.Note.Note
 import com.example.progetto_si.Note.NoteViewModel
+import com.example.progetto_si.Pacchetto.Pacchetto
+import com.example.progetto_si.Pacchetto.PacchettoViewModel
 import com.example.progetto_si.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import kotlin.getValue
 
 class DashboardCliente : AppCompatActivity() {
 
@@ -37,7 +44,7 @@ class DashboardCliente : AppCompatActivity() {
     private lateinit var textView7: TextView
     private lateinit var clienteViewModel: ClienteViewModel
     private lateinit var noteViewModel: NoteViewModel
-
+    private val viewModel: PacchettoViewModel by viewModels()
     private var isCalendarVisible = false // Stato del calendario
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -156,7 +163,47 @@ class DashboardCliente : AppCompatActivity() {
         val layout = dialogView.findViewById<LinearLayout>(R.id.LL)
         val dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(true).create()
 
+        val list_pk = dialogView.findViewById<Spinner>(R.id.spinnerPacchetto)
+        var selectedPacchetto: Pacchetto? = null
+        var id = -1  // Variabile per memorizzare l'ID del pacchetto
+
+        viewModel.pacchetti.observe(this) { pacchetti ->
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                pacchetti.map { it.nome }
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            list_pk.adapter = adapter
+
+            // Se c'è almeno un pacchetto, seleziona il primo automaticamente
+            if (pacchetti.isNotEmpty()) {
+                selectedPacchetto = pacchetti[0]
+                id = selectedPacchetto!!.id
+            }
+        }
+
+        // Imposta il listener una sola volta, fuori dall'osservatore
+        list_pk.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, itemId: Long) {
+                selectedPacchetto = viewModel.pacchetti.value?.get(position)
+                id = selectedPacchetto?.id ?: -1
+
+                Toast.makeText(
+                    this@DashboardCliente,
+                    getString(R.string.selezionato, selectedPacchetto?.nome ?: ""),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                selectedPacchetto = null
+                id = -1
+            }
+        }
+
         lifecycleScope.launch {
+
             noteViewModel.getNotesByDate(data, username) { notes ->
                 if (notes.isNotEmpty()) {
                     layout.removeAllViews()
@@ -197,7 +244,7 @@ class DashboardCliente : AppCompatActivity() {
                         data = data,
                         email = username,
                         nota = notaT,
-                        pacchetto = 1
+                        pacchetto = id
                     )
                     noteViewModel.insert(nota)
                     Toast.makeText(this@DashboardCliente,
