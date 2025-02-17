@@ -46,6 +46,8 @@ class DashboardCliente : AppCompatActivity() {
     private lateinit var noteViewModel: NoteViewModel
     private val viewModel: PacchettoViewModel by viewModels()
     private var isCalendarVisible = false // Stato del calendario
+    private lateinit var username : String
+    private lateinit var password : String
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,8 +72,8 @@ class DashboardCliente : AppCompatActivity() {
         val acquistoWM = AcquistiViewModel(application)
         clienteViewModel = ViewModelProvider(this)[ClienteViewModel::class.java]
 
-        val username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
-        val password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
+        username = intent.getStringExtra("EXTRA_USERNAME") ?: ""
+        password = intent.getStringExtra("EXTRA_PASSWORD") ?: ""
 
         // Imposta la visibilità iniziale
         calendar.visibility = View.GONE
@@ -167,19 +169,21 @@ class DashboardCliente : AppCompatActivity() {
         var selectedPacchetto: Pacchetto? = null
         var id = -1  // Variabile per memorizzare l'ID del pacchetto
 
-        viewModel.pacchetti.observe(this) { pacchetti ->
-            val adapter = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_item,
-                pacchetti.map { it.nome }
-            )
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            list_pk.adapter = adapter
+        val clienteWM = ClienteViewModel(application)
+        val acquistoWM = AcquistiViewModel(application)
 
-            // Se c'è almeno un pacchetto, seleziona il primo automaticamente
-            if (pacchetti.isNotEmpty()) {
-                selectedPacchetto = pacchetti[0]
-                id = selectedPacchetto!!.id
+        // Lancia coroutine legate al ciclo di vita dell'Activity
+        lifecycleScope.launch {
+            clienteWM.getIdCliente(username, password) { idC ->
+                acquistoWM.getPacchettoById(idC) { pacchetti ->
+                    val adapter = ArrayAdapter(
+                        this@DashboardCliente,
+                        android.R.layout.simple_spinner_item,
+                        pacchetti.map { it.nome }
+                    )
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    list_pk.adapter = adapter
+                }
             }
         }
 

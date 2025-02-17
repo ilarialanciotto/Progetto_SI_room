@@ -12,7 +12,7 @@ interface AcquistoDao {
     @Insert
     fun insertAcquisto(acquisto : Acquisti)
 
-    @Query("SELECT pacchetto FROM ACQUISTI WHERE cliente=:id")
+    @Query("SELECT DISTINCT pacchetto FROM ACQUISTI WHERE cliente=:id")
     fun getPacchettiAcquistati(id : Int) : List<Int>
 
     @Query ("SELECT COUNT (DISTINCT cliente) FROM ACQUISTI WHERE pacchetto=:pacchetto")
